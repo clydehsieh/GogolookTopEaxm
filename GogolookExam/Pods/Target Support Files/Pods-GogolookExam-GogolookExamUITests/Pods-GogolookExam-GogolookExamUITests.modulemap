@@ -1,0 +1,6 @@
+framework module Pods_GogolookExam_GogolookExamUITests {
+  umbrella header "Pods-GogolookExam-GogolookExamUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

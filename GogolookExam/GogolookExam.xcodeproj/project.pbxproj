@@ -7,15 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43D30141D26B4764D74253EE /* Pods_GogolookExam_GogolookExamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58204E002B73F7F65036BCB /* Pods_GogolookExam_GogolookExamUITests.framework */; };
+		75B60763B935E1DA9F3D8C36 /* Pods_GogolookExam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DE419F8AE33AA4E63D4087 /* Pods_GogolookExam.framework */; };
+		A8F053C98C8362CDC391143D /* Pods_GogolookExamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6110D93977F7CEC691B2246 /* Pods_GogolookExamTests.framework */; };
 		EC6C2F2B2830BAFA0002E51D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */; };
 		EC6C2F2D2830BAFA0002E51D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */; };
 		EC6C2F2F2830BAFA0002E51D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2E2830BAFA0002E51D /* ViewController.swift */; };
-		EC6C2F322830BAFA0002E51D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6C2F302830BAFA0002E51D /* Main.storyboard */; };
 		EC6C2F342830BAFB0002E51D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6C2F332830BAFB0002E51D /* Assets.xcassets */; };
 		EC6C2F372830BAFB0002E51D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6C2F352830BAFB0002E51D /* LaunchScreen.storyboard */; };
 		EC6C2F422830BAFB0002E51D /* GogolookExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F412830BAFB0002E51D /* GogolookExamTests.swift */; };
 		EC6C2F4C2830BAFB0002E51D /* GogolookExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F4B2830BAFB0002E51D /* GogolookExamUITests.swift */; };
 		EC6C2F4E2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F4D2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift */; };
+		EC6C2F5C2830BBD90002E51D /* AnimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F5B2830BBD90002E51D /* AnimeData.swift */; };
+		EC6C2F5E2830BC410002E51D /* AnimeTopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */; };
+		EC6C2F602830BCAB0002E51D /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F5F2830BCAB0002E51D /* Pagination.swift */; };
+		EC6C2F632830BCF10002E51D /* ApiServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F622830BCF10002E51D /* ApiServiceType.swift */; };
+		EC6C2F652830BD220002E51D /* AnimeTopRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F642830BD220002E51D /* AnimeTopRequest.swift */; };
+		EC6C2F672830BE610002E51D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F662830BE610002E51D /* ApiService.swift */; };
+		EC6C2F6A2830C5910002E51D /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F692830C5910002E51D /* ViewModelType.swift */; };
+		EC6C2F6C2830C5DE0002E51D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F6B2830C5DE0002E51D /* ViewModel.swift */; };
+		EC6C2F6F2830C6560002E51D /* Publisher+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F6E2830C6560002E51D /* Publisher+Utility.swift */; };
+		EC6C2F722830C9630002E51D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F712830C9630002E51D /* Coordinator.swift */; };
+		EC6C2F742830C9810002E51D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F732830C9810002E51D /* MainCoordinator.swift */; };
+		EC6C2F772830CA380002E51D /* AnimeListViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F762830CA380002E51D /* AnimeListViewControllerProvider.swift */; };
+		EC6C2F7A2830CAC20002E51D /* AnimeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F792830CAC20002E51D /* AnimeListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +51,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15F9F89391B8FC0894078028 /* Pods-GogolookExam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GogolookExam.debug.xcconfig"; path = "Target Support Files/Pods-GogolookExam/Pods-GogolookExam.debug.xcconfig"; sourceTree = "<group>"; };
+		5C64A59C3C31999AC23A0D7A /* Pods-GogolookExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GogolookExam.release.xcconfig"; path = "Target Support Files/Pods-GogolookExam/Pods-GogolookExam.release.xcconfig"; sourceTree = "<group>"; };
+		60738C61D677CE99ECCF3A41 /* Pods-GogolookExamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GogolookExamTests.release.xcconfig"; path = "Target Support Files/Pods-GogolookExamTests/Pods-GogolookExamTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F50F896CC7239DCC9EC1131 /* Pods-GogolookExam-GogolookExamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GogolookExam-GogolookExamUITests.release.xcconfig"; path = "Target Support Files/Pods-GogolookExam-GogolookExamUITests/Pods-GogolookExam-GogolookExamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B6110D93977F7CEC691B2246 /* Pods_GogolookExamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GogolookExamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0EFDC9E238DAA2341AC6468 /* Pods-GogolookExam-GogolookExamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GogolookExam-GogolookExamUITests.debug.xcconfig"; path = "Target Support Files/Pods-GogolookExam-GogolookExamUITests/Pods-GogolookExam-GogolookExamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C58204E002B73F7F65036BCB /* Pods_GogolookExam_GogolookExamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GogolookExam_GogolookExamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4DE419F8AE33AA4E63D4087 /* Pods_GogolookExam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GogolookExam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E99E4AD8A4282427A3449CCE /* Pods-GogolookExamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GogolookExamTests.debug.xcconfig"; path = "Target Support Files/Pods-GogolookExamTests/Pods-GogolookExamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC6C2F272830BAFA0002E51D /* GogolookExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GogolookExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EC6C2F2E2830BAFA0002E51D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EC6C2F312830BAFA0002E51D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC6C2F332830BAFB0002E51D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC6C2F362830BAFB0002E51D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC6C2F382830BAFB0002E51D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +72,19 @@
 		EC6C2F472830BAFB0002E51D /* GogolookExamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GogolookExamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6C2F4B2830BAFB0002E51D /* GogolookExamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GogolookExamUITests.swift; sourceTree = "<group>"; };
 		EC6C2F4D2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GogolookExamUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EC6C2F5B2830BBD90002E51D /* AnimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeData.swift; sourceTree = "<group>"; };
+		EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTopResponse.swift; sourceTree = "<group>"; };
+		EC6C2F5F2830BCAB0002E51D /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		EC6C2F622830BCF10002E51D /* ApiServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceType.swift; sourceTree = "<group>"; };
+		EC6C2F642830BD220002E51D /* AnimeTopRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTopRequest.swift; sourceTree = "<group>"; };
+		EC6C2F662830BE610002E51D /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		EC6C2F692830C5910002E51D /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		EC6C2F6B2830C5DE0002E51D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		EC6C2F6E2830C6560002E51D /* Publisher+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Utility.swift"; sourceTree = "<group>"; };
+		EC6C2F712830C9630002E51D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		EC6C2F732830C9810002E51D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		EC6C2F762830CA380002E51D /* AnimeListViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewControllerProvider.swift; sourceTree = "<group>"; };
+		EC6C2F792830CAC20002E51D /* AnimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75B60763B935E1DA9F3D8C36 /* Pods_GogolookExam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8F053C98C8362CDC391143D /* Pods_GogolookExamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +108,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43D30141D26B4764D74253EE /* Pods_GogolookExam_GogolookExamUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D35E81A7B3873DB7EF31F43 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				15F9F89391B8FC0894078028 /* Pods-GogolookExam.debug.xcconfig */,
+				5C64A59C3C31999AC23A0D7A /* Pods-GogolookExam.release.xcconfig */,
+				C0EFDC9E238DAA2341AC6468 /* Pods-GogolookExam-GogolookExamUITests.debug.xcconfig */,
+				8F50F896CC7239DCC9EC1131 /* Pods-GogolookExam-GogolookExamUITests.release.xcconfig */,
+				E99E4AD8A4282427A3449CCE /* Pods-GogolookExamTests.debug.xcconfig */,
+				60738C61D677CE99ECCF3A41 /* Pods-GogolookExamTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		706D3D832A0704F532A4A647 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4DE419F8AE33AA4E63D4087 /* Pods_GogolookExam.framework */,
+				C58204E002B73F7F65036BCB /* Pods_GogolookExam_GogolookExamUITests.framework */,
+				B6110D93977F7CEC691B2246 /* Pods_GogolookExamTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EC6C2F1E2830BAFA0002E51D = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +145,8 @@
 				EC6C2F402830BAFB0002E51D /* GogolookExamTests */,
 				EC6C2F4A2830BAFB0002E51D /* GogolookExamUITests */,
 				EC6C2F282830BAFA0002E51D /* Products */,
+				5D35E81A7B3873DB7EF31F43 /* Pods */,
+				706D3D832A0704F532A4A647 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,8 +165,13 @@
 			children = (
 				EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */,
 				EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */,
-				EC6C2F2E2830BAFA0002E51D /* ViewController.swift */,
-				EC6C2F302830BAFA0002E51D /* Main.storyboard */,
+				EC6C2F752830CA160002E51D /* Provider */,
+				EC6C2F782830CAAF0002E51D /* ViewControllers */,
+				EC6C2F612830BCD90002E51D /* Service */,
+				EC6C2F5A2830BB7C0002E51D /* Model */,
+				EC6C2F682830C5810002E51D /* ViewModel */,
+				EC6C2F6D2830C6390002E51D /* Utility */,
+				EC6C2F702830C93F0002E51D /* Coordinator */,
 				EC6C2F332830BAFB0002E51D /* Assets.xcassets */,
 				EC6C2F352830BAFB0002E51D /* LaunchScreen.storyboard */,
 				EC6C2F382830BAFB0002E51D /* Info.plist */,
@@ -127,6 +196,69 @@
 			path = GogolookExamUITests;
 			sourceTree = "<group>";
 		};
+		EC6C2F5A2830BB7C0002E51D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F5B2830BBD90002E51D /* AnimeData.swift */,
+				EC6C2F5F2830BCAB0002E51D /* Pagination.swift */,
+				EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */,
+				EC6C2F642830BD220002E51D /* AnimeTopRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EC6C2F612830BCD90002E51D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F622830BCF10002E51D /* ApiServiceType.swift */,
+				EC6C2F662830BE610002E51D /* ApiService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EC6C2F682830C5810002E51D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F692830C5910002E51D /* ViewModelType.swift */,
+				EC6C2F6B2830C5DE0002E51D /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EC6C2F6D2830C6390002E51D /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F6E2830C6560002E51D /* Publisher+Utility.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		EC6C2F702830C93F0002E51D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F712830C9630002E51D /* Coordinator.swift */,
+				EC6C2F732830C9810002E51D /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		EC6C2F752830CA160002E51D /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F762830CA380002E51D /* AnimeListViewControllerProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		EC6C2F782830CAAF0002E51D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F2E2830BAFA0002E51D /* ViewController.swift */,
+				EC6C2F792830CAC20002E51D /* AnimeListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +266,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC6C2F512830BAFB0002E51D /* Build configuration list for PBXNativeTarget "GogolookExam" */;
 			buildPhases = (
+				400E26D632CFCDBB640BBDB6 /* [CP] Check Pods Manifest.lock */,
 				EC6C2F232830BAFA0002E51D /* Sources */,
 				EC6C2F242830BAFA0002E51D /* Frameworks */,
 				EC6C2F252830BAFA0002E51D /* Resources */,
+				A6536FF07DD562490551BAC0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +285,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC6C2F542830BAFB0002E51D /* Build configuration list for PBXNativeTarget "GogolookExamTests" */;
 			buildPhases = (
+				C44DC417E248F15B19168F37 /* [CP] Check Pods Manifest.lock */,
 				EC6C2F392830BAFB0002E51D /* Sources */,
 				EC6C2F3A2830BAFB0002E51D /* Frameworks */,
 				EC6C2F3B2830BAFB0002E51D /* Resources */,
@@ -169,9 +304,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC6C2F572830BAFB0002E51D /* Build configuration list for PBXNativeTarget "GogolookExamUITests" */;
 			buildPhases = (
+				F8C2E2027FD5D54F6E190B76 /* [CP] Check Pods Manifest.lock */,
 				EC6C2F432830BAFB0002E51D /* Sources */,
 				EC6C2F442830BAFB0002E51D /* Frameworks */,
 				EC6C2F452830BAFB0002E51D /* Resources */,
+				B433D4C4B7926225B350ED5B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -233,7 +370,6 @@
 			files = (
 				EC6C2F372830BAFB0002E51D /* LaunchScreen.storyboard in Resources */,
 				EC6C2F342830BAFB0002E51D /* Assets.xcassets in Resources */,
-				EC6C2F322830BAFA0002E51D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +389,130 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		400E26D632CFCDBB640BBDB6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GogolookExam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6536FF07DD562490551BAC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GogolookExam/Pods-GogolookExam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GogolookExam/Pods-GogolookExam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GogolookExam/Pods-GogolookExam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B433D4C4B7926225B350ED5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GogolookExam-GogolookExamUITests/Pods-GogolookExam-GogolookExamUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GogolookExam-GogolookExamUITests/Pods-GogolookExam-GogolookExamUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GogolookExam-GogolookExamUITests/Pods-GogolookExam-GogolookExamUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C44DC417E248F15B19168F37 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GogolookExamTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8C2E2027FD5D54F6E190B76 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GogolookExam-GogolookExamUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EC6C2F232830BAFA0002E51D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EC6C2F2F2830BAFA0002E51D /* ViewController.swift in Sources */,
+				EC6C2F742830C9810002E51D /* MainCoordinator.swift in Sources */,
+				EC6C2F772830CA380002E51D /* AnimeListViewControllerProvider.swift in Sources */,
 				EC6C2F2B2830BAFA0002E51D /* AppDelegate.swift in Sources */,
+				EC6C2F722830C9630002E51D /* Coordinator.swift in Sources */,
+				EC6C2F5C2830BBD90002E51D /* AnimeData.swift in Sources */,
+				EC6C2F6C2830C5DE0002E51D /* ViewModel.swift in Sources */,
+				EC6C2F602830BCAB0002E51D /* Pagination.swift in Sources */,
+				EC6C2F632830BCF10002E51D /* ApiServiceType.swift in Sources */,
+				EC6C2F672830BE610002E51D /* ApiService.swift in Sources */,
+				EC6C2F5E2830BC410002E51D /* AnimeTopResponse.swift in Sources */,
+				EC6C2F652830BD220002E51D /* AnimeTopRequest.swift in Sources */,
+				EC6C2F6A2830C5910002E51D /* ViewModelType.swift in Sources */,
+				EC6C2F7A2830CAC20002E51D /* AnimeListViewController.swift in Sources */,
 				EC6C2F2D2830BAFA0002E51D /* SceneDelegate.swift in Sources */,
+				EC6C2F6F2830C6560002E51D /* Publisher+Utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +549,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EC6C2F302830BAFA0002E51D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC6C2F312830BAFA0002E51D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EC6C2F352830BAFB0002E51D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -434,6 +678,7 @@
 		};
 		EC6C2F522830BAFB0002E51D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15F9F89391B8FC0894078028 /* Pods-GogolookExam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -444,9 +689,9 @@
 				INFOPLIST_FILE = GogolookExam/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,6 +707,7 @@
 		};
 		EC6C2F532830BAFB0002E51D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C64A59C3C31999AC23A0D7A /* Pods-GogolookExam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -472,9 +718,9 @@
 				INFOPLIST_FILE = GogolookExam/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,6 +736,7 @@
 		};
 		EC6C2F552830BAFB0002E51D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E99E4AD8A4282427A3449CCE /* Pods-GogolookExamTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +757,7 @@
 		};
 		EC6C2F562830BAFB0002E51D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60738C61D677CE99ECCF3A41 /* Pods-GogolookExamTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -530,6 +778,7 @@
 		};
 		EC6C2F582830BAFB0002E51D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0EFDC9E238DAA2341AC6468 /* Pods-GogolookExam-GogolookExamUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -548,6 +797,7 @@
 		};
 		EC6C2F592830BAFB0002E51D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F50F896CC7239DCC9EC1131 /* Pods-GogolookExam-GogolookExamUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
