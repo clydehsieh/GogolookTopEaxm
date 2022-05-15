@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC6C2F2B2830BAFA0002E51D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */; };
+		EC6C2F2D2830BAFA0002E51D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */; };
+		EC6C2F2F2830BAFA0002E51D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2E2830BAFA0002E51D /* ViewController.swift */; };
+		EC6C2F322830BAFA0002E51D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6C2F302830BAFA0002E51D /* Main.storyboard */; };
+		EC6C2F342830BAFB0002E51D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6C2F332830BAFB0002E51D /* Assets.xcassets */; };
+		EC6C2F372830BAFB0002E51D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6C2F352830BAFB0002E51D /* LaunchScreen.storyboard */; };
+		EC6C2F422830BAFB0002E51D /* GogolookExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F412830BAFB0002E51D /* GogolookExamTests.swift */; };
+		EC6C2F4C2830BAFB0002E51D /* GogolookExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F4B2830BAFB0002E51D /* GogolookExamUITests.swift */; };
+		EC6C2F4E2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F4D2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC6C2F3E2830BAFB0002E51D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC6C2F1F2830BAFA0002E51D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC6C2F262830BAFA0002E51D;
+			remoteInfo = GogolookExam;
+		};
+		EC6C2F482830BAFB0002E51D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC6C2F1F2830BAFA0002E51D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC6C2F262830BAFA0002E51D;
+			remoteInfo = GogolookExam;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EC6C2F272830BAFA0002E51D /* GogolookExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GogolookExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EC6C2F2E2830BAFA0002E51D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EC6C2F312830BAFA0002E51D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC6C2F332830BAFB0002E51D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EC6C2F362830BAFB0002E51D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EC6C2F382830BAFB0002E51D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC6C2F3D2830BAFB0002E51D /* GogolookExamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GogolookExamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC6C2F412830BAFB0002E51D /* GogolookExamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GogolookExamTests.swift; sourceTree = "<group>"; };
+		EC6C2F472830BAFB0002E51D /* GogolookExamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GogolookExamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC6C2F4B2830BAFB0002E51D /* GogolookExamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GogolookExamUITests.swift; sourceTree = "<group>"; };
+		EC6C2F4D2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GogolookExamUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC6C2F242830BAFA0002E51D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6C2F3A2830BAFB0002E51D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6C2F442830BAFB0002E51D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC6C2F1E2830BAFA0002E51D = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F292830BAFA0002E51D /* GogolookExam */,
+				EC6C2F402830BAFB0002E51D /* GogolookExamTests */,
+				EC6C2F4A2830BAFB0002E51D /* GogolookExamUITests */,
+				EC6C2F282830BAFA0002E51D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC6C2F282830BAFA0002E51D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F272830BAFA0002E51D /* GogolookExam.app */,
+				EC6C2F3D2830BAFB0002E51D /* GogolookExamTests.xctest */,
+				EC6C2F472830BAFB0002E51D /* GogolookExamUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC6C2F292830BAFA0002E51D /* GogolookExam */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */,
+				EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */,
+				EC6C2F2E2830BAFA0002E51D /* ViewController.swift */,
+				EC6C2F302830BAFA0002E51D /* Main.storyboard */,
+				EC6C2F332830BAFB0002E51D /* Assets.xcassets */,
+				EC6C2F352830BAFB0002E51D /* LaunchScreen.storyboard */,
+				EC6C2F382830BAFB0002E51D /* Info.plist */,
+			);
+			path = GogolookExam;
+			sourceTree = "<group>";
+		};
+		EC6C2F402830BAFB0002E51D /* GogolookExamTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F412830BAFB0002E51D /* GogolookExamTests.swift */,
+			);
+			path = GogolookExamTests;
+			sourceTree = "<group>";
+		};
+		EC6C2F4A2830BAFB0002E51D /* GogolookExamUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EC6C2F4B2830BAFB0002E51D /* GogolookExamUITests.swift */,
+				EC6C2F4D2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift */,
+			);
+			path = GogolookExamUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC6C2F262830BAFA0002E51D /* GogolookExam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC6C2F512830BAFB0002E51D /* Build configuration list for PBXNativeTarget "GogolookExam" */;
+			buildPhases = (
+				EC6C2F232830BAFA0002E51D /* Sources */,
+				EC6C2F242830BAFA0002E51D /* Frameworks */,
+				EC6C2F252830BAFA0002E51D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GogolookExam;
+			productName = GogolookExam;
+			productReference = EC6C2F272830BAFA0002E51D /* GogolookExam.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC6C2F3C2830BAFB0002E51D /* GogolookExamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC6C2F542830BAFB0002E51D /* Build configuration list for PBXNativeTarget "GogolookExamTests" */;
+			buildPhases = (
+				EC6C2F392830BAFB0002E51D /* Sources */,
+				EC6C2F3A2830BAFB0002E51D /* Frameworks */,
+				EC6C2F3B2830BAFB0002E51D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC6C2F3F2830BAFB0002E51D /* PBXTargetDependency */,
+			);
+			name = GogolookExamTests;
+			productName = GogolookExamTests;
+			productReference = EC6C2F3D2830BAFB0002E51D /* GogolookExamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EC6C2F462830BAFB0002E51D /* GogolookExamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC6C2F572830BAFB0002E51D /* Build configuration list for PBXNativeTarget "GogolookExamUITests" */;
+			buildPhases = (
+				EC6C2F432830BAFB0002E51D /* Sources */,
+				EC6C2F442830BAFB0002E51D /* Frameworks */,
+				EC6C2F452830BAFB0002E51D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC6C2F492830BAFB0002E51D /* PBXTargetDependency */,
+			);
+			name = GogolookExamUITests;
+			productName = GogolookExamUITests;
+			productReference = EC6C2F472830BAFB0002E51D /* GogolookExamUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC6C2F1F2830BAFA0002E51D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					EC6C2F262830BAFA0002E51D = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					EC6C2F3C2830BAFB0002E51D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = EC6C2F262830BAFA0002E51D;
+					};
+					EC6C2F462830BAFB0002E51D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = EC6C2F262830BAFA0002E51D;
+					};
+				};
+			};
+			buildConfigurationList = EC6C2F222830BAFA0002E51D /* Build configuration list for PBXProject "GogolookExam" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC6C2F1E2830BAFA0002E51D;
+			productRefGroup = EC6C2F282830BAFA0002E51D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC6C2F262830BAFA0002E51D /* GogolookExam */,
+				EC6C2F3C2830BAFB0002E51D /* GogolookExamTests */,
+				EC6C2F462830BAFB0002E51D /* GogolookExamUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC6C2F252830BAFA0002E51D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6C2F372830BAFB0002E51D /* LaunchScreen.storyboard in Resources */,
+				EC6C2F342830BAFB0002E51D /* Assets.xcassets in Resources */,
+				EC6C2F322830BAFA0002E51D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6C2F3B2830BAFB0002E51D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6C2F452830BAFB0002E51D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC6C2F232830BAFA0002E51D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6C2F2F2830BAFA0002E51D /* ViewController.swift in Sources */,
+				EC6C2F2B2830BAFA0002E51D /* AppDelegate.swift in Sources */,
+				EC6C2F2D2830BAFA0002E51D /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6C2F392830BAFB0002E51D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6C2F422830BAFB0002E51D /* GogolookExamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6C2F432830BAFB0002E51D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC6C2F4E2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift in Sources */,
+				EC6C2F4C2830BAFB0002E51D /* GogolookExamUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC6C2F3F2830BAFB0002E51D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC6C2F262830BAFA0002E51D /* GogolookExam */;
+			targetProxy = EC6C2F3E2830BAFB0002E51D /* PBXContainerItemProxy */;
+		};
+		EC6C2F492830BAFB0002E51D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC6C2F262830BAFA0002E51D /* GogolookExam */;
+			targetProxy = EC6C2F482830BAFB0002E51D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EC6C2F302830BAFA0002E51D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC6C2F312830BAFA0002E51D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EC6C2F352830BAFB0002E51D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC6C2F362830BAFB0002E51D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC6C2F4F2830BAFB0002E51D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EC6C2F502830BAFB0002E51D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC6C2F522830BAFB0002E51D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XLY67UA89A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GogolookExam/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clydeTest.GogolookExam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC6C2F532830BAFB0002E51D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XLY67UA89A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GogolookExam/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clydeTest.GogolookExam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EC6C2F552830BAFB0002E51D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XLY67UA89A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clydeTest.GogolookExamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GogolookExam.app/GogolookExam";
+			};
+			name = Debug;
+		};
+		EC6C2F562830BAFB0002E51D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XLY67UA89A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clydeTest.GogolookExamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GogolookExam.app/GogolookExam";
+			};
+			name = Release;
+		};
+		EC6C2F582830BAFB0002E51D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XLY67UA89A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clydeTest.GogolookExamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GogolookExam;
+			};
+			name = Debug;
+		};
+		EC6C2F592830BAFB0002E51D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XLY67UA89A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clydeTest.GogolookExamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GogolookExam;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC6C2F222830BAFA0002E51D /* Build configuration list for PBXProject "GogolookExam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC6C2F4F2830BAFB0002E51D /* Debug */,
+				EC6C2F502830BAFB0002E51D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC6C2F512830BAFB0002E51D /* Build configuration list for PBXNativeTarget "GogolookExam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC6C2F522830BAFB0002E51D /* Debug */,
+				EC6C2F532830BAFB0002E51D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC6C2F542830BAFB0002E51D /* Build configuration list for PBXNativeTarget "GogolookExamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC6C2F552830BAFB0002E51D /* Debug */,
+				EC6C2F562830BAFB0002E51D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC6C2F572830BAFB0002E51D /* Build configuration list for PBXNativeTarget "GogolookExamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC6C2F582830BAFB0002E51D /* Debug */,
+				EC6C2F592830BAFB0002E51D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC6C2F1F2830BAFA0002E51D /* Project object */;
+}
