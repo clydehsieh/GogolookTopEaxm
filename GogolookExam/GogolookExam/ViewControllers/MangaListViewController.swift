@@ -1,5 +1,5 @@
 //
-//  AnimeListViewController.swift
+//  MangaListViewController.swift
 //  GogolookExam
 //
 //  Created by ClydeHsieh on 2022/5/15.
@@ -8,17 +8,17 @@
 import UIKit
 import Combine
 
-class AnimeListViewController: UIViewController {
+class MangaListViewController: UIViewController {
     
     //MARK: DI
-    let vm: ViewModelType
+    let vm: MangaViewModelType
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
-    let animeTopRequest: CurrentValueSubject<AnimeTopRequestType, Error> = .init(AnimeTopRequest.defaultConfige())
+    let animeTopRequest: CurrentValueSubject<MangaTopRequestType, Error> = .init(MangeTopRequest.defaultConfige())
     
     //MARK: - init
-    init(vm: ViewModelType) {
+    init(vm: MangaViewModelType) {
         self.vm = vm
         super.init(nibName: nil, bundle: nil)
     }
@@ -30,7 +30,7 @@ class AnimeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemGray
         title = "title"
         setupBinding()
     }
@@ -38,13 +38,13 @@ class AnimeListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        animeTopRequest.send(AnimeTopRequest.defaultConfige())
+        animeTopRequest.send(MangeTopRequest.defaultConfige())
     }
 }
 
-extension AnimeListViewController {
+extension MangaListViewController {
     func setupBinding() {
-        vm.binding(fetchAnime: animeTopRequest.eraseToAnyPublisher())
+        vm.binding(fetchManga: animeTopRequest.eraseToAnyPublisher())
             .sink { completion in
                 switch completion {
                 case .finished: break
@@ -52,7 +52,7 @@ extension AnimeListViewController {
                     debugPrint(e)
                 }
             } receiveValue: { response in
-                debugPrint("Anime \(response.data.count)")
+                debugPrint("manga \(response.data.count)")
             }
             .store(in: &self.subscriptions)
     }

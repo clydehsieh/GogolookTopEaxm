@@ -5,11 +5,15 @@
 //  Created by ClydeHsieh on 2022/5/15.
 //
 
-import UIKit
+protocol AnimeTopRequestType {
+    var type: AnimeType { get }
+    var filter: AnimeFilter { get }
+    var page: Int { get }
+}
 
 struct AnimeTopRequest: Codable, AnimeTopRequestType {
-    let type: AnmineType
-    let filter: AnmineFilter
+    let type: AnimeType
+    let filter: AnimeFilter
     let page: Int
 }
 
@@ -19,7 +23,7 @@ extension AnimeTopRequest {
     }
 }
 
-enum AnmineType: String, Codable {
+enum AnimeType: String, Codable {
     case tv
     case movie
     case ova
@@ -28,7 +32,7 @@ enum AnmineType: String, Codable {
     case music
 }
 
-enum AnmineFilter: String, Codable {
+enum AnimeFilter: String, Codable {
     case tv
     case movie
     case ova

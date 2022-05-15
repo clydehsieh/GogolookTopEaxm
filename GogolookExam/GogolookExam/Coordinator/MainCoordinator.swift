@@ -16,8 +16,8 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = AnimeListViewControllerProvider.viewcontroller
+//        let vc = AnimeListViewControllerProvider.viewcontroller
+        let vc = MangaListViewControllerProvider.viewcontroller
         navigationController.viewControllers = [vc]
-//        navigationController.pushViewController(vc, animated: false)
     }
 }

@@ -8,8 +8,8 @@
 import UIKit
 
 struct AnimeListViewControllerProvider {
-    static var service: ApiServiceType {
-        ApiService()
+    static var service: AnimeApiServiceType {
+        AnimeApiService()
     }
     
     static var viewModel: ViewModelType {

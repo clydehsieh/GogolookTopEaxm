@@ -12,24 +12,24 @@ struct Datum: Codable {
     let malID: Int
     let url: String
     let images: [String: Image]
-    let trailer: Trailer
+    let trailer: Trailer?
     let title, titleEnglish, titleJapanese: String?
     let titleSynonyms: [String]
-    let type, source: String
-    let episodes: Int
+    let type, source: String?
+    let episodes: Int?
     let status: String
-    let airing: Bool
+    let airing: Bool?
     let aired: Aired?
-    let duration, rating: String
+    let duration, rating: String?
     let score: CGFloat // float not int
     let scoredBy, rank, popularity: Int
     let members, favorites: Int
     let background: String? // optional
-    let synopsis, season: String
-    let year: Int
+    let synopsis, season: String?
+    let year: Int?
     let broadcast: Broadcast?
-    let producers, licensors, studios, genres: [Demographic]
-    let explicitGenres, themes, demographics: [Demographic]
+    let producers, licensors, studios, genres: [Demographic]?
+    let explicitGenres, themes, demographics: [Demographic]?
 
     enum CodingKeys: String, CodingKey {
         case malID = "mal_id"

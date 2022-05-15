@@ -8,12 +8,12 @@
 import UIKit
 import Combine
 
-class ApiService {
+class AnimeApiService {
     var subscriptions: Set<AnyCancellable> = .init()
 }
  
-extension ApiService: ApiServiceType {
-    func fetchTopAnimne(param: AnimeTopRequestType) -> AnyPublisher<AnimeTopResponse, Error> {
+extension AnimeApiService: AnimeApiServiceType {
+    func fetchTop(param: AnimeTopRequestType) -> AnyPublisher<AnimeTopResponse, Error> {
         let url = URL(string: "https://api.jikan.moe/v4/top/anime?type=\(param.type.rawValue)&filter=\(param.filter.rawValue)&page=\(param.page)")!
         
         return Deferred {
