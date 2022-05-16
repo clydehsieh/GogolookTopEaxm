@@ -67,6 +67,7 @@ extension SegmentView {
             btn.addTarget(self, action: #selector(didTapButton(sender:)), for: .touchUpInside)
             btn.setTitle(title, for: .normal)
             btn.setTitleColor(.black, for: .normal)
+            btn.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
             btn.layer.borderColor = UIColor.lightGray.cgColor
             btn.layer.borderWidth = 1
             btn.layer.cornerRadius = 5
@@ -79,6 +80,18 @@ extension SegmentView {
             stackView.addArrangedSubview(btn)
             buttonCache[btn] = type
         }
+        
+        highlieghtButtonColor(buttonCache.keys.first!)
+    }
+    
+    func highlieghtButtonColor(_ targetButton: UIButton) {
+        for button in buttonCache.keys {
+            if button == targetButton {
+                button.setTitleColor(.black, for: .normal)
+            } else {
+                button.setTitleColor(.lightGray, for: .normal)
+            }
+        }
     }
 }
 
@@ -88,6 +101,9 @@ extension SegmentView {
         guard let type = buttonCache[sender] else {
             return
         }
+        
+        highlieghtButtonColor(sender)
+        
         didTapButtonHandler?(type)
     }
 }
