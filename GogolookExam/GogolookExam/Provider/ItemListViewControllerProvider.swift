@@ -13,8 +13,8 @@ struct ItemListViewControllerProvider {
         decoder.dateDecodingStrategy = .formatted(OptionalFractionalSecondsDateFormatter())
         return decoder
     }
-    static var service: AnimeApiServiceType {
-        AnimeApiService(decoder: decoder)
+    static var service: ItemApiService {
+        ItemApiService(decoder: decoder)
     }
     
     static var viewModel: ViewModelType {

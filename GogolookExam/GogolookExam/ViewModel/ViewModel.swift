@@ -9,8 +9,8 @@ import UIKit
 import Combine
 
 class ViewModel {
-    let service: AnimeApiServiceType
-    init(service: AnimeApiServiceType) {
+    let service: ItemApiService
+    init(service: ItemApiService) {
         self.service = service
     }
 }
@@ -18,6 +18,14 @@ class ViewModel {
 extension ViewModel: ViewModelType {
     func binding(fetchAnime: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error> {
         fetchAnime
+            .flatMapLatest({ [unowned self] param in
+                self.service.fetchTop(param: param)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    func binding(fetchManga: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error> {
+        fetchManga
             .flatMapLatest({ [unowned self] param in
                 self.service.fetchTop(param: param)
             })

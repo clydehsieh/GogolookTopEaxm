@@ -21,7 +21,6 @@
 		EC6C2F5E2830BC410002E51D /* AnimeTopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */; };
 		EC6C2F602830BCAB0002E51D /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F5F2830BCAB0002E51D /* Pagination.swift */; };
 		EC6C2F632830BCF10002E51D /* AnimeApiServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F622830BCF10002E51D /* AnimeApiServiceType.swift */; };
-		EC6C2F672830BE610002E51D /* AnimeApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F662830BE610002E51D /* AnimeApiService.swift */; };
 		EC6C2F6A2830C5910002E51D /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F692830C5910002E51D /* ViewModelType.swift */; };
 		EC6C2F6C2830C5DE0002E51D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F6B2830C5DE0002E51D /* ViewModel.swift */; };
 		EC6C2F6F2830C6560002E51D /* Publisher+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F6E2830C6560002E51D /* Publisher+Utility.swift */; };
@@ -29,7 +28,6 @@
 		EC6C2F742830C9810002E51D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F732830C9810002E51D /* MainCoordinator.swift */; };
 		EC6C2F7C2830D4FB0002E51D /* MangaApiServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F7B2830D4FB0002E51D /* MangaApiServiceType.swift */; };
 		EC6C2F822830D6980002E51D /* MangaTopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F812830D6980002E51D /* MangaTopResponse.swift */; };
-		EC6C2F842830D7200002E51D /* MangaApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F832830D7200002E51D /* MangaApiService.swift */; };
 		EC78D87D2831E2BB0014A54A /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D87C2831E2BB0014A54A /* ItemListViewController.swift */; };
 		EC78D8802831E3A90014A54A /* SegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D87F2831E3A90014A54A /* SegmentView.swift */; };
 		EC78D8822831F6BA0014A54A /* TableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8812831F6BA0014A54A /* TableView+Extension.swift */; };
@@ -47,6 +45,7 @@
 		EC78D89A283224890014A54A /* MangaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D899283224890014A54A /* MangaType.swift */; };
 		EC78D89C2832249A0014A54A /* MangaFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89B2832249A0014A54A /* MangaFilter.swift */; };
 		EC78D89F283225C60014A54A /* ItemListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89E283225C60014A54A /* ItemListType.swift */; };
+		EC78D8A128322AC00014A54A /* ItemApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A028322AC00014A54A /* ItemApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +90,6 @@
 		EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTopResponse.swift; sourceTree = "<group>"; };
 		EC6C2F5F2830BCAB0002E51D /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		EC6C2F622830BCF10002E51D /* AnimeApiServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeApiServiceType.swift; sourceTree = "<group>"; };
-		EC6C2F662830BE610002E51D /* AnimeApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeApiService.swift; sourceTree = "<group>"; };
 		EC6C2F692830C5910002E51D /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		EC6C2F6B2830C5DE0002E51D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		EC6C2F6E2830C6560002E51D /* Publisher+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Utility.swift"; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 		EC6C2F732830C9810002E51D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		EC6C2F7B2830D4FB0002E51D /* MangaApiServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaApiServiceType.swift; sourceTree = "<group>"; };
 		EC6C2F812830D6980002E51D /* MangaTopResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaTopResponse.swift; sourceTree = "<group>"; };
-		EC6C2F832830D7200002E51D /* MangaApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaApiService.swift; sourceTree = "<group>"; };
 		EC78D87C2831E2BB0014A54A /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		EC78D87F2831E3A90014A54A /* SegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentView.swift; sourceTree = "<group>"; };
 		EC78D8812831F6BA0014A54A /* TableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extension.swift"; sourceTree = "<group>"; };
@@ -117,6 +114,7 @@
 		EC78D899283224890014A54A /* MangaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaType.swift; sourceTree = "<group>"; };
 		EC78D89B2832249A0014A54A /* MangaFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaFilter.swift; sourceTree = "<group>"; };
 		EC78D89E283225C60014A54A /* ItemListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListType.swift; sourceTree = "<group>"; };
+		EC78D8A028322AC00014A54A /* ItemApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,9 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				EC6C2F622830BCF10002E51D /* AnimeApiServiceType.swift */,
-				EC6C2F662830BE610002E51D /* AnimeApiService.swift */,
 				EC6C2F7B2830D4FB0002E51D /* MangaApiServiceType.swift */,
-				EC6C2F832830D7200002E51D /* MangaApiService.swift */,
+				EC78D8A028322AC00014A54A /* ItemApiService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -579,7 +576,6 @@
 			files = (
 				EC6C2F742830C9810002E51D /* MainCoordinator.swift in Sources */,
 				EC78D88E283207030014A54A /* OptionSegmentView.swift in Sources */,
-				EC6C2F842830D7200002E51D /* MangaApiService.swift in Sources */,
 				EC6C2F2B2830BAFA0002E51D /* AppDelegate.swift in Sources */,
 				EC6C2F722830C9630002E51D /* Coordinator.swift in Sources */,
 				EC6C2F5C2830BBD90002E51D /* Datum.swift in Sources */,
@@ -594,7 +590,6 @@
 				EC6C2F822830D6980002E51D /* MangaTopResponse.swift in Sources */,
 				EC6C2F602830BCAB0002E51D /* Pagination.swift in Sources */,
 				EC6C2F632830BCF10002E51D /* AnimeApiServiceType.swift in Sources */,
-				EC6C2F672830BE610002E51D /* AnimeApiService.swift in Sources */,
 				EC6C2F5E2830BC410002E51D /* AnimeTopResponse.swift in Sources */,
 				EC78D8862831FB6E0014A54A /* ItemListViewControllerProvider.swift in Sources */,
 				EC78D87D2831E2BB0014A54A /* ItemListViewController.swift in Sources */,
@@ -604,6 +599,7 @@
 				EC78D896283224560014A54A /* AnimeType.swift in Sources */,
 				EC78D89A283224890014A54A /* MangaType.swift in Sources */,
 				EC78D89F283225C60014A54A /* ItemListType.swift in Sources */,
+				EC78D8A128322AC00014A54A /* ItemApiService.swift in Sources */,
 				EC78D8882831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift in Sources */,
 				EC6C2F6A2830C5910002E51D /* ViewModelType.swift in Sources */,
 				EC78D88A283201360014A54A /* Date+Extension.swift in Sources */,

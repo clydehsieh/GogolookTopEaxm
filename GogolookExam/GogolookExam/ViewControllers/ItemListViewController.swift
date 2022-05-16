@@ -12,8 +12,8 @@ class ItemListViewController: UIViewController {
 
     //MARK: - views
     lazy var segmentView: SegmentView = {
-        let v = SegmentView { type in
-            debugPrint("tap \(type.displayName)")
+        let v = SegmentView { [weak self] type in
+            self?.changeListType(newType: type)
         }
         return v
     }()
@@ -45,9 +45,11 @@ class ItemListViewController: UIViewController {
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
     let animeTopRequest: CurrentValueSubject<ItemRequestType, Error> = .init(ItemRequest.defaultConfig)
-    weak var coordinator: MainCoordinator?
+    let mangaTopRequest: CurrentValueSubject<ItemRequestType, Error> = .init(ItemRequest.defaultConfig)
     
-    var listType: ItemListType = .anime
+    weak var coordinator: MainCoordinator?
+    var needResetFlag = false
+    var currentListType: ItemListType = .anime
     
     init(vm: ViewModelType) {
         self.vm = vm
@@ -67,23 +69,11 @@ class ItemListViewController: UIViewController {
         setupBinding()
         
         
-        self.reqeust(type: AnimeType.none, filter: AnimeFilter.none, page: 0)
-    }
-    
-    func reqeust(type: RequestTypePresentable, filter: RequestFilterPresentable, page: Int) {
-        
-        optionSegmentView.setup(typeTitle: type.value ?? "",
-                                filterTitle: filter.value ?? "")
-        
-        animeTopRequest.send(ItemRequest(
-            type: type.value,
-            filter: filter.value,
-            page: max(0, page))
-        )
+        self.reqeust(type: nil, filter: nil, page: 0)
     }
 }
 
-
+//MARK: - config
 extension ItemListViewController {
     private func constructViewHierarchy() {
         view.addSubview(segmentView)
@@ -122,6 +112,8 @@ extension ItemListViewController {
     }
     
     private func setupBinding() {
+        
+        weak var weakSelf = self
         vm.binding(fetchAnime: animeTopRequest.eraseToAnyPublisher())
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -130,14 +122,75 @@ extension ItemListViewController {
                 case let .failure(e):
                     debugPrint(e)
                 }
-            } receiveValue: { [weak self] response in
+            } receiveValue: { response in
                 debugPrint("Anime \(response.data.count)")
-                self?.datasource.append(contentsOf: response.data)
+                weakSelf?.addNewItem(response.data)
+            }
+            .store(in: &self.subscriptions)
+        
+        
+        vm.binding(fetchManga: mangaTopRequest.eraseToAnyPublisher())
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case let .failure(e):
+                    debugPrint(e)
+                }
+            } receiveValue: { response in
+                debugPrint("Anime \(response.data.count)")
+                weakSelf?.addNewItem(response.data)
             }
             .store(in: &self.subscriptions)
     }
 }
 
+//MARK: - data mutating
+extension ItemListViewController {
+    func changeListType(newType: ItemListType) {
+        guard currentListType != newType else {
+            return
+        }
+        
+        currentListType = newType
+        needResetFlag = true
+        self.reqeust(type: nil, filter: nil, page: 0)
+    }
+    
+    func reqeust(type: String?, filter: String?, page: Int) {
+        
+        // update filter display
+        optionSegmentView.setup(typeTitle: type ?? "",
+                                filterTitle: filter ?? "")
+        
+        // reqest
+        switch currentListType {
+        case .anime:
+            animeTopRequest.send(ItemRequest(
+                type: type,
+                filter: filter,
+                page: max(0, page))
+            )
+        case .manga:
+            mangaTopRequest.send(ItemRequest(
+                type: type,
+                filter: filter,
+                page: max(0, page))
+            )
+        }
+    }
+    
+    func addNewItem(_ items: [ItemTableViewCellConfigurable]) {
+        if needResetFlag {
+            needResetFlag = false
+            datasource = items
+        } else {
+            datasource.append(contentsOf: items)
+        }
+    }
+}
+
+//MARK: - UITableViewDataSource
 extension ItemListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         datasource.count
@@ -153,6 +206,7 @@ extension ItemListViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - UITableViewDelegate
 extension ItemListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let data = datasource[safe: indexPath.row] else {

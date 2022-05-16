@@ -10,4 +10,5 @@ import Combine
 
 protocol ViewModelType {
     func binding(fetchAnime: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error>
+    func binding(fetchManga: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error>
 }
