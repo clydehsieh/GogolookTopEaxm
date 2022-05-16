@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import SafariServices
+
+enum FlowError: Error {
+    case invalidateURL
+}
 
 class MainCoordinator: Coordinator {
     var childs: [Coordinator] = []
@@ -16,8 +21,25 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-//        let vc = AnimeListViewControllerProvider.viewcontroller
-        let vc = MangaListViewControllerProvider.viewcontroller
+        let vc = ItemListViewControllerProvider.viewController
+        vc.coordinator = self
         navigationController.viewControllers = [vc]
+    }
+}
+
+extension MainCoordinator {
+    func openURL(url: URL?) throws {
+        guard let url = url else {
+            throw FlowError.invalidateURL
+        }
+        
+        if ["http", "https"].contains(url.scheme?.lowercased() ?? "") {
+            // Can open with SFSafariViewController
+            let vc = SFSafariViewController(url: url)
+            navigationController.present(vc, animated: true, completion: nil)
+        } else {
+            // Scheme is not supported or no scheme is given, use openURL
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 }

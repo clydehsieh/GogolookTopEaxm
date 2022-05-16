@@ -5,6 +5,7 @@
 //  Created by ClydeHsieh on 2022/5/15.
 //
 
+import UIKit
 import CoreGraphics
 
 // MARK: - Datum
@@ -47,7 +48,7 @@ struct Datum: Codable {
 
 // MARK: - Aired
 struct Aired: Codable {
-    let from, to: String?
+    let from, to: Date?
     let prop: Prop
 }
 

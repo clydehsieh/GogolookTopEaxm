@@ -9,7 +9,12 @@ import UIKit
 import Combine
 
 class AnimeApiService {
+    let decoder: JSONDecoder 
     var subscriptions: Set<AnyCancellable> = .init()
+    
+    init(decoder: JSONDecoder = .init()) {
+        self.decoder = decoder
+    }
 }
  
 extension AnimeApiService: AnimeApiServiceType {
@@ -26,7 +31,7 @@ extension AnimeApiService: AnimeApiServiceType {
                               }
                         return element.data
                     }
-                    .decode(type: AnimeTopResponse.self, decoder: JSONDecoder())
+                    .decode(type: AnimeTopResponse.self, decoder: self.decoder)
                     .sink { completion in
                         switch completion {
                         case .finished: break
