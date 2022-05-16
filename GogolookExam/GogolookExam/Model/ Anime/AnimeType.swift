@@ -18,3 +18,9 @@ enum AnimeType: String, CaseIterable, RequestTypePresentable {
         return self == .none ? nil : rawValue
     }
 }
+
+extension AnimeType: OptionsSelectTableViewCellConfigurable {
+    var optionTitle: String {
+        rawValue
+    }
+}

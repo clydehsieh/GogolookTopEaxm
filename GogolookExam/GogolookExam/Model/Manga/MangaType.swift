@@ -19,3 +19,9 @@ enum MangaType: String, CaseIterable, RequestTypePresentable {
         return self == .none ? nil : rawValue
     }
 }
+
+extension MangaType: OptionsSelectTableViewCellConfigurable {
+    var optionTitle: String {
+        rawValue
+    }
+}

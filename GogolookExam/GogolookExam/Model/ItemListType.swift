@@ -42,3 +42,25 @@ extension ItemListType {
         }
     }
 }
+
+extension ItemListType {
+    var optionTypes: [OptionsSelectTableViewCellConfigurable] {
+        switch self {
+        case .anime:
+            return AnimeType.allCases
+        case .manga:
+            return MangaType.allCases
+        }
+    }
+    
+    var optionFilters: [OptionsSelectTableViewCellConfigurable] {
+        switch self {
+        case .anime:
+            return AnimeFilter.allCases
+        case .manga:
+            return MangaFilter.allCases
+        }
+    }
+}
+
+

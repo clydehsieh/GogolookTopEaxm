@@ -23,7 +23,7 @@ class OptionSegmentView: UIView {
     let typeButton: UIButton = {
         let btn = UIButton()
         btn.setTitleColor(.black, for: .normal)
-        btn.layer.borderColor = UIColor.lightGray.cgColor
+        btn.layer.borderColor = UIColor.darkGray.cgColor
         btn.layer.borderWidth = 1
         btn.layer.cornerRadius = 5
         btn.contentEdgeInsets = .init(top: 0, left: 5, bottom: 0, right: 5)
@@ -33,7 +33,7 @@ class OptionSegmentView: UIView {
     let filterButton: UIButton = {
         let btn = UIButton()
         btn.setTitleColor(.black, for: .normal)
-        btn.layer.borderColor = UIColor.lightGray.cgColor
+        btn.layer.borderColor = UIColor.darkGray.cgColor
         btn.layer.borderWidth = 1
         btn.layer.cornerRadius = 5
         btn.contentEdgeInsets = .init(top: 0, left: 5, bottom: 0, right: 5)
@@ -72,8 +72,8 @@ class OptionSegmentView: UIView {
     }
     
     func setup(typeTitle: String, filterTitle: String) {
-        typeButton.setTitle("Type: \(typeTitle)", for: .normal)
-        filterButton.setTitle("Filter: \(typeTitle)", for: .normal)
+        typeButton.setTitle(" ▾ Type: \(typeTitle)", for: .normal)
+        filterButton.setTitle(" ▾ Filter : \(filterTitle)", for: .normal)
     }
 }
 

@@ -18,3 +18,9 @@ enum AnimeFilter: String, CaseIterable, RequestFilterPresentable {
         return self == .none ? nil : rawValue
     }
 }
+
+extension AnimeFilter: OptionsSelectTableViewCellConfigurable {
+    var optionTitle: String {
+        rawValue
+    }
+}

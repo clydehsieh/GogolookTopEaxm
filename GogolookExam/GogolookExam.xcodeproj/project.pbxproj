@@ -35,7 +35,7 @@
 		EC78D8862831FB6E0014A54A /* ItemListViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8852831FB6E0014A54A /* ItemListViewControllerProvider.swift */; };
 		EC78D8882831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8872831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift */; };
 		EC78D88A283201360014A54A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D889283201360014A54A /* Date+Extension.swift */; };
-		EC78D88C283206E20014A54A /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D88B283206E20014A54A /* OptionsView.swift */; };
+		EC78D88C283206E20014A54A /* OptionsSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D88B283206E20014A54A /* OptionsSelectView.swift */; };
 		EC78D88E283207030014A54A /* OptionSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D88D283207030014A54A /* OptionSegmentView.swift */; };
 		EC78D8902832091F0014A54A /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D88F2832091F0014A54A /* Array+Extension.swift */; };
 		EC78D89228320CDD0014A54A /* ItemRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89128320CDD0014A54A /* ItemRequestType.swift */; };
@@ -46,6 +46,8 @@
 		EC78D89C2832249A0014A54A /* MangaFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89B2832249A0014A54A /* MangaFilter.swift */; };
 		EC78D89F283225C60014A54A /* ItemListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89E283225C60014A54A /* ItemListType.swift */; };
 		EC78D8A128322AC00014A54A /* ItemApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A028322AC00014A54A /* ItemApiService.swift */; };
+		EC78D8A4283230EB0014A54A /* OptionsSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A3283230EB0014A54A /* OptionsSelectTableViewCell.swift */; };
+		EC78D8A628323BDD0014A54A /* ItemRequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A528323BDD0014A54A /* ItemRequestState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,7 +106,7 @@
 		EC78D8852831FB6E0014A54A /* ItemListViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewControllerProvider.swift; sourceTree = "<group>"; };
 		EC78D8872831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ItemTableViewCellConfigurable.swift"; sourceTree = "<group>"; };
 		EC78D889283201360014A54A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		EC78D88B283206E20014A54A /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		EC78D88B283206E20014A54A /* OptionsSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsSelectView.swift; sourceTree = "<group>"; };
 		EC78D88D283207030014A54A /* OptionSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSegmentView.swift; sourceTree = "<group>"; };
 		EC78D88F2832091F0014A54A /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		EC78D89128320CDD0014A54A /* ItemRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequestType.swift; sourceTree = "<group>"; };
@@ -115,6 +117,8 @@
 		EC78D89B2832249A0014A54A /* MangaFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaFilter.swift; sourceTree = "<group>"; };
 		EC78D89E283225C60014A54A /* ItemListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListType.swift; sourceTree = "<group>"; };
 		EC78D8A028322AC00014A54A /* ItemApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemApiService.swift; sourceTree = "<group>"; };
+		EC78D8A3283230EB0014A54A /* OptionsSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsSelectTableViewCell.swift; sourceTree = "<group>"; };
+		EC78D8A528323BDD0014A54A /* ItemRequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequestState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +237,7 @@
 				EC78D89128320CDD0014A54A /* ItemRequestType.swift */,
 				EC78D89328320E310014A54A /* ItemRequest.swift */,
 				EC78D89E283225C60014A54A /* ItemListType.swift */,
+				EC78D8A528323BDD0014A54A /* ItemRequestState.swift */,
 				EC78D89D2832259B0014A54A /* Datum */,
 				EC6C2F7E2830D5D20002E51D /* Manga */,
 				EC6C2F7D2830D58E0002E51D /*  Anime */,
@@ -320,7 +325,7 @@
 			children = (
 				EC78D87F2831E3A90014A54A /* SegmentView.swift */,
 				EC78D88D283207030014A54A /* OptionSegmentView.swift */,
-				EC78D88B283206E20014A54A /* OptionsView.swift */,
+				EC78D8A2283230D80014A54A /* OptionsSelectView */,
 				EC78D8832831F6D50014A54A /* ItemTableViewCell.swift */,
 			);
 			path = View;
@@ -334,6 +339,15 @@
 				EC6C2F5F2830BCAB0002E51D /* Pagination.swift */,
 			);
 			path = Datum;
+			sourceTree = "<group>";
+		};
+		EC78D8A2283230D80014A54A /* OptionsSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				EC78D88B283206E20014A54A /* OptionsSelectView.swift */,
+				EC78D8A3283230EB0014A54A /* OptionsSelectTableViewCell.swift */,
+			);
+			path = OptionsSelectView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -582,7 +596,7 @@
 				EC78D8842831F6D50014A54A /* ItemTableViewCell.swift in Sources */,
 				EC78D898283224650014A54A /* AnimeFilter.swift in Sources */,
 				EC78D8902832091F0014A54A /* Array+Extension.swift in Sources */,
-				EC78D88C283206E20014A54A /* OptionsView.swift in Sources */,
+				EC78D88C283206E20014A54A /* OptionsSelectView.swift in Sources */,
 				EC78D8822831F6BA0014A54A /* TableView+Extension.swift in Sources */,
 				EC78D8802831E3A90014A54A /* SegmentView.swift in Sources */,
 				EC6C2F7C2830D4FB0002E51D /* MangaApiServiceType.swift in Sources */,
@@ -594,9 +608,11 @@
 				EC78D8862831FB6E0014A54A /* ItemListViewControllerProvider.swift in Sources */,
 				EC78D87D2831E2BB0014A54A /* ItemListViewController.swift in Sources */,
 				EC78D89228320CDD0014A54A /* ItemRequestType.swift in Sources */,
+				EC78D8A4283230EB0014A54A /* OptionsSelectTableViewCell.swift in Sources */,
 				EC78D89C2832249A0014A54A /* MangaFilter.swift in Sources */,
 				EC78D89428320E310014A54A /* ItemRequest.swift in Sources */,
 				EC78D896283224560014A54A /* AnimeType.swift in Sources */,
+				EC78D8A628323BDD0014A54A /* ItemRequestState.swift in Sources */,
 				EC78D89A283224890014A54A /* MangaType.swift in Sources */,
 				EC78D89F283225C60014A54A /* ItemListType.swift in Sources */,
 				EC78D8A128322AC00014A54A /* ItemApiService.swift in Sources */,

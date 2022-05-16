@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class ItemListViewController: UIViewController {
-
+    
     //MARK: - views
     lazy var segmentView: SegmentView = {
         let v = SegmentView { [weak self] type in
@@ -19,12 +19,11 @@ class ItemListViewController: UIViewController {
     }()
     
     lazy var optionSegmentView: OptionSegmentView = {
-        let v = OptionSegmentView {
-            debugPrint("tap type")
-        } typeFilterHandler: {
-            debugPrint("tap filter")
+        let v = OptionSegmentView { [weak self] in
+            self?.didTapType()
+        } typeFilterHandler: { [weak self] in
+            self?.didTapFilter()
         }
-
         return v
     }()
     
@@ -39,13 +38,17 @@ class ItemListViewController: UIViewController {
         }
     }
     
+    var optionsSelectViewHolder: OptionsSelectView?
+    
     //MARK: DI
     let vm: ViewModelType
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
-    let animeTopRequest: CurrentValueSubject<ItemRequestType, Error> = .init(ItemRequest.defaultConfig)
-    let mangaTopRequest: CurrentValueSubject<ItemRequestType, Error> = .init(ItemRequest.defaultConfig)
+    var itemRequestState = ItemRequestState.init()
+    let animeTopRequest: PassthroughSubject<ItemRequestType, Error> = .init()
+    let mangaTopRequest: PassthroughSubject<ItemRequestType, Error> = .init()
+    var isLoading: CurrentValueSubject<Bool, Never> = .init(false)
     
     weak var coordinator: MainCoordinator?
     var needResetFlag = false
@@ -68,8 +71,7 @@ class ItemListViewController: UIViewController {
         configureTableView()
         setupBinding()
         
-        
-        self.reqeust(type: nil, filter: nil, page: 0)
+        self.fetchItem(type: nil, filter: nil, page: ItemRequestState.beginPage)
     }
 }
 
@@ -90,8 +92,8 @@ extension ItemListViewController {
         }
         
         optionSegmentView.snp.makeConstraints { make in
-            make.top.equalTo(segmentView.snp.bottom)
-            make.left.equalToSuperview().offset(15)
+            make.top.equalTo(segmentView.snp.bottom).offset(5)
+            make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().inset(15)
             make.height.equalTo(30)
         }
@@ -114,6 +116,14 @@ extension ItemListViewController {
     private func setupBinding() {
         
         weak var weakSelf = self
+        
+        isLoading
+            .receive(on: DispatchQueue.main)
+            .sink { isLoading in
+                debugPrint("isLoading \(isLoading)")
+            }
+            .store(in: &self.subscriptions)
+        
         vm.binding(fetchAnime: animeTopRequest.eraseToAnyPublisher())
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -122,9 +132,12 @@ extension ItemListViewController {
                 case let .failure(e):
                     debugPrint(e)
                 }
+                weakSelf?.isLoading.send(false)
             } receiveValue: { response in
-                debugPrint("Anime \(response.data.count)")
+                weakSelf?.itemRequestState.currentPage = response.pagination.currentPage
+                weakSelf?.itemRequestState.hasNextPage = response.pagination.hasNextPage
                 weakSelf?.addNewItem(response.data)
+                weakSelf?.isLoading.send(false)
             }
             .store(in: &self.subscriptions)
         
@@ -137,9 +150,12 @@ extension ItemListViewController {
                 case let .failure(e):
                     debugPrint(e)
                 }
+                weakSelf?.isLoading.send(false)
             } receiveValue: { response in
-                debugPrint("Anime \(response.data.count)")
+                weakSelf?.itemRequestState.currentPage = response.pagination.currentPage
+                weakSelf?.itemRequestState.hasNextPage = response.pagination.hasNextPage
                 weakSelf?.addNewItem(response.data)
+                weakSelf?.isLoading.send(false)
             }
             .store(in: &self.subscriptions)
     }
@@ -154,14 +170,34 @@ extension ItemListViewController {
         
         currentListType = newType
         needResetFlag = true
-        self.reqeust(type: nil, filter: nil, page: 0)
+        
+        itemRequestState.type = nil
+        itemRequestState.filter = nil
+        
+        reloadByCurrentState()
     }
     
-    func reqeust(type: String?, filter: String?, page: Int) {
+    func reloadByCurrentState() {
+        needResetFlag = true
+        self.fetchItem(type: itemRequestState.type,
+                       filter: itemRequestState.filter,
+                       page: ItemRequestState.beginPage)
+    }
+    
+    func fetchItem(type: String?, filter: String?, page: Int) {
+        
+        guard isLoading.value == false else {
+            return
+        }
+        
+        itemRequestState.filter = filter
+        itemRequestState.type = type
         
         // update filter display
         optionSegmentView.setup(typeTitle: type ?? "",
                                 filterTitle: filter ?? "")
+        
+        isLoading.send(true)
         
         // reqest
         switch currentListType {
@@ -169,13 +205,13 @@ extension ItemListViewController {
             animeTopRequest.send(ItemRequest(
                 type: type,
                 filter: filter,
-                page: max(0, page))
+                page: max(ItemRequestState.beginPage, page))
             )
         case .manga:
             mangaTopRequest.send(ItemRequest(
                 type: type,
                 filter: filter,
-                page: max(0, page))
+                page: max(ItemRequestState.beginPage, page))
             )
         }
     }
@@ -187,6 +223,34 @@ extension ItemListViewController {
         } else {
             datasource.append(contentsOf: items)
         }
+    }
+}
+
+//MARK: - Actions
+extension ItemListViewController {
+    
+    func cleanOptionsSelectViewHolder() {
+        optionsSelectViewHolder?.removeFromSuperview()
+        optionsSelectViewHolder = nil
+    }
+    func didTapFilter() {
+        showOptionList(titles: currentListType.optionFilters, completion: { [weak self] indexPath, newFilter in
+            debugPrint("filter \(indexPath.row) \(newFilter)")
+            
+            self?.itemRequestState.filter = newFilter
+            self?.reloadByCurrentState()
+            
+            self?.cleanOptionsSelectViewHolder()
+        })
+    }
+    
+    func didTapType() {
+        showOptionList(titles: currentListType.optionTypes, completion: { [weak self] indexPath, newType in
+            debugPrint("type \(indexPath.row) \(newType)")
+            self?.itemRequestState.type = newType
+            self?.reloadByCurrentState()
+            self?.cleanOptionsSelectViewHolder()
+        })
     }
 }
 
@@ -221,6 +285,32 @@ extension ItemListViewController: UITableViewDelegate {
             } else {
                 debugPrint("unknow ")
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let next = itemRequestState.nextPage, indexPath.row > ( datasource.count - 5) {
+            fetchItem(type: itemRequestState.type, filter: itemRequestState.filter, page: next)
+        }
+    }
+}
+
+extension ItemListViewController {
+    func showOptionList(titles: [OptionsSelectTableViewCellConfigurable],
+                        completion: @escaping OptionsSelectView.SelectOptionHandler ) {
+        self.cleanOptionsSelectViewHolder()
+        
+        let view = OptionsSelectView.init(titles: titles) { indexPath, title in
+            completion(indexPath, title)
+        }
+        optionsSelectViewHolder = view
+        
+        self.view.addSubview(view)
+        view.snp.makeConstraints { make in
+            make.top.equalTo(optionSegmentView.snp.bottom).offset(5)
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().inset(15)
+            make.height.equalTo(300)
         }
     }
 }
