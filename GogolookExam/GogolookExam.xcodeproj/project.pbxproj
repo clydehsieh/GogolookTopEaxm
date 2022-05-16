@@ -240,7 +240,7 @@
 				EC78D8A528323BDD0014A54A /* ItemRequestState.swift */,
 				EC78D89D2832259B0014A54A /* Datum */,
 				EC6C2F7E2830D5D20002E51D /* Manga */,
-				EC6C2F7D2830D58E0002E51D /*  Anime */,
+				EC6C2F7D2830D58E0002E51D /* Anime */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,14 +300,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		EC6C2F7D2830D58E0002E51D /*  Anime */ = {
+		EC6C2F7D2830D58E0002E51D /* Anime */ = {
 			isa = PBXGroup;
 			children = (
 				EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */,
 				EC78D895283224560014A54A /* AnimeType.swift */,
 				EC78D897283224650014A54A /* AnimeFilter.swift */,
 			);
-			path = " Anime";
+			path = Anime;
 			sourceTree = "<group>";
 		};
 		EC6C2F7E2830D5D20002E51D /* Manga */ = {
