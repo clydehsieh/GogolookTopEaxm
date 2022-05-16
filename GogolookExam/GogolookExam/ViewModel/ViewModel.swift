@@ -28,7 +28,7 @@ extension ViewModel: ViewModelType {
 
 //MARK: -
 protocol MangaViewModelType {
-    func binding(fetchManga: AnyPublisher<MangaTopRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error>
+    func binding(fetchManga: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error>
 }
 
 class MangaViewModel {
@@ -39,7 +39,7 @@ class MangaViewModel {
 }
 
 extension MangaViewModel: MangaViewModelType {
-    func binding(fetchManga: AnyPublisher<MangaTopRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error> {
+    func binding(fetchManga: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error> {
         fetchManga
             .flatMapLatest({ [unowned self] param in
                 self.service.fetchTop(param: param)

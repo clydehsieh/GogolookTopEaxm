@@ -13,7 +13,7 @@ class ItemListViewController: UIViewController {
     //MARK: - views
     lazy var segmentView: SegmentView = {
         let v = SegmentView { type in
-            debugPrint("tap \(type.rawValue)")
+            debugPrint("tap \(type.displayName)")
         }
         return v
     }()
@@ -44,10 +44,10 @@ class ItemListViewController: UIViewController {
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
-    
     let animeTopRequest: CurrentValueSubject<ItemRequestType, Error> = .init(ItemRequest.defaultConfig)
-    
     weak var coordinator: MainCoordinator?
+    
+    var listType: ItemListType = .anime
     
     init(vm: ViewModelType) {
         self.vm = vm

@@ -12,25 +12,20 @@ struct SegmentViewConfig {
     static let height = 50
 }
 
-enum SegmentViewType: String, CaseIterable {
-    case Anime
-    case Mango
-}
-
 class SegmentView: UIView {
-    typealias TapSegmentButtonHandler = ((SegmentViewType) -> Void)
+    typealias TapSegmentButtonHandler = ((ItemListType) -> Void)
     
-    let datasource: [SegmentViewType]
+    let datasource: [ItemListType]
     lazy var stackView: UIStackView = {
         let sv = UIStackView()
         sv.spacing = 5
         return sv
     }()
     
-    var buttonCache: [UIButton: SegmentViewType] = [:]
+    var buttonCache: [UIButton: ItemListType] = [:]
     var didTapButtonHandler: TapSegmentButtonHandler?
     
-    init(datasource: [SegmentViewType] = SegmentViewType.allCases, tapHandler: @escaping TapSegmentButtonHandler) {
+    init(datasource: [ItemListType] = ItemListType.allCases, tapHandler: @escaping TapSegmentButtonHandler) {
         self.datasource = datasource
         self.didTapButtonHandler = tapHandler
         super.init(frame: .zero)
@@ -80,7 +75,7 @@ extension SegmentView {
         }
         
         for type in datasource {
-            let btn = createButton(title: type.rawValue)
+            let btn = createButton(title: type.displayName)
             stackView.addArrangedSubview(btn)
             buttonCache[btn] = type
         }

@@ -19,19 +19,8 @@ class AnimeApiService {
  
 extension AnimeApiService: AnimeApiServiceType {
     func fetchTop(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error> {
-        
-        var suffixArray: [String] = []
-        if let type = param.type {
-            suffixArray.append("type=\(type)")
-        }
-        if let filter = param.filter {
-            suffixArray.append("filter=\(filter)")
-        }
-        suffixArray.append("page=\(param.page)")
-        
-        let suffixString = suffixArray.joined(separator: "&")
-        
-        let url = URL(string: "https://api.jikan.moe/v4/top/anime?\(suffixString)")!
+
+        let url = URL(string: "https://api.jikan.moe/v4/top/anime?\(param.apiSuffixString())")!
         
         return Deferred {
             Future { promise in

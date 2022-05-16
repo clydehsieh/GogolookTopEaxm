@@ -13,6 +13,23 @@ protocol ItemRequestType {
     var page: Int { get }
 }
 
+extension ItemRequestType {
+    func apiSuffixString() -> String {
+        var suffixArray: [String] = []
+        if let type = type {
+            suffixArray.append("type=\(type)")
+        }
+        if let filter = filter {
+            suffixArray.append("filter=\(filter)")
+        }
+        suffixArray.append("page=\(page)")
+        
+        let suffixString = suffixArray.joined(separator: "&")
+        
+        return suffixString
+    }
+}
+
 protocol RequestTypePresentable {
     var value: String? { get }
 }

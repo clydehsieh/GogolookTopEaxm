@@ -12,8 +12,8 @@ class MangaApiService {
 }
  
 extension MangaApiService: MangaApiServiceType {
-    func fetchTop(param: MangaTopRequestType) -> AnyPublisher<MangaTopResponse, Error> {
-        let url = URL(string: "https://api.jikan.moe/v4/top/manga?type=\(param.type.rawValue)&filter=\(param.filter.rawValue)&page=\(param.page)")!
+    func fetchTop(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error> {
+        let url = URL(string: "https://api.jikan.moe/v4/top/manga?\(param.apiSuffixString())")!
         
         return Deferred {
             Future { promise in

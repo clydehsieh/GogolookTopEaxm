@@ -8,5 +8,5 @@
 import Combine
 
 protocol MangaApiServiceType {
-    func fetchTop(param: MangaTopRequestType) -> AnyPublisher<MangaTopResponse, Error>
+    func fetchTop(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error>
 }
