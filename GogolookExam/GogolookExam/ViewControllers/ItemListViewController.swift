@@ -18,6 +18,16 @@ class ItemListViewController: UIViewController {
         return v
     }()
     
+    lazy var optionSegmentView: OptionSegmentView = {
+        let v = OptionSegmentView {
+            debugPrint("tap type")
+        } typeFilterHandler: {
+            debugPrint("tap filter")
+        }
+
+        return v
+    }()
+    
     lazy var tableView: UITableView = {
         let tv = UITableView()
         return tv
@@ -34,7 +44,8 @@ class ItemListViewController: UIViewController {
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
-    let animeTopRequest: CurrentValueSubject<AnimeTopRequestType, Error> = .init(AnimeTopRequest.defaultConfige())
+    
+    let animeTopRequest: CurrentValueSubject<ItemRequestType, Error> = .init(ItemRequest.defaultConfig)
     
     weak var coordinator: MainCoordinator?
     
@@ -55,7 +66,20 @@ class ItemListViewController: UIViewController {
         configureTableView()
         setupBinding()
         
-        animeTopRequest.send(AnimeTopRequest.defaultConfige())
+        
+        self.reqeust(type: AnimeType.none, filter: AnimeFilter.none, page: 0)
+    }
+    
+    func reqeust(type: RequestTypePresentable, filter: RequestFilterPresentable, page: Int) {
+        
+        optionSegmentView.setup(typeTitle: type.value ?? "",
+                                filterTitle: filter.value ?? "")
+        
+        animeTopRequest.send(ItemRequest(
+            type: type.value,
+            filter: filter.value,
+            page: max(0, page))
+        )
     }
 }
 
@@ -63,6 +87,7 @@ class ItemListViewController: UIViewController {
 extension ItemListViewController {
     private func constructViewHierarchy() {
         view.addSubview(segmentView)
+        view.addSubview(optionSegmentView)
         view.addSubview(tableView)
     }
     
@@ -74,8 +99,15 @@ extension ItemListViewController {
             make.height.equalTo(SegmentViewConfig.height)
         }
         
+        optionSegmentView.snp.makeConstraints { make in
+            make.top.equalTo(segmentView.snp.bottom)
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().inset(15)
+            make.height.equalTo(30)
+        }
+        
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(segmentView.snp.bottom).offset(10)
+            make.top.equalTo(optionSegmentView.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().inset(15)
             make.bottom.equalToSuperview()

@@ -16,7 +16,7 @@ class ViewModel {
 }
 
 extension ViewModel: ViewModelType {
-    func binding(fetchAnime: AnyPublisher<AnimeTopRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error> {
+    func binding(fetchAnime: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error> {
         fetchAnime
             .flatMapLatest({ [unowned self] param in
                 self.service.fetchTop(param: param)

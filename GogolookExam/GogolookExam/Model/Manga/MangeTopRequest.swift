@@ -25,7 +25,8 @@ extension MangeTopRequest {
     }
 }
 
-enum MangeType: String, Codable {
+enum MangeType: String, Codable, RequestTypePresentable {
+    case none
     case manga
     case novel
     case lightnovel
@@ -33,11 +34,20 @@ enum MangeType: String, Codable {
     case doujin
     case manhwa
     case manhua
+    
+    var value: String? {
+        return self == .none ? nil : rawValue
+    }
 }
 
-enum MangeFilter: String, Codable {
+enum MangeFilter: String, Codable, RequestFilterPresentable {
+    case none
     case publishing
     case upcoming
     case bypopularity
     case favorite
+    
+    var value: String? {
+        return self == .none ? nil : rawValue
+    }
 }

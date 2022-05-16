@@ -28,8 +28,6 @@
 		EC6C2F6F2830C6560002E51D /* Publisher+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F6E2830C6560002E51D /* Publisher+Utility.swift */; };
 		EC6C2F722830C9630002E51D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F712830C9630002E51D /* Coordinator.swift */; };
 		EC6C2F742830C9810002E51D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F732830C9810002E51D /* MainCoordinator.swift */; };
-		EC6C2F772830CA380002E51D /* AnimeListViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F762830CA380002E51D /* AnimeListViewControllerProvider.swift */; };
-		EC6C2F7A2830CAC20002E51D /* AnimeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F792830CAC20002E51D /* AnimeListViewController.swift */; };
 		EC6C2F7C2830D4FB0002E51D /* MangaApiServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F7B2830D4FB0002E51D /* MangaApiServiceType.swift */; };
 		EC6C2F802830D5EF0002E51D /* MangeTopRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F7F2830D5EF0002E51D /* MangeTopRequest.swift */; };
 		EC6C2F822830D6980002E51D /* MangaTopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F812830D6980002E51D /* MangaTopResponse.swift */; };
@@ -46,6 +44,8 @@
 		EC78D88C283206E20014A54A /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D88B283206E20014A54A /* OptionsView.swift */; };
 		EC78D88E283207030014A54A /* OptionSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D88D283207030014A54A /* OptionSegmentView.swift */; };
 		EC78D8902832091F0014A54A /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D88F2832091F0014A54A /* Array+Extension.swift */; };
+		EC78D89228320CDD0014A54A /* ItemRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89128320CDD0014A54A /* ItemRequestType.swift */; };
+		EC78D89428320E310014A54A /* ItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89328320E310014A54A /* ItemRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,8 +97,6 @@
 		EC6C2F6E2830C6560002E51D /* Publisher+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Utility.swift"; sourceTree = "<group>"; };
 		EC6C2F712830C9630002E51D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		EC6C2F732830C9810002E51D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		EC6C2F762830CA380002E51D /* AnimeListViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewControllerProvider.swift; sourceTree = "<group>"; };
-		EC6C2F792830CAC20002E51D /* AnimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewController.swift; sourceTree = "<group>"; };
 		EC6C2F7B2830D4FB0002E51D /* MangaApiServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaApiServiceType.swift; sourceTree = "<group>"; };
 		EC6C2F7F2830D5EF0002E51D /* MangeTopRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangeTopRequest.swift; sourceTree = "<group>"; };
 		EC6C2F812830D6980002E51D /* MangaTopResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaTopResponse.swift; sourceTree = "<group>"; };
@@ -115,6 +113,8 @@
 		EC78D88B283206E20014A54A /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		EC78D88D283207030014A54A /* OptionSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSegmentView.swift; sourceTree = "<group>"; };
 		EC78D88F2832091F0014A54A /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		EC78D89128320CDD0014A54A /* ItemRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequestType.swift; sourceTree = "<group>"; };
+		EC78D89328320E310014A54A /* ItemRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +230,8 @@
 		EC6C2F5A2830BB7C0002E51D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EC78D89128320CDD0014A54A /* ItemRequestType.swift */,
+				EC78D89328320E310014A54A /* ItemRequest.swift */,
 				EC6C2F7E2830D5D20002E51D /* Manga */,
 				EC6C2F7D2830D58E0002E51D /*  Anime */,
 			);
@@ -280,7 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				EC78D8852831FB6E0014A54A /* ItemListViewControllerProvider.swift */,
-				EC6C2F762830CA380002E51D /* AnimeListViewControllerProvider.swift */,
 				EC6C2F852830DB0D0002E51D /* MangaListViewControllerProvider.swift */,
 			);
 			path = Provider;
@@ -290,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				EC78D87C2831E2BB0014A54A /* ItemListViewController.swift */,
-				EC6C2F792830CAC20002E51D /* AnimeListViewController.swift */,
 				EC6C2F872830E1130002E51D /* MangaListViewController.swift */,
 			);
 			path = ViewControllers;
@@ -567,7 +567,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC6C2F742830C9810002E51D /* MainCoordinator.swift in Sources */,
-				EC6C2F772830CA380002E51D /* AnimeListViewControllerProvider.swift in Sources */,
 				EC6C2F862830DB0D0002E51D /* MangaListViewControllerProvider.swift in Sources */,
 				EC78D88E283207030014A54A /* OptionSegmentView.swift in Sources */,
 				EC6C2F842830D7200002E51D /* MangaApiService.swift in Sources */,
@@ -589,11 +588,12 @@
 				EC6C2F5E2830BC410002E51D /* AnimeTopResponse.swift in Sources */,
 				EC78D8862831FB6E0014A54A /* ItemListViewControllerProvider.swift in Sources */,
 				EC78D87D2831E2BB0014A54A /* ItemListViewController.swift in Sources */,
+				EC78D89228320CDD0014A54A /* ItemRequestType.swift in Sources */,
+				EC78D89428320E310014A54A /* ItemRequest.swift in Sources */,
 				EC6C2F652830BD220002E51D /* AnimeTopRequest.swift in Sources */,
 				EC6C2F802830D5EF0002E51D /* MangeTopRequest.swift in Sources */,
 				EC78D8882831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift in Sources */,
 				EC6C2F6A2830C5910002E51D /* ViewModelType.swift in Sources */,
-				EC6C2F7A2830CAC20002E51D /* AnimeListViewController.swift in Sources */,
 				EC78D88A283201360014A54A /* Date+Extension.swift in Sources */,
 				EC6C2F2D2830BAFA0002E51D /* SceneDelegate.swift in Sources */,
 				EC6C2F6F2830C6560002E51D /* Publisher+Utility.swift in Sources */,

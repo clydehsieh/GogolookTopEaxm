@@ -14,27 +14,45 @@ struct OptionSegmentViewConfig {
     static let height = 30
 }
 
-enum OptionSegmentViewType: String, CaseIterable {
-    case type = "Type"
-    case filter = "Filter"
-}
+typealias OptionTypeData = [RequestTypePresentable]
+typealias OptionFilterData = [RequestFilterPresentable]
+typealias OptionData = (types: OptionTypeData, filters: OptionFilterData)
 
 class OptionSegmentView: UIView {
-    typealias TapSegmentButtonHandler = ((OptionSegmentViewType) -> Void)
+    typealias TapButtonHandler = (() -> Void)
+    let typeButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitleColor(.black, for: .normal)
+        btn.layer.borderColor = UIColor.lightGray.cgColor
+        btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 5
+        btn.contentEdgeInsets = .init(top: 0, left: 5, bottom: 0, right: 5)
+        return btn
+    }()
     
-    let datasource: [OptionSegmentViewType]
+    let filterButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitleColor(.black, for: .normal)
+        btn.layer.borderColor = UIColor.lightGray.cgColor
+        btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 5
+        btn.contentEdgeInsets = .init(top: 0, left: 5, bottom: 0, right: 5)
+        return btn
+    }()
+    
     lazy var stackView: UIStackView = {
-        let sv = UIStackView()
+        let sv = UIStackView(arrangedSubviews: [typeButton, filterButton])
         sv.spacing = 5
         return sv
     }()
     
-    var buttonCache: [UIButton: OptionSegmentViewType] = [:]
-    var didTapButtonHandler: TapSegmentButtonHandler?
+    var datasource: OptionData = ([], [])
+    var tapTypeButtonHandler: TapButtonHandler?
+    var tapFilterButtonHandler: TapButtonHandler?
     
-    init(datasource: [OptionSegmentViewType] = OptionSegmentViewType.allCases, tapHandler: @escaping TapSegmentButtonHandler) {
-        self.datasource = datasource
-        self.didTapButtonHandler = tapHandler
+    init(tapTypeHandler: @escaping TapButtonHandler, typeFilterHandler: @escaping TapButtonHandler) {
+        self.tapTypeButtonHandler = tapTypeHandler
+        self.tapFilterButtonHandler = typeFilterHandler
         super.init(frame: .zero)
     }
     
@@ -52,6 +70,11 @@ class OptionSegmentView: UIView {
         configureButtons()
         viewHierarchyNotReady = false
     }
+    
+    func setup(typeTitle: String, filterTitle: String) {
+        typeButton.setTitle("Type: \(typeTitle)", for: .normal)
+        filterButton.setTitle("Filter: \(typeTitle)", for: .normal)
+    }
 }
 
 extension OptionSegmentView {
@@ -67,34 +90,18 @@ extension OptionSegmentView {
     }
     
     private func configureButtons() {
-        buttonCache.removeAll()
-        
-        func createButton(title: String) -> UIButton {
-            let btn = UIButton()
-            btn.addTarget(self, action: #selector(didTapButton(sender:)), for: .touchUpInside)
-            btn.setTitle(title, for: .normal)
-            btn.setTitleColor(.black, for: .normal)
-            btn.layer.borderColor = UIColor.lightGray.cgColor
-            btn.layer.borderWidth = 1
-            btn.layer.cornerRadius = 5
-            btn.contentEdgeInsets = .init(top: 0, left: 5, bottom: 0, right: 5)
-            return btn
-        }
-        
-        for type in datasource {
-            let btn = createButton(title: type.rawValue)
-            stackView.addArrangedSubview(btn)
-            buttonCache[btn] = type
-        }
+        typeButton.addTarget(self, action: #selector(didTapTypeButton), for: .touchUpInside)
+        filterButton.addTarget(self, action: #selector(didFilterTypeButton), for: .touchUpInside)
     }
 }
 
 //MARK: - actions
 extension OptionSegmentView {
-    @objc func didTapButton(sender: UIButton) {
-        guard let type = buttonCache[sender] else {
-            return
-        }
-        didTapButtonHandler?(type)
+    @objc func didTapTypeButton() {
+        tapTypeButtonHandler?()
+    }
+    
+    @objc func didFilterTypeButton() {
+        tapFilterButtonHandler?()
     }
 }

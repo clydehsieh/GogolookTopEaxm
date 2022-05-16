@@ -8,5 +8,5 @@
 import Combine
 
 protocol AnimeApiServiceType {
-    func fetchTop(param: AnimeTopRequestType) -> AnyPublisher<AnimeTopResponse, Error>
+    func fetchTop(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error>
 }

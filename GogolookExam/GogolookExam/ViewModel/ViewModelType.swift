@@ -9,5 +9,5 @@ import UIKit
 import Combine
 
 protocol ViewModelType {
-    func binding(fetchAnime: AnyPublisher<AnimeTopRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error>
+    func binding(fetchAnime: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error>
 }
