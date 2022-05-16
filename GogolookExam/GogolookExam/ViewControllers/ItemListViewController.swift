@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import PKHUD
 
 class ItemListViewController: UIViewController {
     
@@ -120,6 +121,11 @@ extension ItemListViewController {
         isLoading
             .receive(on: DispatchQueue.main)
             .sink { isLoading in
+                if isLoading {
+                    HUD.show(.progress)
+                } else {
+                    HUD.hide()
+                }
                 debugPrint("isLoading \(isLoading)")
             }
             .store(in: &self.subscriptions)

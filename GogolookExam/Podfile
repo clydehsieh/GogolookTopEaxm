@@ -9,6 +9,8 @@ target 'GogolookExam' do
 
   pod 'SnapKit'
   pod 'Kingfisher'
+  pod 'Toast-Swift'
+  pod 'PKHUD'
 
   target 'GogolookExamTests' do
     inherit! :search_paths
