@@ -242,10 +242,10 @@ extension ItemListViewController {
     func didTapFilter() {
         showOptionList(titles: currentListType.optionFilters, completion: { [weak self] indexPath, newFilter in
             debugPrint("filter \(indexPath.row) \(newFilter)")
-            
-            self?.itemRequestState.filter = newFilter
-            self?.reloadByCurrentState()
-            
+            if self?.itemRequestState.filter != newFilter {
+                self?.itemRequestState.filter = newFilter
+                self?.reloadByCurrentState()
+            }
             self?.cleanOptionsSelectViewHolder()
         })
     }
@@ -253,8 +253,10 @@ extension ItemListViewController {
     func didTapType() {
         showOptionList(titles: currentListType.optionTypes, completion: { [weak self] indexPath, newType in
             debugPrint("type \(indexPath.row) \(newType)")
-            self?.itemRequestState.type = newType
-            self?.reloadByCurrentState()
+            if self?.itemRequestState.type != newType {
+                self?.itemRequestState.type = newType
+                self?.reloadByCurrentState()
+            }
             self?.cleanOptionsSelectViewHolder()
         })
     }
