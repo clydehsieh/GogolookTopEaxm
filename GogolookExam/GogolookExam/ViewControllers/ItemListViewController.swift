@@ -126,7 +126,6 @@ extension ItemListViewController {
                 } else {
                     HUD.hide()
                 }
-                debugPrint("isLoading \(isLoading)")
             }
             .store(in: &self.subscriptions)
         
@@ -226,8 +225,10 @@ extension ItemListViewController {
         if needResetFlag {
             needResetFlag = false
             datasource = items
+            debugPrint("reset for \(datasource.count)")
         } else {
             datasource.append(contentsOf: items)
+            debugPrint("add for \(datasource.count)")
         }
     }
 }

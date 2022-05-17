@@ -34,11 +34,9 @@ extension MainCoordinator {
         }
         
         if ["http", "https"].contains(url.scheme?.lowercased() ?? "") {
-            // Can open with SFSafariViewController
             let vc = SFSafariViewController(url: url)
             navigationController.present(vc, animated: true, completion: nil)
         } else {
-            // Scheme is not supported or no scheme is given, use openURL
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
