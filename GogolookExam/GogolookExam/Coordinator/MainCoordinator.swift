@@ -36,8 +36,6 @@ extension MainCoordinator {
         if ["http", "https"].contains(url.scheme?.lowercased() ?? "") {
             let vc = SFSafariViewController(url: url)
             navigationController.present(vc, animated: true, completion: nil)
-        } else {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+        } 
     }
 }

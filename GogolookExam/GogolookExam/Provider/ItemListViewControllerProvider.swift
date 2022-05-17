@@ -29,7 +29,7 @@ extension ItemListViewControllerProvider {
 //MARK: - local cache service
 struct ItemListViewControllerProvider {
     static var coreDataStore: CoreDataStore {
-        CoreDataStore()
+        CoreDataStore.shared
     }
     
     static var handleItemCacheViewModel: HandleItemCacheViewModelType {

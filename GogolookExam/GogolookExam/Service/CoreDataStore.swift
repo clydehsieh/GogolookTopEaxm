@@ -11,7 +11,7 @@ import CoreData
 class CoreDataStore {
 
     private static let modelName: String = "FavoriteModel"
-    
+    static let shared = CoreDataStore()
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
 
@@ -38,7 +38,6 @@ extension CoreDataStore {
     func insertItemEntityData(data: ItemTableViewCellConfigurable) throws {
         try performSync({ context in
             Result {
-                
                 if let _ = try ItemEntity.fetchFavoriteItems(malID: data.malID, in: context).first {
                     debugPrint("item \(data.malID) exist")
                 } else {

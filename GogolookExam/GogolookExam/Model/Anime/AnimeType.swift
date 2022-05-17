@@ -5,7 +5,7 @@
 //  Created by ClydeHsieh on 2022/5/16.
 //
 
-enum AnimeType: String, CaseIterable, RequestTypePresentable {
+enum AnimeType: String, CaseIterable {
     case none
     case tv
     case movie
@@ -13,7 +13,9 @@ enum AnimeType: String, CaseIterable, RequestTypePresentable {
     case special
     case ona
     case music
-    
+}
+
+extension AnimeType: RequestTypePresentable{
     var value: String? {
         return self == .none ? nil : rawValue
     }

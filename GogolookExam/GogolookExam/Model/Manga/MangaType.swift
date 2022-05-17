@@ -5,7 +5,7 @@
 //  Created by ClydeHsieh on 2022/5/16.
 //
 
-enum MangaType: String, CaseIterable, RequestTypePresentable {
+enum MangaType: String, CaseIterable {
     case none
     case manga
     case novel
@@ -14,7 +14,9 @@ enum MangaType: String, CaseIterable, RequestTypePresentable {
     case doujin
     case manhwa
     case manhua
-    
+}
+
+extension MangaType: RequestTypePresentable {
     var value: String? {
         return self == .none ? nil : rawValue
     }
