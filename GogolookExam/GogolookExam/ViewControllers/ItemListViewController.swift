@@ -42,10 +42,12 @@ class ItemListViewController: UIViewController {
     var optionsSelectViewHolder: OptionsSelectView?
     
     //MARK: DI
+    // fetch item data
     let vm: ViewModelType
-    let coreDataStore: CoreDataStore
-    lazy var handleItemCacheViewModel: HandleItemCacheViewModelType = HandleItemCacheViewModel(coreDataStore: coreDataStore)
-    lazy var favoriteItemCacheService: FavoriteItemCacheServiceType = FavoriteItemCacheService(coreDataStore: coreDataStore)
+    // access coredata for adding/deleting/fetching item data
+    let handleItemCacheViewModel: HandleItemCacheViewModelType
+    // cache malID of favorite items
+    let favoriteItemCacheService: FavoriteItemCacheServiceType
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
@@ -58,9 +60,12 @@ class ItemListViewController: UIViewController {
     var needResetFlag = false
     var currentListType: ItemListType = .anime
     
-    init(vm: ViewModelType, coreDataStore: CoreDataStore) {
+    init(vm: ViewModelType,
+         handleItemCacheViewModel: HandleItemCacheViewModelType,
+         favoriteItemCacheService: FavoriteItemCacheServiceType) {
         self.vm = vm
-        self.coreDataStore = coreDataStore
+        self.handleItemCacheViewModel = handleItemCacheViewModel
+        self.favoriteItemCacheService = favoriteItemCacheService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -331,6 +336,7 @@ extension ItemListViewController {
     }
 }
 
+//MARK: - ItemTableViewCellDelete
 extension ItemListViewController: ItemTableViewCellDelete {
     func didTapFavoriteButton(cell: UITableViewCell) {
         guard let index = tableView.indexPath(for: cell) else {
@@ -343,6 +349,7 @@ extension ItemListViewController: ItemTableViewCellDelete {
         
         HUD.show(.progress)
         
+        // save or delete item from local data
         try? handleItemCacheViewModel.handle(data: data) { [weak self] result in
             
             func updateState(isFavorite: Bool) {
@@ -351,6 +358,8 @@ extension ItemListViewController: ItemTableViewCellDelete {
                 }
             }
             
+            // update UI
+            // upate cache list
             switch result {
             case let .saved(malID):
                 updateState(isFavorite: true)

@@ -7,15 +7,13 @@
 
 import UIKit
 
-struct ItemListViewControllerProvider {
+
+//MARK: - api service
+extension ItemListViewControllerProvider {
     static var decoder: JSONDecoder {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(OptionalFractionalSecondsDateFormatter())
         return decoder
-    }
-    
-    static var coreDataStore: CoreDataStore {
-        CoreDataStore()
     }
     
     static var service: ItemApiService {
@@ -27,8 +25,26 @@ struct ItemListViewControllerProvider {
     }
 }
 
+//MARK: - local cache service
+struct ItemListViewControllerProvider {
+    static var coreDataStore: CoreDataStore {
+        CoreDataStore()
+    }
+    
+    static var handleItemCacheViewModel: HandleItemCacheViewModelType {
+        HandleItemCacheViewModel(coreDataStore: self.coreDataStore)
+    }
+    
+    static var favoriteItemCacheService: FavoriteItemCacheServiceType {
+        FavoriteItemCacheService(coreDataStore: self.coreDataStore)
+    }
+}
+
+//MARK: - ViewController
 extension ItemListViewControllerProvider {
     static var viewController: ItemListViewController {
-        ItemListViewController(vm: self.viewModel, coreDataStore: self.coreDataStore)
+        ItemListViewController(vm: self.viewModel,
+                               handleItemCacheViewModel: self.handleItemCacheViewModel,
+                               favoriteItemCacheService: self.favoriteItemCacheService)
     }
 }
