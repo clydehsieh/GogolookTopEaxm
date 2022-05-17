@@ -74,10 +74,7 @@ final class ItemTableViewCell: UITableViewCell {
     
     let likeButton: UIButton = {
         let btn = UIButton()
-        btn.setTitle("Fa", for: .normal)
-        btn.setTitle("Un", for: .highlighted)
-        btn.setTitleColor(.black, for: .normal)
-        btn.setTitleColor(.black, for: .highlighted)
+        btn.setImage(UIImage(named: "unlike"), for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 20, weight: .regular)
         return btn
     }()
@@ -162,7 +159,7 @@ extension ItemTableViewCell {
 
 extension ItemTableViewCell: ItemFavorteStateObserable {
     func didChange(isFavorite: Bool) {
-        let title = isFavorite ? "Y" : "N"
-        likeButton.setTitle(title, for: .normal)
+        let imageName = isFavorite ? "like" : "unlike"
+        likeButton.setImage(UIImage(named: imageName), for: .normal)
     }
 }

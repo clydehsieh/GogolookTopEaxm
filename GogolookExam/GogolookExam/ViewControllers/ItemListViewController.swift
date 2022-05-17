@@ -259,14 +259,16 @@ extension ItemListViewController {
         if needResetFlag {
             needResetFlag = false
             datasource = items
-            debugPrint("reset for \(datasource.count)")
         } else {
             datasource.append(contentsOf: items)
-            debugPrint("add for \(datasource.count)")
         }
     }
     
     func deleteDatasourceIfNeed(at row: Int) {
+        guard currentListType == .favorite else {
+            return
+        }
+        
         guard row < datasource.count else {
             return
         }
@@ -284,7 +286,6 @@ extension ItemListViewController {
     
     func didTapFilter() {
         showOptionList(titles: currentListType.optionFilters, completion: { [weak self] indexPath, newFilter in
-            debugPrint("filter \(indexPath.row) \(newFilter)")
             if self?.itemRequestState.filter != newFilter {
                 self?.itemRequestState.filter = newFilter
                 self?.reloadByCurrentState()
@@ -295,7 +296,6 @@ extension ItemListViewController {
     
     func didTapType() {
         showOptionList(titles: currentListType.optionTypes, completion: { [weak self] indexPath, newType in
-            debugPrint("type \(indexPath.row) \(newType)")
             if self?.itemRequestState.type != newType {
                 self?.itemRequestState.type = newType
                 self?.reloadByCurrentState()
