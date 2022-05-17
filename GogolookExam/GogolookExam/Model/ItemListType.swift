@@ -13,6 +13,12 @@ enum ItemListType: CaseIterable {
 }
 
 extension ItemListType {
+    var segmentFirst: Bool {
+        self == .anime
+    }
+}
+
+extension ItemListType {
     var displayName: String {
         switch self {
         case .anime:
