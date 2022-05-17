@@ -54,6 +54,8 @@ class ItemListViewController: UIViewController {
     var itemRequestState = ItemRequestState.init()
     let animeTopRequest: PassthroughSubject<ItemRequestType, Error> = .init()
     let mangaTopRequest: PassthroughSubject<ItemRequestType, Error> = .init()
+    let favoriteTopRequest: PassthroughSubject<Void, Error> = .init()
+    
     var isLoading: CurrentValueSubject<Bool, Never> = .init(false)
     
     weak var coordinator: MainCoordinator?
@@ -172,6 +174,23 @@ extension ItemListViewController {
                 weakSelf?.isLoading.send(false)
             }
             .store(in: &self.subscriptions)
+        
+        vm.binding(fetchFavorite: favoriteTopRequest.eraseToAnyPublisher())
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case let .failure(e):
+                    debugPrint(e)
+                }
+                weakSelf?.isLoading.send(false)
+            } receiveValue: { data in
+                weakSelf?.itemRequestState.currentPage = 1
+                weakSelf?.itemRequestState.hasNextPage = false
+                weakSelf?.addNewItem(data)
+                weakSelf?.isLoading.send(false)
+            }
+            .store(in: &self.subscriptions)
     }
 }
 
@@ -227,6 +246,8 @@ extension ItemListViewController {
                 filter: filter,
                 page: max(ItemRequestState.beginPage, page))
             )
+        case .favorite:
+            favoriteTopRequest.send(())
         }
     }
     

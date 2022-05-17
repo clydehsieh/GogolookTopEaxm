@@ -10,6 +10,7 @@ import UIKit
 enum ItemListType: CaseIterable {
     case anime
     case manga
+    case favorite
 }
 
 extension ItemListType {
@@ -25,6 +26,8 @@ extension ItemListType {
             return "Anime"
         case .manga:
             return "Manga"
+        case .favorite:
+            return "Favorite"
         }
     }
 }
@@ -36,6 +39,8 @@ extension ItemListType {
             return AnimeType.allCases
         case .manga:
             return MangaType.allCases
+        default:
+            return []
         }
     }
     
@@ -45,6 +50,8 @@ extension ItemListType {
             return AnimeFilter.allCases
         case .manga:
             return MangaFilter.allCases
+        default:
+            return []
         }
     }
 }
@@ -56,6 +63,8 @@ extension ItemListType {
             return AnimeType.allCases
         case .manga:
             return MangaType.allCases
+        default:
+            return []
         }
     }
     
@@ -65,6 +74,8 @@ extension ItemListType {
             return AnimeFilter.allCases
         case .manga:
             return MangaFilter.allCases
+        default:
+            return []
         }
     }
 }

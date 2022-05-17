@@ -21,7 +21,8 @@ extension ItemListViewControllerProvider {
     }
     
     static var viewModel: ViewModelType {
-        ViewModel(service: self.service)
+        ViewModel(service: self.service,
+                  coreDataStore: self.coreDataStore)
     }
 }
 

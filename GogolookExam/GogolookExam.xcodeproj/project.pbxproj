@@ -58,6 +58,9 @@
 		ECD6297E2833B00B008684D7 /* HandleItemCacheViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6297D2833B00B008684D7 /* HandleItemCacheViewModelType.swift */; };
 		ECD629802833B020008684D7 /* HandleItemCacheViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6297F2833B020008684D7 /* HandleItemCacheViewModel.swift */; };
 		ECD629822833B46D008684D7 /* FavoriteItemCacheServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD629812833B46D008684D7 /* FavoriteItemCacheServiceType.swift */; };
+		ECD629852833D724008684D7 /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD629842833D724008684D7 /* FavoriteItem.swift */; };
+		ECD629872833D9E9008684D7 /* FavoriteItem+ItemTableViewCellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD629862833D9E9008684D7 /* FavoriteItem+ItemTableViewCellConfigurable.swift */; };
+		ECD629892833DA2F008684D7 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD629882833DA2F008684D7 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +142,9 @@
 		ECD6297D2833B00B008684D7 /* HandleItemCacheViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleItemCacheViewModelType.swift; sourceTree = "<group>"; };
 		ECD6297F2833B020008684D7 /* HandleItemCacheViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleItemCacheViewModel.swift; sourceTree = "<group>"; };
 		ECD629812833B46D008684D7 /* FavoriteItemCacheServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCacheServiceType.swift; sourceTree = "<group>"; };
+		ECD629842833D724008684D7 /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
+		ECD629862833D9E9008684D7 /* FavoriteItem+ItemTableViewCellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteItem+ItemTableViewCellConfigurable.swift"; sourceTree = "<group>"; };
+		ECD629882833DA2F008684D7 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +269,7 @@
 				EC78D89D2832259B0014A54A /* Datum */,
 				EC6C2F7E2830D5D20002E51D /* Manga */,
 				EC6C2F7D2830D58E0002E51D /* Anime */,
+				ECD629832833D70B008684D7 /* Favorite */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +305,7 @@
 				EC78D8812831F6BA0014A54A /* TableView+Extension.swift */,
 				EC78D889283201360014A54A /* Date+Extension.swift */,
 				EC78D88F2832091F0014A54A /* Array+Extension.swift */,
+				ECD629882833DA2F008684D7 /* String+Extension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -386,6 +394,15 @@
 				ECD6297828339FA4008684D7 /* ItemEntity+CoreDataProperties.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		ECD629832833D70B008684D7 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				ECD629842833D724008684D7 /* FavoriteItem.swift */,
+				ECD629862833D9E9008684D7 /* FavoriteItem+ItemTableViewCellConfigurable.swift */,
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -630,6 +647,7 @@
 				EC78D88E283207030014A54A /* OptionSegmentView.swift in Sources */,
 				EC6C2F2B2830BAFA0002E51D /* AppDelegate.swift in Sources */,
 				ECD629822833B46D008684D7 /* FavoriteItemCacheServiceType.swift in Sources */,
+				ECD629852833D724008684D7 /* FavoriteItem.swift in Sources */,
 				EC6C2F722830C9630002E51D /* Coordinator.swift in Sources */,
 				EC6C2F5C2830BBD90002E51D /* AnimeData.swift in Sources */,
 				ECD6297C2833AE89008684D7 /* FavoriteItemCacheService.swift in Sources */,
@@ -637,8 +655,10 @@
 				EC78D8842831F6D50014A54A /* ItemTableViewCell.swift in Sources */,
 				EC78D898283224650014A54A /* AnimeFilter.swift in Sources */,
 				EC78D8902832091F0014A54A /* Array+Extension.swift in Sources */,
+				ECD629892833DA2F008684D7 /* String+Extension.swift in Sources */,
 				EC78D88C283206E20014A54A /* OptionsSelectView.swift in Sources */,
 				EC78D8822831F6BA0014A54A /* TableView+Extension.swift in Sources */,
+				ECD629872833D9E9008684D7 /* FavoriteItem+ItemTableViewCellConfigurable.swift in Sources */,
 				ECAC43E628333C6E00137EEA /* MangaData.swift in Sources */,
 				EC78D8802831E3A90014A54A /* SegmentView.swift in Sources */,
 				EC6C2F7C2830D4FB0002E51D /* MangaApiServiceType.swift in Sources */,
