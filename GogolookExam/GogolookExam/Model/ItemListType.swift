@@ -17,6 +17,14 @@ extension ItemListType {
     var segmentFirst: Bool {
         self == .anime
     }
+    
+    var deleteDataWhenUnfavorite: Bool {
+        self == .favorite
+    }
+    
+    var enableSeletOptionSegmentView: Bool {
+        self != .favorite
+    }
 }
 
 extension ItemListType {

@@ -55,7 +55,8 @@ extension OptionsSelectTableViewCell {
     
     private func activateConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.bottom.right.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
         }
     }
 }

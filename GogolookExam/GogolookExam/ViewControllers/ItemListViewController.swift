@@ -62,6 +62,7 @@ class ItemListViewController: UIViewController {
     var needResetFlag = false
     var currentListType: ItemListType = .anime
     
+    //MARK: - lifecycle
     init(vm: ViewModelType,
          handleItemCacheViewModel: HandleItemCacheViewModelType,
          favoriteItemCacheService: FavoriteItemCacheServiceType) {
@@ -84,6 +85,11 @@ class ItemListViewController: UIViewController {
         setupBinding()
         
         self.fetchItem(type: nil, filter: nil, page: ItemRequestState.beginPage)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cleanOptionsSelectViewHolder()
     }
 }
 
@@ -209,7 +215,7 @@ extension ItemListViewController {
         cleanOptionsSelectViewHolder()
         
         //
-        optionSegmentView.isUserInteractionEnabled = newType != .favorite
+        optionSegmentView.isUserInteractionEnabled = newType.enableSeletOptionSegmentView
         
         reloadByCurrentState()
     }
@@ -265,7 +271,7 @@ extension ItemListViewController {
     }
     
     func deleteDatasourceIfNeed(at row: Int) {
-        guard currentListType == .favorite else {
+        guard currentListType.deleteDataWhenUnfavorite else {
             return
         }
         
