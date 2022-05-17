@@ -8,6 +8,6 @@
 import UIKit
 
 struct MangaTopResponse: Codable {
-    let data: [Datum]
+    let data: [MangaData]
     let pagination: Pagination
 }

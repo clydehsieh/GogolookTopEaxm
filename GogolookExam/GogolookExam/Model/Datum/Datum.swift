@@ -9,7 +9,7 @@ import UIKit
 import CoreGraphics
 
 // MARK: - Datum
-struct Datum: Codable {
+struct AnimeData: Codable {
     let malID: Int
     let title: String?
     let url: String
@@ -53,19 +53,19 @@ struct Datum: Codable {
 // MARK: - Aired
 struct Aired: Codable {
     let from, to: Date?
-    let prop: Prop
+//    let prop: Prop
 }
 
 // MARK: - Prop
-struct Prop: Codable {
-    let from, to: From?
-    let string: String?
-}
+//struct Prop: Codable {
+//    let from, to: From?
+//    let string: String?
+//}
 
 // MARK: - From
-struct From: Codable {
-    let day, month, year: Int?
-}
+//struct From: Codable {
+//    let day, month, year: Int?
+//}
 
 //// MARK: - Broadcast
 //struct Broadcast: Codable {

@@ -17,7 +17,7 @@
 		EC6C2F422830BAFB0002E51D /* GogolookExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F412830BAFB0002E51D /* GogolookExamTests.swift */; };
 		EC6C2F4C2830BAFB0002E51D /* GogolookExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F4B2830BAFB0002E51D /* GogolookExamUITests.swift */; };
 		EC6C2F4E2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F4D2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift */; };
-		EC6C2F5C2830BBD90002E51D /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F5B2830BBD90002E51D /* Datum.swift */; };
+		EC6C2F5C2830BBD90002E51D /* AnimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F5B2830BBD90002E51D /* AnimeData.swift */; };
 		EC6C2F5E2830BC410002E51D /* AnimeTopResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */; };
 		EC6C2F602830BCAB0002E51D /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F5F2830BCAB0002E51D /* Pagination.swift */; };
 		EC6C2F632830BCF10002E51D /* AnimeApiServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F622830BCF10002E51D /* AnimeApiServiceType.swift */; };
@@ -33,7 +33,7 @@
 		EC78D8822831F6BA0014A54A /* TableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8812831F6BA0014A54A /* TableView+Extension.swift */; };
 		EC78D8842831F6D50014A54A /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8832831F6D50014A54A /* ItemTableViewCell.swift */; };
 		EC78D8862831FB6E0014A54A /* ItemListViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8852831FB6E0014A54A /* ItemListViewControllerProvider.swift */; };
-		EC78D8882831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8872831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift */; };
+		EC78D8882831FDD60014A54A /* AnimeData+ItemTableViewCellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8872831FDD60014A54A /* AnimeData+ItemTableViewCellConfigurable.swift */; };
 		EC78D88A283201360014A54A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D889283201360014A54A /* Date+Extension.swift */; };
 		EC78D88C283206E20014A54A /* OptionsSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D88B283206E20014A54A /* OptionsSelectView.swift */; };
 		EC78D88E283207030014A54A /* OptionSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D88D283207030014A54A /* OptionSegmentView.swift */; };
@@ -48,6 +48,8 @@
 		EC78D8A128322AC00014A54A /* ItemApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A028322AC00014A54A /* ItemApiService.swift */; };
 		EC78D8A4283230EB0014A54A /* OptionsSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A3283230EB0014A54A /* OptionsSelectTableViewCell.swift */; };
 		EC78D8A628323BDD0014A54A /* ItemRequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A528323BDD0014A54A /* ItemRequestState.swift */; };
+		ECAC43E628333C6E00137EEA /* MangaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC43E528333C6E00137EEA /* MangaData.swift */; };
+		ECAC43E828333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC43E728333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +90,7 @@
 		EC6C2F472830BAFB0002E51D /* GogolookExamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GogolookExamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6C2F4B2830BAFB0002E51D /* GogolookExamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GogolookExamUITests.swift; sourceTree = "<group>"; };
 		EC6C2F4D2830BAFB0002E51D /* GogolookExamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GogolookExamUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		EC6C2F5B2830BBD90002E51D /* Datum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
+		EC6C2F5B2830BBD90002E51D /* AnimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeData.swift; sourceTree = "<group>"; };
 		EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeTopResponse.swift; sourceTree = "<group>"; };
 		EC6C2F5F2830BCAB0002E51D /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		EC6C2F622830BCF10002E51D /* AnimeApiServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeApiServiceType.swift; sourceTree = "<group>"; };
@@ -104,7 +106,7 @@
 		EC78D8812831F6BA0014A54A /* TableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extension.swift"; sourceTree = "<group>"; };
 		EC78D8832831F6D50014A54A /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		EC78D8852831FB6E0014A54A /* ItemListViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewControllerProvider.swift; sourceTree = "<group>"; };
-		EC78D8872831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ItemTableViewCellConfigurable.swift"; sourceTree = "<group>"; };
+		EC78D8872831FDD60014A54A /* AnimeData+ItemTableViewCellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimeData+ItemTableViewCellConfigurable.swift"; sourceTree = "<group>"; };
 		EC78D889283201360014A54A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		EC78D88B283206E20014A54A /* OptionsSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsSelectView.swift; sourceTree = "<group>"; };
 		EC78D88D283207030014A54A /* OptionSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSegmentView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,8 @@
 		EC78D8A028322AC00014A54A /* ItemApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemApiService.swift; sourceTree = "<group>"; };
 		EC78D8A3283230EB0014A54A /* OptionsSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsSelectTableViewCell.swift; sourceTree = "<group>"; };
 		EC78D8A528323BDD0014A54A /* ItemRequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequestState.swift; sourceTree = "<group>"; };
+		ECAC43E528333C6E00137EEA /* MangaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaData.swift; sourceTree = "<group>"; };
+		ECAC43E728333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MangaData+ItemTableViewCellConfigurable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,8 +338,10 @@
 		EC78D89D2832259B0014A54A /* Datum */ = {
 			isa = PBXGroup;
 			children = (
-				EC6C2F5B2830BBD90002E51D /* Datum.swift */,
-				EC78D8872831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift */,
+				EC6C2F5B2830BBD90002E51D /* AnimeData.swift */,
+				EC78D8872831FDD60014A54A /* AnimeData+ItemTableViewCellConfigurable.swift */,
+				ECAC43E528333C6E00137EEA /* MangaData.swift */,
+				ECAC43E728333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift */,
 				EC6C2F5F2830BCAB0002E51D /* Pagination.swift */,
 			);
 			path = Datum;
@@ -592,12 +598,13 @@
 				EC78D88E283207030014A54A /* OptionSegmentView.swift in Sources */,
 				EC6C2F2B2830BAFA0002E51D /* AppDelegate.swift in Sources */,
 				EC6C2F722830C9630002E51D /* Coordinator.swift in Sources */,
-				EC6C2F5C2830BBD90002E51D /* Datum.swift in Sources */,
+				EC6C2F5C2830BBD90002E51D /* AnimeData.swift in Sources */,
 				EC78D8842831F6D50014A54A /* ItemTableViewCell.swift in Sources */,
 				EC78D898283224650014A54A /* AnimeFilter.swift in Sources */,
 				EC78D8902832091F0014A54A /* Array+Extension.swift in Sources */,
 				EC78D88C283206E20014A54A /* OptionsSelectView.swift in Sources */,
 				EC78D8822831F6BA0014A54A /* TableView+Extension.swift in Sources */,
+				ECAC43E628333C6E00137EEA /* MangaData.swift in Sources */,
 				EC78D8802831E3A90014A54A /* SegmentView.swift in Sources */,
 				EC6C2F7C2830D4FB0002E51D /* MangaApiServiceType.swift in Sources */,
 				EC6C2F6C2830C5DE0002E51D /* ViewModel.swift in Sources */,
@@ -611,12 +618,13 @@
 				EC78D8A4283230EB0014A54A /* OptionsSelectTableViewCell.swift in Sources */,
 				EC78D89C2832249A0014A54A /* MangaFilter.swift in Sources */,
 				EC78D89428320E310014A54A /* ItemRequest.swift in Sources */,
+				ECAC43E828333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift in Sources */,
 				EC78D896283224560014A54A /* AnimeType.swift in Sources */,
 				EC78D8A628323BDD0014A54A /* ItemRequestState.swift in Sources */,
 				EC78D89A283224890014A54A /* MangaType.swift in Sources */,
 				EC78D89F283225C60014A54A /* ItemListType.swift in Sources */,
 				EC78D8A128322AC00014A54A /* ItemApiService.swift in Sources */,
-				EC78D8882831FDD60014A54A /* Data+ItemTableViewCellConfigurable.swift in Sources */,
+				EC78D8882831FDD60014A54A /* AnimeData+ItemTableViewCellConfigurable.swift in Sources */,
 				EC6C2F6A2830C5910002E51D /* ViewModelType.swift in Sources */,
 				EC78D88A283201360014A54A /* Date+Extension.swift in Sources */,
 				EC6C2F2D2830BAFA0002E51D /* SceneDelegate.swift in Sources */,

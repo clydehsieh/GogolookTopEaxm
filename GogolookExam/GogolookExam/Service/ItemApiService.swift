@@ -65,7 +65,7 @@ extension ItemApiService: MangaApiServiceType {
                               }
                         return element.data
                     }
-                    .decode(type: MangaTopResponse.self, decoder: JSONDecoder())
+                    .decode(type: MangaTopResponse.self, decoder: self.decoder)
                     .sink { completion in
                         switch completion {
                         case .finished: break

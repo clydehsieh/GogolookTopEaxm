@@ -6,7 +6,7 @@
 //
 
 struct AnimeTopResponse: Codable {
-    let data: [Datum]
+    let data: [AnimeData]
     let pagination: Pagination
 }
 

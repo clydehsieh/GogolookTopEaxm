@@ -1,13 +1,12 @@
 //
-//  Data+ItemTableViewCellConfigurable.swift
+//  MangaData+ItemTableViewCellConfigurable.swift
 //  GogolookExam
 //
-//  Created by ClydeHsieh on 2022/5/16.
+//  Created by ClydeHsieh on 2022/5/17.
 //
-
 import UIKit
 
-extension Datum: ItemTableViewCellConfigurable {
+extension MangaData: ItemTableViewCellConfigurable {
     var videoURL: URL? {
         URL(string: url)
     }
@@ -24,9 +23,9 @@ extension Datum: ItemTableViewCellConfigurable {
         "\(rank)"
     }
     var start: String? {
-        aired?.from?.dateTimeInStr
+        published?.from?.dateTimeInStr
     }
     var end: String? {
-        aired?.to?.dateTimeInStr
+        published?.to?.dateTimeInStr
     }
 }
