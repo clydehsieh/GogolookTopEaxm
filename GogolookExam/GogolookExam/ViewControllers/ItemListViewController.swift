@@ -43,6 +43,9 @@ class ItemListViewController: UIViewController {
     
     //MARK: DI
     let vm: ViewModelType
+    let coreDataStore: CoreDataStore
+    lazy var handleItemCacheViewModel: HandleItemCacheViewModelType = HandleItemCacheViewModel(coreDataStore: coreDataStore)
+    lazy var favoriteItemCacheService: FavoriteItemCacheServiceType = FavoriteItemCacheService(coreDataStore: coreDataStore)
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
@@ -55,8 +58,9 @@ class ItemListViewController: UIViewController {
     var needResetFlag = false
     var currentListType: ItemListType = .anime
     
-    init(vm: ViewModelType) {
+    init(vm: ViewModelType, coreDataStore: CoreDataStore) {
         self.vm = vm
+        self.coreDataStore = coreDataStore
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -235,11 +239,11 @@ extension ItemListViewController {
 
 //MARK: - Actions
 extension ItemListViewController {
-    
     func cleanOptionsSelectViewHolder() {
         optionsSelectViewHolder?.removeFromSuperview()
         optionsSelectViewHolder = nil
     }
+    
     func didTapFilter() {
         showOptionList(titles: currentListType.optionFilters, completion: { [weak self] indexPath, newFilter in
             debugPrint("filter \(indexPath.row) \(newFilter)")
@@ -275,6 +279,9 @@ extension ItemListViewController: UITableViewDataSource {
         }
         let cell: ItemTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         cell.setup(with: data)
+        cell.delegate = self
+        
+        cell.didChange(isFavorite: favoriteItemCacheService.isFavorite(malID: data.malID))
         return cell
     }
 }
@@ -322,4 +329,41 @@ extension ItemListViewController {
             make.height.equalTo(300)
         }
     }
+}
+
+extension ItemListViewController: ItemTableViewCellDelete {
+    func didTapFavoriteButton(cell: UITableViewCell) {
+        guard let index = tableView.indexPath(for: cell) else {
+            return
+        }
+        
+        guard let data = datasource[safe: index.row] else {
+            return
+        }
+        
+        HUD.show(.progress)
+        
+        try? handleItemCacheViewModel.handle(data: data) { [weak self] result in
+            
+            func updateState(isFavorite: Bool) {
+                if let cell = cell as? ItemFavorteStateObserable {
+                    cell.didChange(isFavorite: isFavorite)
+                }
+            }
+            
+            switch result {
+            case let .saved(malID):
+                updateState(isFavorite: true)
+                self?.favoriteItemCacheService.add(malID: malID)
+            case let .deleted(malID):
+                updateState(isFavorite: false)
+                self?.favoriteItemCacheService.remove(malID: malID)
+            case let .failure(error):
+                debugPrint("save fail: \(error.localizedDescription)")
+            }
+            
+            HUD.hide()
+        }
+    }
+    
 }

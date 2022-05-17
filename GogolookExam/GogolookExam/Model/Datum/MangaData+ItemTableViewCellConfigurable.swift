@@ -7,6 +7,7 @@
 import UIKit
 
 extension MangaData: ItemTableViewCellConfigurable {
+
     var videoURL: URL? {
         URL(string: url)
     }
@@ -18,14 +19,11 @@ extension MangaData: ItemTableViewCellConfigurable {
         }
         return URL(string: image.imageURL)
     }
-    
-    var rate: String? {
-        "\(rank)"
+
+    var start: Date? {
+        published?.from
     }
-    var start: String? {
-        published?.from?.dateTimeInStr
-    }
-    var end: String? {
-        published?.to?.dateTimeInStr
+    var end: Date? {
+        published?.to
     }
 }

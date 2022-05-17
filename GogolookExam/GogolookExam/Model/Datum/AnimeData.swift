@@ -14,7 +14,7 @@ struct AnimeData: Codable {
     let url: String
     let images: [String: Image]
     let aired: Aired?
-    let rank: Int
+    let rank: Int?
     
     enum CodingKeys: String, CodingKey {
         case malID = "mal_id"

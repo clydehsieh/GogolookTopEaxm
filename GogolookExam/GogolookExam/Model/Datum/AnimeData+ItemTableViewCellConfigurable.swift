@@ -8,6 +8,7 @@
 import UIKit
 
 extension AnimeData: ItemTableViewCellConfigurable {
+
     var videoURL: URL? {
         URL(string: url)
     }
@@ -20,13 +21,10 @@ extension AnimeData: ItemTableViewCellConfigurable {
         return URL(string: image.imageURL)
     }
     
-    var rate: String? {
-        "\(rank)"
+    var start: Date? {
+        aired?.from
     }
-    var start: String? {
-        aired?.from?.dateTimeInStr
-    }
-    var end: String? {
-        aired?.to?.dateTimeInStr
+    var end: Date? {
+        aired?.to
     }
 }

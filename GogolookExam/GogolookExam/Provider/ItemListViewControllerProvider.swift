@@ -13,6 +13,11 @@ struct ItemListViewControllerProvider {
         decoder.dateDecodingStrategy = .formatted(OptionalFractionalSecondsDateFormatter())
         return decoder
     }
+    
+    static var coreDataStore: CoreDataStore {
+        CoreDataStore()
+    }
+    
     static var service: ItemApiService {
         ItemApiService(decoder: decoder)
     }
@@ -24,6 +29,6 @@ struct ItemListViewControllerProvider {
 
 extension ItemListViewControllerProvider {
     static var viewController: ItemListViewController {
-        ItemListViewController(vm: self.viewModel)
+        ItemListViewController(vm: self.viewModel, coreDataStore: self.coreDataStore)
     }
 }
