@@ -206,6 +206,10 @@ extension ItemListViewController {
         
         itemRequestState.type = nil
         itemRequestState.filter = nil
+        cleanOptionsSelectViewHolder()
+        
+        //
+        optionSegmentView.isUserInteractionEnabled = newType != .favorite
         
         reloadByCurrentState()
     }
@@ -260,6 +264,14 @@ extension ItemListViewController {
             datasource.append(contentsOf: items)
             debugPrint("add for \(datasource.count)")
         }
+    }
+    
+    func deleteDatasourceIfNeed(at row: Int) {
+        guard row < datasource.count else {
+            return
+        }
+        
+        datasource.remove(at: row)
     }
 }
 
@@ -388,6 +400,7 @@ extension ItemListViewController: ItemTableViewCellDelete {
             case let .deleted(malID):
                 updateState(isFavorite: false)
                 self?.favoriteItemCacheService.remove(malID: malID)
+                self?.deleteDatasourceIfNeed(at: index.row )
             case let .failure(error):
                 debugPrint("save fail: \(error.localizedDescription)")
             }
