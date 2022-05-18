@@ -8,7 +8,8 @@
 import UIKit
 
 protocol FavoriteItemCacheServiceType {
-    func add(malID: Int)
-    func remove(malID: Int)
     func isFavorite(malID: Int) -> Bool
+    
+    func fetchItems() throws -> [ItemEntity]
+    func handle(data: ItemTableViewCellConfigurable, completion: @escaping ((HandleItemCacheResult)->Void)) throws
 }

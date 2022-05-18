@@ -42,12 +42,7 @@ class ItemListViewController: UIViewController {
     var optionsSelectViewHolder: OptionsSelectView?
     
     //MARK: DI
-    // fetch item data
     let vm: ViewModelType
-    // access coredata for adding/deleting/fetching item data
-    let handleItemCacheViewModel: HandleItemCacheViewModelType
-    // cache malID of favorite items
-    let favoriteItemCacheService: FavoriteItemCacheServiceType
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
@@ -63,12 +58,8 @@ class ItemListViewController: UIViewController {
     var currentListType: ItemListType = .anime
     
     //MARK: - lifecycle
-    init(vm: ViewModelType,
-         handleItemCacheViewModel: HandleItemCacheViewModelType,
-         favoriteItemCacheService: FavoriteItemCacheServiceType) {
+    init(vm: ViewModelType) {
         self.vm = vm
-        self.handleItemCacheViewModel = handleItemCacheViewModel
-        self.favoriteItemCacheService = favoriteItemCacheService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -325,7 +316,7 @@ extension ItemListViewController: UITableViewDataSource {
         cell.setup(with: data)
         cell.delegate = self
         
-        cell.didChange(isFavorite: favoriteItemCacheService.isFavorite(malID: data.malID))
+        cell.didChange(isFavorite: vm.isFavorite(malID: data.malID))
         return cell
     }
 }
@@ -386,33 +377,33 @@ extension ItemListViewController: ItemTableViewCellDelete {
             return
         }
         
-        HUD.show(.progress)
-        
-        // save or delete item from local data
-        try? handleItemCacheViewModel.handle(data: data) { [weak self] result in
-            
-            func updateState(isFavorite: Bool) {
-                if let cell = cell as? ItemFavorteStateObserable {
-                    cell.didChange(isFavorite: isFavorite)
+        do {
+            HUD.show(.progress)
+            try vm.didTapFavorite(at: data) { [weak self] result in
+                
+                func updateState(isFavorite: Bool) {
+                    if let cell = cell as? ItemFavorteStateObserable {
+                        cell.didChange(isFavorite: isFavorite)
+                    }
                 }
+                
+                switch result {
+                case .saved:
+                    updateState(isFavorite: true)
+                case .deleted:
+                    updateState(isFavorite: false)
+                    self?.deleteDatasourceIfNeed(at: index.row )
+                case let .failure(error):
+                    debugPrint("handle cache fail: \(error.localizedDescription)")
+                }
+                
+                HUD.hide()
             }
-            
-            // update UI
-            // upate cache list
-            switch result {
-            case let .saved(malID):
-                updateState(isFavorite: true)
-                self?.favoriteItemCacheService.add(malID: malID)
-            case let .deleted(malID):
-                updateState(isFavorite: false)
-                self?.favoriteItemCacheService.remove(malID: malID)
-                self?.deleteDatasourceIfNeed(at: index.row )
-            case let .failure(error):
-                debugPrint("save fail: \(error.localizedDescription)")
-            }
-            
+        } catch let error {
+            debugPrint("handle cache: \(error.localizedDescription)")
             HUD.hide()
         }
+        
     }
     
 }

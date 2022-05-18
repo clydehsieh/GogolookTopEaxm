@@ -10,6 +10,9 @@
 		43D30141D26B4764D74253EE /* Pods_GogolookExam_GogolookExamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58204E002B73F7F65036BCB /* Pods_GogolookExam_GogolookExamUITests.framework */; };
 		75B60763B935E1DA9F3D8C36 /* Pods_GogolookExam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DE419F8AE33AA4E63D4087 /* Pods_GogolookExam.framework */; };
 		A8F053C98C8362CDC391143D /* Pods_GogolookExamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6110D93977F7CEC691B2246 /* Pods_GogolookExamTests.framework */; };
+		EC3F70702834CD9F0013E326 /* ApiServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F706F2834CD9F0013E326 /* ApiServiceTest.swift */; };
+		EC3F70722834DD1A0013E326 /* ItemListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F70712834DD1A0013E326 /* ItemListViewControllerTest.swift */; };
+		EC3F70742834E3DD0013E326 /* HandleItemCacheViewModelTypeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F70732834E3DD0013E326 /* HandleItemCacheViewModelTypeTest.swift */; };
 		EC6C2F2B2830BAFA0002E51D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */; };
 		EC6C2F2D2830BAFA0002E51D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */; };
 		EC6C2F342830BAFB0002E51D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6C2F332830BAFB0002E51D /* Assets.xcassets */; };
@@ -55,8 +58,6 @@
 		ECD6297928339FA4008684D7 /* ItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6297728339FA4008684D7 /* ItemEntity+CoreDataClass.swift */; };
 		ECD6297A28339FA4008684D7 /* ItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6297828339FA4008684D7 /* ItemEntity+CoreDataProperties.swift */; };
 		ECD6297C2833AE89008684D7 /* FavoriteItemCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6297B2833AE89008684D7 /* FavoriteItemCacheService.swift */; };
-		ECD6297E2833B00B008684D7 /* HandleItemCacheViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6297D2833B00B008684D7 /* HandleItemCacheViewModelType.swift */; };
-		ECD629802833B020008684D7 /* HandleItemCacheViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD6297F2833B020008684D7 /* HandleItemCacheViewModel.swift */; };
 		ECD629822833B46D008684D7 /* FavoriteItemCacheServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD629812833B46D008684D7 /* FavoriteItemCacheServiceType.swift */; };
 		ECD629852833D724008684D7 /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD629842833D724008684D7 /* FavoriteItem.swift */; };
 		ECD629872833D9E9008684D7 /* FavoriteItem+ItemTableViewCellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD629862833D9E9008684D7 /* FavoriteItem+ItemTableViewCellConfigurable.swift */; };
@@ -90,6 +91,9 @@
 		C58204E002B73F7F65036BCB /* Pods_GogolookExam_GogolookExamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GogolookExam_GogolookExamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DE419F8AE33AA4E63D4087 /* Pods_GogolookExam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GogolookExam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99E4AD8A4282427A3449CCE /* Pods-GogolookExamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GogolookExamTests.debug.xcconfig"; path = "Target Support Files/Pods-GogolookExamTests/Pods-GogolookExamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC3F706F2834CD9F0013E326 /* ApiServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceTest.swift; sourceTree = "<group>"; };
+		EC3F70712834DD1A0013E326 /* ItemListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewControllerTest.swift; sourceTree = "<group>"; };
+		EC3F70732834E3DD0013E326 /* HandleItemCacheViewModelTypeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleItemCacheViewModelTypeTest.swift; sourceTree = "<group>"; };
 		EC6C2F272830BAFA0002E51D /* GogolookExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GogolookExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,8 +143,6 @@
 		ECD6297728339FA4008684D7 /* ItemEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ECD6297828339FA4008684D7 /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ECD6297B2833AE89008684D7 /* FavoriteItemCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCacheService.swift; sourceTree = "<group>"; };
-		ECD6297D2833B00B008684D7 /* HandleItemCacheViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleItemCacheViewModelType.swift; sourceTree = "<group>"; };
-		ECD6297F2833B020008684D7 /* HandleItemCacheViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleItemCacheViewModel.swift; sourceTree = "<group>"; };
 		ECD629812833B46D008684D7 /* FavoriteItemCacheServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCacheServiceType.swift; sourceTree = "<group>"; };
 		ECD629842833D724008684D7 /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		ECD629862833D9E9008684D7 /* FavoriteItem+ItemTableViewCellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteItem+ItemTableViewCellConfigurable.swift"; sourceTree = "<group>"; };
@@ -244,6 +246,9 @@
 		EC6C2F402830BAFB0002E51D /* GogolookExamTests */ = {
 			isa = PBXGroup;
 			children = (
+				EC3F70732834E3DD0013E326 /* HandleItemCacheViewModelTypeTest.swift */,
+				EC3F70712834DD1A0013E326 /* ItemListViewControllerTest.swift */,
+				EC3F706F2834CD9F0013E326 /* ApiServiceTest.swift */,
 				EC6C2F412830BAFB0002E51D /* GogolookExamTests.swift */,
 			);
 			path = GogolookExamTests;
@@ -289,8 +294,6 @@
 			children = (
 				EC6C2F692830C5910002E51D /* ViewModelType.swift */,
 				EC6C2F6B2830C5DE0002E51D /* ViewModel.swift */,
-				ECD6297D2833B00B008684D7 /* HandleItemCacheViewModelType.swift */,
-				ECD6297F2833B020008684D7 /* HandleItemCacheViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -335,9 +338,9 @@
 		EC6C2F7D2830D58E0002E51D /* Anime */ = {
 			isa = PBXGroup;
 			children = (
+				EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */,
 				EC6C2F5B2830BBD90002E51D /* AnimeData.swift */,
 				EC78D8872831FDD60014A54A /* AnimeData+ItemTableViewCellConfigurable.swift */,
-				EC6C2F5D2830BC410002E51D /* AnimeTopResponse.swift */,
 				EC78D895283224560014A54A /* AnimeType.swift */,
 				EC78D897283224650014A54A /* AnimeFilter.swift */,
 			);
@@ -347,9 +350,9 @@
 		EC6C2F7E2830D5D20002E51D /* Manga */ = {
 			isa = PBXGroup;
 			children = (
+				EC6C2F812830D6980002E51D /* MangaTopResponse.swift */,
 				ECAC43E528333C6E00137EEA /* MangaData.swift */,
 				ECAC43E728333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift */,
-				EC6C2F812830D6980002E51D /* MangaTopResponse.swift */,
 				EC78D899283224890014A54A /* MangaType.swift */,
 				EC78D89B2832249A0014A54A /* MangaFilter.swift */,
 			);
@@ -671,7 +674,6 @@
 				EC78D8802831E3A90014A54A /* SegmentView.swift in Sources */,
 				EC6C2F7C2830D4FB0002E51D /* MangaApiServiceType.swift in Sources */,
 				EC6C2F6C2830C5DE0002E51D /* ViewModel.swift in Sources */,
-				ECD629802833B020008684D7 /* HandleItemCacheViewModel.swift in Sources */,
 				EC6C2F822830D6980002E51D /* MangaTopResponse.swift in Sources */,
 				EC6C2F602830BCAB0002E51D /* Pagination.swift in Sources */,
 				EC6C2F632830BCF10002E51D /* AnimeApiServiceType.swift in Sources */,
@@ -696,7 +698,6 @@
 				EC6C2F2D2830BAFA0002E51D /* SceneDelegate.swift in Sources */,
 				EC6C2F6F2830C6560002E51D /* Publisher+Utility.swift in Sources */,
 				ECD6296728339BC0008684D7 /* FavoriteModel.xcdatamodeld in Sources */,
-				ECD6297E2833B00B008684D7 /* HandleItemCacheViewModelType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,7 +705,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC3F70702834CD9F0013E326 /* ApiServiceTest.swift in Sources */,
 				EC6C2F422830BAFB0002E51D /* GogolookExamTests.swift in Sources */,
+				EC3F70742834E3DD0013E326 /* HandleItemCacheViewModelTypeTest.swift in Sources */,
+				EC3F70722834DD1A0013E326 /* ItemListViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

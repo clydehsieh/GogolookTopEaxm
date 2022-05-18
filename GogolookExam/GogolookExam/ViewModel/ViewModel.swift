@@ -10,11 +10,11 @@ import Combine
 
 class ViewModel {
     let service: ItemApiService
-    let coreDataStore: CoreDataStore
+    let itemCacheService: FavoriteItemCacheServiceType
     
-    init(service: ItemApiService, coreDataStore: CoreDataStore) {
+    init(service: ItemApiService, itemCacheService: FavoriteItemCacheServiceType) {
         self.service = service
-        self.coreDataStore = coreDataStore
+        self.itemCacheService = itemCacheService
     }
 }
 
@@ -41,7 +41,7 @@ extension ViewModel: ViewModelType {
                 Deferred {
                     Future { promise in
                         do {
-                            let items = try self.coreDataStore.fetchItems()
+                            let items = try itemCacheService.fetchItems()
                             promise(.success(
                                 items
                                     .map({FavoriteItem.init(itemEntity: $0)})
@@ -54,5 +54,13 @@ extension ViewModel: ViewModelType {
                 }.eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
+    }
+    
+    func didTapFavorite(at data: ItemTableViewCellConfigurable, completion: @escaping ((HandleItemCacheResult)->Void)) throws {
+        try itemCacheService.handle(data: data, completion: completion)
+    }
+    
+    func isFavorite(malID: Int) -> Bool {
+        itemCacheService.isFavorite(malID: malID)
     }
 }

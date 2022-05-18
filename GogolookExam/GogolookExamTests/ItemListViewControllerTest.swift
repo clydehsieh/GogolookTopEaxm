@@ -1,14 +1,14 @@
 //
-//  GogolookExamTests.swift
+//  ItemListViewControllerTest.swift
 //  GogolookExamTests
 //
-//  Created by ClydeHsieh on 2022/5/15.
+//  Created by ClydeHsieh on 2022/5/18.
 //
 
 import XCTest
 @testable import GogolookExam
 
-class GogolookExamTests: XCTestCase {
+class ItemListViewControllerTest: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -32,19 +32,10 @@ class GogolookExamTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
-    func testItemListViewControllerMemoryLeak() {
-        let vc = makeSUT()
-        addTeardownBlock { [weak vc] in
-            XCTAssertNil(vc, "viewcontroller should have been deallocated. Potential memory leak", file: #filePath, line: #line)
-        }
-    }
-}
 
-extension GogolookExamTests {
-    func makeSUT() -> ItemListViewController {
-        let vc = ItemListViewControllerProvider.viewController
+    override func tearDown() {
+        super.tearDown()
         
-        return vc
+        
     }
 }

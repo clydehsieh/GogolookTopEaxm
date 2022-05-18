@@ -7,6 +7,7 @@
 
 import UIKit
 
+struct ItemListViewControllerProvider { }
 
 //MARK: - api service
 extension ItemListViewControllerProvider {
@@ -16,36 +17,26 @@ extension ItemListViewControllerProvider {
         return decoder
     }
     
-    static var service: ItemApiService {
+    static var ApiService: ItemApiService {
         ItemApiService(decoder: decoder)
-    }
-    
-    static var viewModel: ViewModelType {
-        ViewModel(service: self.service,
-                  coreDataStore: self.coreDataStore)
     }
 }
 
-//MARK: - local cache service
-struct ItemListViewControllerProvider {
-    static var coreDataStore: CoreDataStore {
-        CoreDataStore.shared
-    }
-    
-    static var handleItemCacheViewModel: HandleItemCacheViewModelType {
-        HandleItemCacheViewModel(coreDataStore: self.coreDataStore)
-    }
-    
-    static var favoriteItemCacheService: FavoriteItemCacheServiceType {
-        FavoriteItemCacheService(coreDataStore: self.coreDataStore)
+//MARK: - ViewModel
+extension ItemListViewControllerProvider {
+    static var viewModel: ViewModelType {
+        let coreDataStore = CoreDataStore.shared
+        let itemCacheService = FavoriteItemCacheService(coreDataStore: coreDataStore)
+        
+        return ViewModel(service: self.ApiService,
+                         itemCacheService: itemCacheService)
     }
 }
+
 
 //MARK: - ViewController
 extension ItemListViewControllerProvider {
     static var viewController: ItemListViewController {
-        ItemListViewController(vm: self.viewModel,
-                               handleItemCacheViewModel: self.handleItemCacheViewModel,
-                               favoriteItemCacheService: self.favoriteItemCacheService)
+        ItemListViewController(vm: self.viewModel)
     }
 }

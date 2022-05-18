@@ -8,7 +8,6 @@
 import UIKit
 
 extension FavoriteItem: ItemTableViewCellConfigurable {
-    
     var videoURL: URL? {
         urlString?.url
     }
