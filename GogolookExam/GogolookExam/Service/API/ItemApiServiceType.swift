@@ -9,6 +9,6 @@ import UIKit
 import Combine
 
 protocol ItemApiServiceType {
-    func fetchTop(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error>
-    func fetchTop(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error>
+    func fetchTopAnime(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error>
+    func fetchTopManga(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error>
 }

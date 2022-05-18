@@ -22,7 +22,7 @@ extension ViewModel: ViewModelType {
     func binding(fetchAnime: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error> {
         fetchAnime
             .flatMapLatest({ [unowned self] param in
-                self.service.fetchTop(param: param)
+                self.service.fetchTopAnime(param: param)
             })
             .eraseToAnyPublisher()
     }
@@ -30,7 +30,7 @@ extension ViewModel: ViewModelType {
     func binding(fetchManga: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error> {
         fetchManga
             .flatMapLatest({ [unowned self] param in
-                self.service.fetchTop(param: param)
+                self.service.fetchTopManga(param: param)
             })
             .eraseToAnyPublisher()
     }

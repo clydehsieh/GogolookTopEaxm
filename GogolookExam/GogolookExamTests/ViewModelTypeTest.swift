@@ -148,7 +148,7 @@ class ItemApiServiceSpy: ItemApiServiceType {
 }
 
 extension ItemApiServiceSpy {
-    func fetchTop(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error> {
+    func fetchTopAnime(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error> {
         return Deferred {
             Future { [unowned self] promise in
                 self.fetchAnimeDataCounter += 1
@@ -163,7 +163,7 @@ extension ItemApiServiceSpy {
 }
 
 extension ItemApiServiceSpy {
-    func fetchTop(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error> {
+    func fetchTopManga(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error> {
         return Deferred {
             Future { [unowned self] promise in
                 self.fetchMangaDataCounter += 1
@@ -199,7 +199,7 @@ class ViewModelTest: ViewModelType {
     func binding(fetchAnime: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error> {
         fetchAnime
             .flatMapLatest({ [unowned self]request in
-                self.service.fetchTop(param: request)
+                self.service.fetchTopAnime(param: request)
             })
             .eraseToAnyPublisher()
     }
@@ -207,7 +207,7 @@ class ViewModelTest: ViewModelType {
     func binding(fetchManga: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error> {
         fetchManga
             .flatMapLatest({ [unowned self]request in
-                self.service.fetchTop(param: request)
+                self.service.fetchTopManga(param: request)
             })
             .eraseToAnyPublisher()
     }

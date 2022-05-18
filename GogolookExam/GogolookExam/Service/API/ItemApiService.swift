@@ -18,7 +18,7 @@ class ItemApiService: ItemApiServiceType {
 }
 
 extension ItemApiService {
-    func fetchTop(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error> {
+    func fetchTopAnime(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error> {
 
         let url = URL(string: "https://api.jikan.moe/v4/top/anime?\(param.apiSuffixString())")!
         
@@ -51,7 +51,7 @@ extension ItemApiService {
 }
 
 extension ItemApiService {
-    func fetchTop(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error> {
+    func fetchTopManga(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error> {
         let url = URL(string: "https://api.jikan.moe/v4/top/manga?\(param.apiSuffixString())")!
         debugPrint("request \(url.absoluteString)")
         return Deferred {
