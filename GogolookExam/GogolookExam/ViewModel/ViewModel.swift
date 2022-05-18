@@ -9,10 +9,10 @@ import UIKit
 import Combine
 
 class ViewModel {
-    let service: ItemApiService
+    let service: ItemApiServiceType
     let itemCacheService: FavoriteItemCacheServiceType
     
-    init(service: ItemApiService, itemCacheService: FavoriteItemCacheServiceType) {
+    init(service: ItemApiServiceType, itemCacheService: FavoriteItemCacheServiceType) {
         self.service = service
         self.itemCacheService = itemCacheService
     }

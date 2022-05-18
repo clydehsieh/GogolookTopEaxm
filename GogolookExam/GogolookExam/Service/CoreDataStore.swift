@@ -34,7 +34,7 @@ class CoreDataStore {
     }
 }
 
-extension CoreDataStore {
+extension CoreDataStore: CoreDataStoreType{
     func insertItemEntityData(data: ItemTableViewCellConfigurable) throws {
         try performSync({ context in
             Result {

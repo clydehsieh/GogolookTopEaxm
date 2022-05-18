@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class ItemApiService {
+class ItemApiService: ItemApiServiceType {
     let decoder: JSONDecoder
     var subscriptions: Set<AnyCancellable> = .init()
     
@@ -17,7 +17,7 @@ class ItemApiService {
     }
 }
 
-extension ItemApiService: AnimeApiServiceType {
+extension ItemApiService {
     func fetchTop(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error> {
 
         let url = URL(string: "https://api.jikan.moe/v4/top/anime?\(param.apiSuffixString())")!
@@ -50,8 +50,7 @@ extension ItemApiService: AnimeApiServiceType {
     }
 }
 
-
-extension ItemApiService: MangaApiServiceType {
+extension ItemApiService {
     func fetchTop(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error> {
         let url = URL(string: "https://api.jikan.moe/v4/top/manga?\(param.apiSuffixString())")!
         debugPrint("request \(url.absoluteString)")

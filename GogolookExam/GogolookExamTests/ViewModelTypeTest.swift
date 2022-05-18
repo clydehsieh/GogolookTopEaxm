@@ -1,5 +1,5 @@
 //
-//  ApiServiceTest.swift
+//  ViewModelTypeTest.swift
 //  GogolookExamTests
 //
 //  Created by ClydeHsieh on 2022/5/18.
@@ -9,39 +9,28 @@ import XCTest
 import Combine
 @testable import GogolookExam
 
-class ApiServiceTest: XCTestCase {
-
+class ViewModelTypeTest: XCTestCase {
+    
     let animeRequest: PassthroughSubject<ItemRequestType, Error> = .init()
     let mangaRequest: PassthroughSubject<ItemRequestType, Error> = .init()
     
     var subscription: Set<AnyCancellable> = .init()
     
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
     func testAnimeApiFlow() {
-        let (response, _, service, viewModel) = makeAnimeSUT()
+        let (service, _, _, viewModel) = makeSUT()
         
-        var predictResponse: AnimeTopResponse?
-        
-        viewModel.binding(fetchAnime: animeRequest.eraseToAnyPublisher())
+        viewModel.binding(fetchAnime: animeRequest.eraseToAnyPublisher() )
             .sink { completion in
                 //
             } receiveValue: { endResponse in
-                predictResponse = endResponse
+                //
             }
             .store(in: &subscription)
 
         
-        animeRequest.send(ItemReqeustTypeSpy())
-        
+        XCTAssertEqual(service.fetchAnimeDataCounter, 0)
+        animeRequest.send(ItemReqeustMock())
         XCTAssertEqual(service.fetchAnimeDataCounter, 1)
-        XCTAssertEqual(predictResponse?.data.count, response.data.count)
         
         addTeardownBlock { [weak service, weak viewModel] in
             XCTAssertNil(service, "service should have been deallocated. Potential memory leak", file: #filePath, line: #line)
@@ -50,48 +39,40 @@ class ApiServiceTest: XCTestCase {
     }
     
     func testMangaApiFlow() {
-        let (_, response, service, viewModel) = makeAnimeSUT()
-        var predictResponse: MangaTopResponse?
+        let (service, _, _, viewModel) = makeSUT()
         
-        viewModel.binding(fetchManga: mangaRequest.eraseToAnyPublisher())
+        viewModel.binding(fetchManga: mangaRequest.eraseToAnyPublisher() )
             .sink { completion in
                 //
             } receiveValue: { endResponse in
-                predictResponse = endResponse
+                //
             }
             .store(in: &subscription)
+
         
-        mangaRequest.send(ItemReqeustTypeSpy())
-        mangaRequest.send(ItemReqeustTypeSpy())
-        
-        XCTAssertEqual(service.fetchAnimeDataCounter, 0)
-        XCTAssertEqual(service.fetchMangaDataCounter, 2)
-        XCTAssertEqual(predictResponse?.data.count, response.data.count)
+        XCTAssertEqual(service.fetchMangaDataCounter, 0)
+        mangaRequest.send(ItemReqeustMock())
+        XCTAssertEqual(service.fetchMangaDataCounter, 1)
         
         addTeardownBlock { [weak service, weak viewModel] in
             XCTAssertNil(service, "service should have been deallocated. Potential memory leak", file: #filePath, line: #line)
             XCTAssertNil(viewModel, "viewModel should have been deallocated. Potential memory leak", file: #filePath, line: #line)
         }
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 }
 
-extension ApiServiceTest {
-    func makeAnimeSUT() -> (animeResponse: AnimeTopResponse, mangaResponse: MangaTopResponse, service: ItemApiServiceTest, viewModel: ViewModelTest) {
-        let animeResponse = makeMocAnimeResponse()
-        let mangaResponse = makeMocMangaResponse()
+
+extension ViewModelTypeTest {
+    func makeSUT() -> (service: ItemApiServiceSpy,
+                       coreDataStoreSpy: CoreDataStoreSpy,
+                       itemCacheService: FavoriteItemCacheService,
+                       viewModel: ViewModel ) {
+        let service = ItemApiServiceSpy()
+        let coreDataStoreSpy = CoreDataStoreSpy()
+        let itemCacheService = FavoriteItemCacheService(coreDataStore: coreDataStoreSpy)
+        let viewMode = ViewModel(service: service, itemCacheService: itemCacheService)
         
-        let service = ItemApiServiceTest(animeResponse: animeResponse, mangaResponse: mangaResponse)
-        
-        let viewModel = ViewModelTest(animeService: service, mangaService: service)
-        
-        return (animeResponse, mangaResponse, service, viewModel)
+        return (service, coreDataStoreSpy, itemCacheService, viewMode)
     }
     
     func makeMocAnimeResponse() -> AnimeTopResponse {
@@ -124,44 +105,73 @@ extension ApiServiceTest {
     }
 }
 
-//MARK:
-struct ItemReqeustTypeSpy: ItemRequestType {
+
+//MARK: -
+enum APIError: Error {
+    case unknow
+}
+
+//MARK: ItemReqeustTypeSpy
+struct ItemReqeustMock: ItemRequestType {
     var type: String? = "type"
     var filter: String? = "filter"
     var page: Int  = 1
 }
 
-//MARK: - ItemApiServiceTest
-class ItemApiServiceTest {
-    var fetchAnimeDataCounter = 0
-    var fetchMangaDataCounter = 0
+struct CoreDataStoreSpy: CoreDataStoreType {
+    func insertItemEntityData(data: ItemTableViewCellConfigurable) throws {
+        
+    }
     
-    let animeMonckResponse: AnimeTopResponse
-    let mangaMonckResponse: MangaTopResponse
+    func fetchItem(malID: Int) throws -> [ItemEntity] {
+        return []
+    }
     
-    init(animeResponse: AnimeTopResponse, mangaResponse: MangaTopResponse){
-        self.animeMonckResponse = animeResponse
-        self.mangaMonckResponse = mangaResponse
+    func fetchItems() throws -> [ItemEntity] {
+        return []
+    }
+    
+    func deleteItem(malID: Int) throws {
+        
     }
 }
 
-extension ItemApiServiceTest: AnimeApiServiceType {
+//MARK: - ItemApiServiceTest
+class ItemApiServiceSpy: ItemApiServiceType {
+    var fetchAnimeDataCounter = 0
+    var fetchMangaDataCounter = 0
+    
+    var animeMonckResponse: AnimeTopResponse?
+    var mangaMonckResponse: MangaTopResponse?
+    
+    init() { }
+}
+
+extension ItemApiServiceSpy {
     func fetchTop(param: ItemRequestType) -> AnyPublisher<AnimeTopResponse, Error> {
         return Deferred {
             Future { [unowned self] promise in
                 self.fetchAnimeDataCounter += 1
-                promise(.success(self.animeMonckResponse))
+                if let response = self.animeMonckResponse {
+                    promise(.success(response))
+                } else {
+                    promise(.failure(APIError.unknow))
+                }
             }
         }.eraseToAnyPublisher()
     }
 }
 
-extension ItemApiServiceTest: MangaApiServiceType {
+extension ItemApiServiceSpy {
     func fetchTop(param: ItemRequestType) -> AnyPublisher<MangaTopResponse, Error> {
         return Deferred {
             Future { [unowned self] promise in
                 self.fetchMangaDataCounter += 1
-                promise(.success(self.mangaMonckResponse))
+                if let response = self.mangaMonckResponse {
+                    promise(.success(response))
+                } else {
+                    promise(.failure(APIError.unknow))
+                }
             }
         }.eraseToAnyPublisher()
     }
@@ -176,18 +186,20 @@ enum ServiceErrorTest: Error {
 
 //MARK: ViewModelTest
 class ViewModelTest: ViewModelType {
-    let animeService: AnimeApiServiceType
-    let mangaService: MangaApiServiceType
+    let service: ItemApiService
+    var favoriteList: [Int] = []
+    var handleItemCacheResult: HandleItemCacheResult
     
-    init(animeService: AnimeApiServiceType, mangaService: MangaApiServiceType) {
-        self.animeService = animeService
-        self.mangaService = mangaService
+    init(service: ItemApiService,
+         handleItemCacheResult: HandleItemCacheResult) {
+        self.service = service
+        self.handleItemCacheResult = handleItemCacheResult
     }
     
     func binding(fetchAnime: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error> {
         fetchAnime
             .flatMapLatest({ [unowned self]request in
-                self.animeService.fetchTop(param: request)
+                self.service.fetchTop(param: request)
             })
             .eraseToAnyPublisher()
     }
@@ -195,7 +207,7 @@ class ViewModelTest: ViewModelType {
     func binding(fetchManga: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error> {
         fetchManga
             .flatMapLatest({ [unowned self]request in
-                self.mangaService.fetchTop(param: request)
+                self.service.fetchTop(param: request)
             })
             .eraseToAnyPublisher()
     }
@@ -208,5 +220,11 @@ class ViewModelTest: ViewModelType {
         }.eraseToAnyPublisher()
     }
     
+    func isFavorite(malID: Int) -> Bool {
+        favoriteList.contains(malID)
+    }
     
+    func didTapFavorite(at data: ItemTableViewCellConfigurable, completion: @escaping ((HandleItemCacheResult) -> Void)) throws {
+        completion(handleItemCacheResult)
+    }
 }

@@ -9,11 +9,11 @@ import UIKit
 
 final class FavoriteItemCacheService {
 
-    let coreDataStore: CoreDataStore
+    let coreDataStore: CoreDataStoreType
     
     var cacheList: [Int] = []
     
-    init(coreDataStore: CoreDataStore) {
+    init(coreDataStore: CoreDataStoreType) {
         self.coreDataStore = coreDataStore
         syncCache()
     }
