@@ -40,7 +40,7 @@ class NetworkManager {
                     return promise(.failure(NetworkingError.invalidateURL))
                 }
                 
-                debugPrint("Reqeusting url: /n\(url.absoluteString)")
+                debugPrint("Reqeusting url: \(url.absoluteString)")
                 
                 URLSession.shared.dataTaskPublisher(for: url)
                     .tryMap() { element -> Data in

@@ -7,12 +7,10 @@
 
 enum AnimeFilter: String, CaseIterable {
     case none
-    case tv
-    case movie
-    case ova
-    case special
-    case ona
-    case music
+    case airing
+    case upcoming
+    case bypopularity
+    case favorite
 }
 
 extension AnimeFilter: RequestFilterPresentable {
