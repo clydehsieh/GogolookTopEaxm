@@ -46,16 +46,12 @@ class ItemListViewController: UIViewController {
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
-    var itemRequestState = ItemRequestState.init()
-    let animeTopRequest: PassthroughSubject<ItemRequestType, Error> = .init()
-    let mangaTopRequest: PassthroughSubject<ItemRequestType, Error> = .init()
-    let favoriteTopRequest: PassthroughSubject<Void, Error> = .init()
-    
-    var isLoading: CurrentValueSubject<Bool, Never> = .init(false)
+//    var itemRequestState = ItemRequestState.init()
+//    var isLoading: CurrentValueSubject<Bool, Never> = .init(false)
     
     weak var coordinator: MainCoordinator?
-    var needResetFlag = false
-    var currentListType: ItemListType = .anime
+//    var needResetFlag = false
+//    var currentListType: ItemListType = .anime
     
     //MARK: - lifecycle
     init(vm: ViewModelType) {
@@ -75,7 +71,8 @@ class ItemListViewController: UIViewController {
         configureTableView()
         setupBinding()
         
-        self.fetchItem(type: nil, filter: nil, page: ItemRequestState.beginPage)
+        
+        vm.currentPage.send(1)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -126,7 +123,21 @@ extension ItemListViewController {
         
         weak var weakSelf = self
         
-        isLoading
+        vm.updateItemListSubject
+            .receive(on: DispatchQueue.main)
+            .sink { updateType in
+                switch updateType {
+                case let .new(items):
+                    weakSelf?.datasource = items
+                case let .append(items):
+                    weakSelf?.datasource.append(contentsOf: items)
+                }
+                debugPrint("datasource: \(weakSelf?.datasource.count ?? 0)")
+            }
+            .store(in: &subscriptions)
+        
+        
+        vm.isLoading
             .receive(on: DispatchQueue.main)
             .sink { isLoading in
                 if isLoading {
@@ -137,132 +148,30 @@ extension ItemListViewController {
             }
             .store(in: &self.subscriptions)
         
-        vm.binding(fetchAnime: animeTopRequest.eraseToAnyPublisher())
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .finished: break
-                case let .failure(e):
-                    debugPrint(e)
-                }
-                weakSelf?.isLoading.send(false)
-            } receiveValue: { response in
-                weakSelf?.itemRequestState.currentPage = response.pagination.currentPage
-                weakSelf?.itemRequestState.hasNextPage = response.pagination.hasNextPage
-                weakSelf?.addNewItem(response.data)
-                weakSelf?.isLoading.send(false)
+        vm.currentListType
+            .removeDuplicates()
+            .sink { [weak self] type in
+                self?.cleanOptionsSelectViewHolder()
+                self?.optionSegmentView.isUserInteractionEnabled = type.enableSeletOptionSegmentView
             }
-            .store(in: &self.subscriptions)
+            .store(in: &subscriptions)
         
-        
-        vm.binding(fetchManga: mangaTopRequest.eraseToAnyPublisher())
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .finished: break
-                case let .failure(e):
-                    debugPrint(e)
-                }
-                weakSelf?.isLoading.send(false)
-            } receiveValue: { response in
-                weakSelf?.itemRequestState.currentPage = response.pagination.currentPage
-                weakSelf?.itemRequestState.hasNextPage = response.pagination.hasNextPage
-                weakSelf?.addNewItem(response.data)
-                weakSelf?.isLoading.send(false)
+        vm.currentParamType.combineLatest(vm.currentParamFilter)
+            .sink { [weak self] (type, filter) in
+                self?.optionSegmentView.setup(typeTitle: type ?? "", filterTitle: filter ?? "")
             }
-            .store(in: &self.subscriptions)
-        
-        vm.binding(fetchFavorite: favoriteTopRequest.eraseToAnyPublisher())
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .finished: break
-                case let .failure(e):
-                    debugPrint(e)
-                }
-                weakSelf?.isLoading.send(false)
-            } receiveValue: { data in
-                weakSelf?.itemRequestState.currentPage = 1
-                weakSelf?.itemRequestState.hasNextPage = false
-                weakSelf?.addNewItem(data)
-                weakSelf?.isLoading.send(false)
-            }
-            .store(in: &self.subscriptions)
+            .store(in: &subscriptions)
     }
 }
 
 //MARK: - data mutating
 extension ItemListViewController {
     func changeListType(newType: ItemListType) {
-        guard currentListType != newType else {
-            return
-        }
-        
-        currentListType = newType
-        needResetFlag = true
-        
-        itemRequestState.type = nil
-        itemRequestState.filter = nil
-        cleanOptionsSelectViewHolder()
-        
-        //
-        optionSegmentView.isUserInteractionEnabled = newType.enableSeletOptionSegmentView
-        
-        reloadByCurrentState()
-    }
-    
-    func reloadByCurrentState() {
-        needResetFlag = true
-        self.fetchItem(type: itemRequestState.type,
-                       filter: itemRequestState.filter,
-                       page: ItemRequestState.beginPage)
-    }
-    
-    func fetchItem(type: String?, filter: String?, page: Int) {
-        
-        guard isLoading.value == false else {
-            return
-        }
-        
-        itemRequestState.filter = filter
-        itemRequestState.type = type
-        
-        // update filter display
-        optionSegmentView.setup(typeTitle: type ?? "",
-                                filterTitle: filter ?? "")
-        
-        isLoading.send(true)
-        
-        // reqest
-        switch currentListType {
-        case .anime:
-            animeTopRequest.send(ItemRequest(
-                type: type,
-                filter: filter,
-                page: max(ItemRequestState.beginPage, page))
-            )
-        case .manga:
-            mangaTopRequest.send(ItemRequest(
-                type: type,
-                filter: filter,
-                page: max(ItemRequestState.beginPage, page))
-            )
-        case .favorite:
-            favoriteTopRequest.send(())
-        }
-    }
-    
-    func addNewItem(_ items: [ItemTableViewCellConfigurable]) {
-        if needResetFlag {
-            needResetFlag = false
-            datasource = items
-        } else {
-            datasource.append(contentsOf: items)
-        }
+        vm.currentListType.send(newType)
     }
     
     func deleteDatasourceIfNeed(at row: Int) {
-        guard currentListType.deleteDataWhenUnfavorite else {
+        guard vm.currentListType.value.deleteDataWhenUnfavorite else {
             return
         }
         
@@ -282,21 +191,15 @@ extension ItemListViewController {
     }
     
     func didTapFilter() {
-        showOptionList(titles: currentListType.optionFilters, completion: { [weak self] indexPath, newFilter in
-            if self?.itemRequestState.filter != newFilter {
-                self?.itemRequestState.filter = newFilter
-                self?.reloadByCurrentState()
-            }
+        showOptionList(titles: vm.currentListType.value.optionFilters, completion: { [weak self] indexPath, newFilter in
+            self?.vm.currentParamFilter.send(newFilter)
             self?.cleanOptionsSelectViewHolder()
         })
     }
     
     func didTapType() {
-        showOptionList(titles: currentListType.optionTypes, completion: { [weak self] indexPath, newType in
-            if self?.itemRequestState.type != newType {
-                self?.itemRequestState.type = newType
-                self?.reloadByCurrentState()
-            }
+        showOptionList(titles: vm.currentListType.value.optionTypes, completion: { [weak self] indexPath, newType in
+            self?.vm.currentParamType.send(newType)
             self?.cleanOptionsSelectViewHolder()
         })
     }
@@ -340,8 +243,9 @@ extension ItemListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let next = itemRequestState.nextPage, indexPath.row > ( datasource.count - 5) {
-            fetchItem(type: itemRequestState.type, filter: itemRequestState.filter, page: next)
+        if !vm.isLoading.value, vm.currentListType.value != .favorite, vm.hasNexPage, indexPath.row > ( datasource.count - 5) {
+            let page = vm.currentPage.value + 1
+            vm.currentPage.send(page)
         }
     }
 }

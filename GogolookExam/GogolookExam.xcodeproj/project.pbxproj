@@ -12,7 +12,7 @@
 		A8F053C98C8362CDC391143D /* Pods_GogolookExamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6110D93977F7CEC691B2246 /* Pods_GogolookExamTests.framework */; };
 		EC3F70762834F8F40013E326 /* ViewModelTypeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F70752834F8F40013E326 /* ViewModelTypeTest.swift */; };
 		EC3F70782834FAD70013E326 /* CoreDataStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F70772834FAD70013E326 /* CoreDataStoreType.swift */; };
-		EC3F707A2834FCA80013E326 /* ItemApiServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F70792834FCA80013E326 /* ItemApiServiceType.swift */; };
+		EC3F707C283534D90013E326 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F707B283534D90013E326 /* NetworkManager.swift */; };
 		EC6C2F2B2830BAFA0002E51D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */; };
 		EC6C2F2D2830BAFA0002E51D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */; };
 		EC6C2F342830BAFB0002E51D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6C2F332830BAFB0002E51D /* Assets.xcassets */; };
@@ -46,7 +46,6 @@
 		EC78D89A283224890014A54A /* MangaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D899283224890014A54A /* MangaType.swift */; };
 		EC78D89C2832249A0014A54A /* MangaFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89B2832249A0014A54A /* MangaFilter.swift */; };
 		EC78D89F283225C60014A54A /* ItemListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89E283225C60014A54A /* ItemListType.swift */; };
-		EC78D8A128322AC00014A54A /* ItemApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A028322AC00014A54A /* ItemApiService.swift */; };
 		EC78D8A4283230EB0014A54A /* OptionsSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A3283230EB0014A54A /* OptionsSelectTableViewCell.swift */; };
 		EC78D8A628323BDD0014A54A /* ItemRequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A528323BDD0014A54A /* ItemRequestState.swift */; };
 		ECAC43E628333C6E00137EEA /* MangaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC43E528333C6E00137EEA /* MangaData.swift */; };
@@ -91,7 +90,7 @@
 		E99E4AD8A4282427A3449CCE /* Pods-GogolookExamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GogolookExamTests.debug.xcconfig"; path = "Target Support Files/Pods-GogolookExamTests/Pods-GogolookExamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC3F70752834F8F40013E326 /* ViewModelTypeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTypeTest.swift; sourceTree = "<group>"; };
 		EC3F70772834FAD70013E326 /* CoreDataStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreType.swift; sourceTree = "<group>"; };
-		EC3F70792834FCA80013E326 /* ItemApiServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemApiServiceType.swift; sourceTree = "<group>"; };
+		EC3F707B283534D90013E326 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EC6C2F272830BAFA0002E51D /* GogolookExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GogolookExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6C2F2A2830BAFA0002E51D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC6C2F2C2830BAFA0002E51D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,7 +128,6 @@
 		EC78D899283224890014A54A /* MangaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaType.swift; sourceTree = "<group>"; };
 		EC78D89B2832249A0014A54A /* MangaFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaFilter.swift; sourceTree = "<group>"; };
 		EC78D89E283225C60014A54A /* ItemListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListType.swift; sourceTree = "<group>"; };
-		EC78D8A028322AC00014A54A /* ItemApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemApiService.swift; sourceTree = "<group>"; };
 		EC78D8A3283230EB0014A54A /* OptionsSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsSelectTableViewCell.swift; sourceTree = "<group>"; };
 		EC78D8A528323BDD0014A54A /* ItemRequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequestState.swift; sourceTree = "<group>"; };
 		ECAC43E528333C6E00137EEA /* MangaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaData.swift; sourceTree = "<group>"; };
@@ -276,9 +274,8 @@
 		EC6C2F612830BCD90002E51D /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				EC3F70772834FAD70013E326 /* CoreDataStoreType.swift */,
-				ECD6296828339D4B008684D7 /* CoreDataStore.swift */,
-				ECD6298A2833E02F008684D7 /* API */,
+				EC3F707B283534D90013E326 /* NetworkManager.swift */,
+				EC9438862835E9D0000378C1 /* CoreData */,
 				ECD6298B2833E03E008684D7 /* FavoriteItemCacheServiceType */,
 			);
 			path = Service;
@@ -374,6 +371,15 @@
 			path = OptionsSelectView;
 			sourceTree = "<group>";
 		};
+		EC9438862835E9D0000378C1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				EC3F70772834FAD70013E326 /* CoreDataStoreType.swift */,
+				ECD6296828339D4B008684D7 /* CoreDataStore.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		ECD6296E28339E5D008684D7 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,15 +396,6 @@
 				ECD629862833D9E9008684D7 /* FavoriteItem+ItemTableViewCellConfigurable.swift */,
 			);
 			path = Favorite;
-			sourceTree = "<group>";
-		};
-		ECD6298A2833E02F008684D7 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				EC3F70792834FCA80013E326 /* ItemApiServiceType.swift */,
-				EC78D8A028322AC00014A54A /* ItemApiService.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		ECD6298B2833E03E008684D7 /* FavoriteItemCacheServiceType */ = {
@@ -675,16 +672,15 @@
 				EC78D87D2831E2BB0014A54A /* ItemListViewController.swift in Sources */,
 				ECD6296928339D4B008684D7 /* CoreDataStore.swift in Sources */,
 				EC78D89228320CDD0014A54A /* ItemRequestType.swift in Sources */,
+				EC3F707C283534D90013E326 /* NetworkManager.swift in Sources */,
 				EC78D8A4283230EB0014A54A /* OptionsSelectTableViewCell.swift in Sources */,
 				EC78D89C2832249A0014A54A /* MangaFilter.swift in Sources */,
 				EC78D89428320E310014A54A /* ItemRequest.swift in Sources */,
 				ECAC43E828333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift in Sources */,
-				EC3F707A2834FCA80013E326 /* ItemApiServiceType.swift in Sources */,
 				EC78D896283224560014A54A /* AnimeType.swift in Sources */,
 				EC78D8A628323BDD0014A54A /* ItemRequestState.swift in Sources */,
 				EC78D89A283224890014A54A /* MangaType.swift in Sources */,
 				EC78D89F283225C60014A54A /* ItemListType.swift in Sources */,
-				EC78D8A128322AC00014A54A /* ItemApiService.swift in Sources */,
 				EC78D8882831FDD60014A54A /* AnimeData+ItemTableViewCellConfigurable.swift in Sources */,
 				ECD6297A28339FA4008684D7 /* ItemEntity+CoreDataProperties.swift in Sources */,
 				EC6C2F6A2830C5910002E51D /* ViewModelType.swift in Sources */,

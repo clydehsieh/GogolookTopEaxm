@@ -14,10 +14,30 @@ enum HandleItemCacheResult {
     case failure(error: Error)
 }
 
+enum RequestType {
+    case anime(param: ItemRequestType)
+    case manga(param: ItemRequestType)
+    case favorite
+}
+
+enum UpdateType {
+    case new(items: [ItemTableViewCellConfigurable])
+    case append(items: [ItemTableViewCellConfigurable])
+}
+
 protocol ViewModelType {
-    func binding(fetchAnime: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<AnimeTopResponse, Error>
-    func binding(fetchManga: AnyPublisher<ItemRequestType, Error>) -> AnyPublisher<MangaTopResponse, Error>
-    func binding(fetchFavorite: AnyPublisher<Void, Error>) -> AnyPublisher<[FavoriteItem], Error>
+
+    var isLoading: CurrentValueSubject<Bool, Never> { get }
+
+    var updateItemListSubject: CurrentValueSubject<UpdateType, Never> { get }
+    var updatePagnationSubject: CurrentValueSubject<Pagination?, Never> { get }
+    
+    var currentListType: CurrentValueSubject<ItemListType, Never> { get }
+    var currentParamType: CurrentValueSubject<String?, Never> { get }
+    var currentParamFilter: CurrentValueSubject<String?, Never> { get }
+    var currentPage: CurrentValueSubject<Int, Never> { get }
+    var hasNexPage: Bool {get}
+    
     
     func isFavorite(malID: Int) -> Bool 
     func didTapFavorite(at data: ItemTableViewCellConfigurable, completion: @escaping ((HandleItemCacheResult)->Void)) throws

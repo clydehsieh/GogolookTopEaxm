@@ -17,8 +17,8 @@ extension ItemListViewControllerProvider {
         return decoder
     }
     
-    static var ApiService: ItemApiService {
-        ItemApiService(decoder: decoder)
+    static var networkManager: NetworkManager {
+        NetworkManager.share
     }
 }
 
@@ -28,7 +28,7 @@ extension ItemListViewControllerProvider {
         let coreDataStore = CoreDataStore.shared
         let itemCacheService = FavoriteItemCacheService(coreDataStore: coreDataStore)
         
-        return ViewModel(service: self.ApiService,
+        return ViewModel(networkManager: self.networkManager,
                          itemCacheService: itemCacheService)
     }
 }
