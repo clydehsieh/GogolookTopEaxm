@@ -37,6 +37,6 @@ extension ItemListViewControllerProvider {
 //MARK: - ViewController
 extension ItemListViewControllerProvider {
     static var viewController: ItemListViewController {
-        ItemListViewController(vm: self.viewModel)
+        ItemListViewController(viewModel: self.viewModel)
     }
 }

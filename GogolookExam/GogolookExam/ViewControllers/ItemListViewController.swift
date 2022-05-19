@@ -45,7 +45,7 @@ class ItemListViewController: UIViewController {
     var optionsSelectViewHolder: OptionsSelectView?
     
     //MARK: DI
-    let vm: ViewModelType
+    let viewModel: ViewModelType
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
@@ -53,8 +53,8 @@ class ItemListViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     
     //MARK: - lifecycle
-    init(vm: ViewModelType) {
-        self.vm = vm
+    init(viewModel: ViewModelType) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -71,7 +71,7 @@ class ItemListViewController: UIViewController {
         setupBinding()
         
         
-        vm.requestNextPageEvent.send(())
+        viewModel.requestNextPageEvent.send(())
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -122,7 +122,7 @@ extension ItemListViewController {
         
         weak var weakSelf = self
         
-        vm.updateItemListSubject
+        viewModel.updateItemListSubject
             .receive(on: DispatchQueue.main)
             .sink { items in
                 weakSelf?.datasource = items
@@ -131,7 +131,7 @@ extension ItemListViewController {
             .store(in: &subscriptions)
         
         
-        vm.isLoading
+        viewModel.isLoading
             .receive(on: DispatchQueue.main)
             .sink { isLoading in
                 if isLoading {
@@ -142,7 +142,7 @@ extension ItemListViewController {
             }
             .store(in: &self.subscriptions)
         
-        vm.changeListTypeEvent
+        viewModel.changeListTypeEvent
             .removeDuplicates()
             .sink { [weak self] listType in
                 self?.cleanOptionsSelectViewHolder()
@@ -150,14 +150,14 @@ extension ItemListViewController {
             }
             .store(in: &subscriptions)
         
-        vm.changeParamTypeEvent
+        viewModel.changeParamTypeEvent
             .removeDuplicates()
             .sink { [weak self] newType in
                 self?.optionSegmentView.setup(typeTitle: newType ?? "")
             }
             .store(in: &subscriptions)
         
-        vm.changeParamFilterEvent
+        viewModel.changeParamFilterEvent
             .removeDuplicates()
             .sink { [weak self] newFilter in
                 self?.optionSegmentView.setup(filterTitle: newFilter ?? "")
@@ -170,12 +170,12 @@ extension ItemListViewController {
 //MARK: - data mutating
 extension ItemListViewController {
     func changeListType(newType: ItemListType) {
-        vm.changeListTypeEvent.send(newType)
+        viewModel.changeListTypeEvent.send(newType)
         optionSegmentView.resetTitle()
     }
     
     func deleteDatasourceIfNeed(at row: Int) {
-        guard vm.requestCache.listType.deleteDataWhenUnfavorite else {
+        guard viewModel.requestCache.listType.deleteDataWhenUnfavorite else {
             return
         }
         
@@ -195,15 +195,15 @@ extension ItemListViewController {
     }
     
     func didTapFilter() {
-        showOptionList(titles: vm.requestCache.listType.optionFilters, completion: { [weak self] indexPath, newFilter in
-            self?.vm.changeParamFilterEvent.send(newFilter)
+        showOptionList(titles: viewModel.requestCache.listType.optionFilters, completion: { [weak self] indexPath, newFilter in
+            self?.viewModel.changeParamFilterEvent.send(newFilter)
             self?.cleanOptionsSelectViewHolder()
         })
     }
     
     func didTapType() {
-        showOptionList(titles: vm.requestCache.listType.optionTypes, completion: { [weak self] indexPath, newType in
-            self?.vm.changeParamTypeEvent.send(newType)
+        showOptionList(titles: viewModel.requestCache.listType.optionTypes, completion: { [weak self] indexPath, newType in
+            self?.viewModel.changeParamTypeEvent.send(newType)
             self?.cleanOptionsSelectViewHolder()
         })
     }
@@ -223,7 +223,7 @@ extension ItemListViewController: UITableViewDataSource {
         cell.setup(with: data)
         cell.delegate = self
         
-        cell.didChange(isFavorite: vm.isFavorite(malID: data.malID))
+        cell.didChange(isFavorite: viewModel.isFavorite(malID: data.malID))
         return cell
     }
 }
@@ -248,10 +248,11 @@ extension ItemListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard indexPath.row > ( datasource.count - 5) else { return }
-        vm.requestNextPageEvent.send(())
+        viewModel.requestNextPageEvent.send(())
     }
 }
 
+//MARK: - param type & filter option list
 extension ItemListViewController {
     func showOptionList(titles: [OptionsSelectTableViewCellConfigurable],
                         completion: @escaping OptionsSelectView.SelectOptionHandler ) {
@@ -285,7 +286,7 @@ extension ItemListViewController: ItemTableViewCellDelete {
         
         do {
             HUD.show(.progress)
-            try vm.didTapFavorite(at: data) { [weak self] result in
+            try viewModel.didTapFavorite(at: data) { [weak self] result in
                 
                 func updateState(isFavorite: Bool) {
                     if let cell = cell as? ItemFavorteStateObserable {
