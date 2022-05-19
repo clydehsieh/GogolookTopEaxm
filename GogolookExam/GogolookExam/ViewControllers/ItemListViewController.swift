@@ -46,12 +46,8 @@ class ItemListViewController: UIViewController {
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
-//    var itemRequestState = ItemRequestState.init()
-//    var isLoading: CurrentValueSubject<Bool, Never> = .init(false)
     
     weak var coordinator: MainCoordinator?
-//    var needResetFlag = false
-//    var currentListType: ItemListType = .anime
     
     //MARK: - lifecycle
     init(vm: ViewModelType) {
@@ -125,22 +121,17 @@ extension ItemListViewController {
         
         vm.updateItemListSubject
             .receive(on: DispatchQueue.main)
-            .sink { updateType in
-                switch updateType {
-                case let .new(items):
-                    weakSelf?.datasource = items
-                case let .append(items):
-                    weakSelf?.datasource.append(contentsOf: items)
-                }
+            .sink { items in
+                weakSelf?.datasource = items
                 debugPrint("datasource: \(weakSelf?.datasource.count ?? 0)")
             }
             .store(in: &subscriptions)
         
         
-        vm.isLoading
+        vm.loadingState
             .receive(on: DispatchQueue.main)
-            .sink { isLoading in
-                if isLoading {
+            .sink { state in
+                if state != .idle {
                     HUD.show(.progress)
                 } else {
                     HUD.hide()
@@ -243,10 +234,13 @@ extension ItemListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if !vm.isLoading.value, vm.currentListType.value != .favorite, vm.hasNexPage, indexPath.row > ( datasource.count - 5) {
-            let page = vm.currentPage.value + 1
-            vm.currentPage.send(page)
-        }
+        guard indexPath.row > ( datasource.count - 5) else { return }
+        guard vm.loadingState.value == .idle else { return }
+        guard vm.currentListType.value != .favorite else { return }
+        guard vm.hasNexPage else { return }
+        
+        let page = vm.currentPage.value + 1
+        vm.currentPage.send(page)
     }
 }
 

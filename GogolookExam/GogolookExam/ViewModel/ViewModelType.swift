@@ -20,24 +20,32 @@ enum RequestType {
     case favorite
 }
 
-enum UpdateType {
-    case new(items: [ItemTableViewCellConfigurable])
-    case append(items: [ItemTableViewCellConfigurable])
+enum LoadingState {
+    case loadNewListType
+    case loadNewParamType
+    case loadNewParamFilter
+    case loadNewPage
+    case idle
+    
+    func isAnimation() -> Bool {
+        self != .idle
+    }
 }
 
 protocol ViewModelType {
+    // state
+    var loadingState: CurrentValueSubject<LoadingState, Never> { get }
 
-    var isLoading: CurrentValueSubject<Bool, Never> { get }
-
-    var updateItemListSubject: CurrentValueSubject<UpdateType, Never> { get }
+    // output
+    var updateItemListSubject: CurrentValueSubject<[ItemTableViewCellConfigurable], Never> { get }
     var updatePagnationSubject: CurrentValueSubject<Pagination?, Never> { get }
     
+    // input
     var currentListType: CurrentValueSubject<ItemListType, Never> { get }
     var currentParamType: CurrentValueSubject<String?, Never> { get }
     var currentParamFilter: CurrentValueSubject<String?, Never> { get }
     var currentPage: CurrentValueSubject<Int, Never> { get }
     var hasNexPage: Bool {get}
-    
     
     func isFavorite(malID: Int) -> Bool 
     func didTapFavorite(at data: ItemTableViewCellConfigurable, completion: @escaping ((HandleItemCacheResult)->Void)) throws

@@ -9,29 +9,28 @@ import UIKit
 import Combine
 
 final class ViewModel: ViewModelType {
+    //MARK: DI
     let itemCacheService: FavoriteItemCacheServiceType
-    var subscriptions: Set<AnyCancellable> = .init()
-    
     let networkManager: NetworkManager
     
-    var isLoading: CurrentValueSubject<Bool, Never> = .init(false)
+    //
+    var loadingState: CurrentValueSubject<LoadingState, Never> = .init(.idle)
     
-    var requestItemEventSubject: CurrentValueSubject<RequestType?, Never> = .init(nil)
-    
-    var updateItemListSubject: CurrentValueSubject<UpdateType, Never> = .init(.new(items: []))
+    // output
+    private var itemListSubject: CurrentValueSubject<[ItemTableViewCellConfigurable], Never> = .init([])
+    var updateItemListSubject: CurrentValueSubject<[ItemTableViewCellConfigurable], Never> = .init([])
     var updatePagnationSubject: CurrentValueSubject<Pagination?, Never> = .init(nil)
     
-    var itemListSubject: CurrentValueSubject<[ItemTableViewCellConfigurable], Never> = .init([])
-    
-    var listTypeIsChanging = false
-    var paramTypeIsChanging = false
-    var paramFilterIsChanging = false
-
+    // input
     var currentListType: CurrentValueSubject<ItemListType, Never> = .init(.anime)
     var currentParamType: CurrentValueSubject<String?, Never> = .init(nil)
     var currentParamFilter: CurrentValueSubject<String?, Never> = .init(nil)
     var currentPage: CurrentValueSubject<Int, Never> = .init(0)
+    
+    //MARK:
+    var subscriptions: Set<AnyCancellable> = .init()
     var hasNexPage: Bool = false
+    
     
     init(networkManager: NetworkManager, itemCacheService: FavoriteItemCacheServiceType) {
         self.networkManager = networkManager
@@ -45,9 +44,8 @@ final class ViewModel: ViewModelType {
             .dropFirst()
             .removeDuplicates()
             .sink { [weak self] type in
-                
-                debugPrint("type did change to \(type)")
-                self?.listTypeIsChanging = true
+                debugPrint("listType to \(type), reset param type & filter to nil, page to 1")
+                self?.loadingState.send(.loadNewListType)
                 self?.currentParamType.send(nil)
                 self?.currentParamFilter.send(nil)
                 self?.currentPage.send(1)
@@ -60,9 +58,9 @@ final class ViewModel: ViewModelType {
             .dropFirst()
             .removeDuplicates()
             .sink { [weak self] type in
+                guard let self = self, self.loadingState.value == .idle else { return }
                 debugPrint("param type did change to \(type ?? "nil")")
-                guard let self = self, !self.listTypeIsChanging else { return }
-                self.paramTypeIsChanging = true
+                self.loadingState.send(.loadNewListType)
                 self.currentPage.send(1)
                 self.request()
             }
@@ -72,9 +70,9 @@ final class ViewModel: ViewModelType {
             .dropFirst()
             .removeDuplicates()
             .sink { [weak self] filter in
+                guard let self = self, self.loadingState.value == .idle else { return }
                 debugPrint("param filter did change to \(filter ?? "nil")")
-                guard let self = self, !self.listTypeIsChanging else { return }
-                self.paramFilterIsChanging = true
+                self.loadingState.send(.loadNewParamFilter)
                 self.currentPage.send(1)
                 self.request()
             }
@@ -84,8 +82,9 @@ final class ViewModel: ViewModelType {
             .dropFirst()
             .removeDuplicates()
             .sink { [weak self] page in
+                guard let self = self, self.loadingState.value == .idle else { return }
                 debugPrint("param page did change to \(page)")
-                guard let self = self, !self.listTypeIsChanging, !self.paramTypeIsChanging, !self.paramFilterIsChanging else { return }
+                self.loadingState.send(.loadNewPage)
                 self.request()
             }
             .store(in: &subscriptions)
@@ -103,15 +102,12 @@ final class ViewModel: ViewModelType {
         itemListSubject
             .sink { [weak self] items in
                 guard let self = self else { return }
-                if self.listTypeIsChanging || self.paramTypeIsChanging || self.paramFilterIsChanging {
-                    self.listTypeIsChanging = false
-                    self.paramTypeIsChanging = false
-                    self.paramFilterIsChanging = false
-                    self.updateItemListSubject.send(.new(items: items))
+                if self.loadingState.value != .loadNewPage {
+                    self.updateItemListSubject.send(items)
                 } else {
-                    self.updateItemListSubject.send(.append(items: items))
+                    self.updateItemListSubject.value.append(contentsOf: items)
                 }
-                self.isLoading.send(false)
+                self.loadingState.send(.idle)
             }
             .store(in: &subscriptions)
     }
@@ -119,9 +115,6 @@ final class ViewModel: ViewModelType {
 
 extension ViewModel {
     func request() {
-        guard !isLoading.value else { return }
-        isLoading.send(true)
-        
         let param: ItemRequest = .init(type: currentParamType.value,
                                        filter: currentParamFilter.value,
                                        page: currentPage.value)
