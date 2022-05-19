@@ -19,13 +19,8 @@ class ViewModelTypeTest: XCTestCase {
         var resultItems: [ItemTableViewCellConfigurable] = []
         
         viewModel.updateItemListSubject
-            .sink { updateType in
-                switch updateType {
-                case let .new(items):
-                    resultItems = items
-                case let .append(items):
-                    resultItems.append(contentsOf: items)
-                }
+            .sink { items in
+                resultItems = items
             }
             .store(in: &subscription)
 
@@ -33,7 +28,7 @@ class ViewModelTypeTest: XCTestCase {
         let baseCount = networkManager.mockResponse?.data.count ?? 0
         
         XCTAssertEqual(resultItems.count, 0)
-        viewModel.currentPage.send(1)
+        viewModel.requestNextPageEvent.send(())
         XCTAssertEqual(resultItems.count, baseCount * 1)
         
         addTeardownBlock { [ weak viewModel] in
@@ -48,13 +43,8 @@ class ViewModelTypeTest: XCTestCase {
         var resultItems: [ItemTableViewCellConfigurable] = []
         
         viewModel.updateItemListSubject
-            .sink { updateType in
-                switch updateType {
-                case let .new(items):
-                    resultItems = items
-                case let .append(items):
-                    resultItems.append(contentsOf: items)
-                }
+            .sink { items in
+                resultItems = items
             }
             .store(in: &subscription)
 
@@ -62,7 +52,7 @@ class ViewModelTypeTest: XCTestCase {
         let baseCount = networkManager.mockResponse?.data.count ?? 0
         
         XCTAssertEqual(resultItems.count, 0)
-        viewModel.currentListType.send(.manga)
+        viewModel.changeListTypeEvent.send(.manga)
         XCTAssertEqual(resultItems.count, baseCount * 1)
         
         addTeardownBlock { [ weak viewModel] in
@@ -77,13 +67,8 @@ class ViewModelTypeTest: XCTestCase {
         var resultItems: [ItemTableViewCellConfigurable] = []
         
         viewModel.updateItemListSubject
-            .sink { updateType in
-                switch updateType {
-                case let .new(items):
-                    resultItems = items
-                case let .append(items):
-                    resultItems.append(contentsOf: items)
-                }
+            .sink { items in
+                resultItems = items
             }
             .store(in: &subscription)
 
@@ -91,9 +76,9 @@ class ViewModelTypeTest: XCTestCase {
         let baseCount = networkManager.mockResponse?.data.count ?? 0
         
         XCTAssertEqual(resultItems.count, 0)
-        viewModel.currentPage.send(1)
+        viewModel.requestNextPageEvent.send(())
         XCTAssertEqual(resultItems.count, baseCount * 1)
-        viewModel.currentPage.send(2)
+        viewModel.requestNextPageEvent.send(())
         XCTAssertEqual(resultItems.count, baseCount * 2)
         
         
@@ -109,13 +94,8 @@ class ViewModelTypeTest: XCTestCase {
         var resultItems: [ItemTableViewCellConfigurable] = []
         
         viewModel.updateItemListSubject
-            .sink { updateType in
-                switch updateType {
-                case let .new(items):
-                    resultItems = items
-                case let .append(items):
-                    resultItems.append(contentsOf: items)
-                }
+            .sink { items in
+                resultItems = items
             }
             .store(in: &subscription)
 
@@ -123,11 +103,11 @@ class ViewModelTypeTest: XCTestCase {
         let baseCount = networkManager.mockResponse?.data.count ?? 0
         
         XCTAssertEqual(resultItems.count, 0)
-        viewModel.currentPage.send(1)
+        viewModel.requestNextPageEvent.send(())
         XCTAssertEqual(resultItems.count, baseCount * 1)
-        viewModel.currentPage.send(2)
+        viewModel.requestNextPageEvent.send(())
         XCTAssertEqual(resultItems.count, baseCount * 2)
-        viewModel.currentParamType.send("test")
+        viewModel.changeParamTypeEvent.send("test")
         XCTAssertEqual(resultItems.count, baseCount * 1)
         
         addTeardownBlock { [ weak viewModel] in
@@ -142,13 +122,8 @@ class ViewModelTypeTest: XCTestCase {
         var resultItems: [ItemTableViewCellConfigurable] = []
         
         viewModel.updateItemListSubject
-            .sink { updateType in
-                switch updateType {
-                case let .new(items):
-                    resultItems = items
-                case let .append(items):
-                    resultItems.append(contentsOf: items)
-                }
+            .sink { items in
+                resultItems = items
             }
             .store(in: &subscription)
 
@@ -156,11 +131,11 @@ class ViewModelTypeTest: XCTestCase {
         let baseCount = networkManager.mockResponse?.data.count ?? 0
         
         XCTAssertEqual(resultItems.count, 0)
-        viewModel.currentPage.send(1)
+        viewModel.requestNextPageEvent.send(())
         XCTAssertEqual(resultItems.count, baseCount * 1)
-        viewModel.currentPage.send(2)
+        viewModel.requestNextPageEvent.send(())
         XCTAssertEqual(resultItems.count, baseCount * 2)
-        viewModel.currentParamFilter.send("test")
+        viewModel.changeParamFilterEvent.send("test")
         XCTAssertEqual(resultItems.count, baseCount * 1)
         
         addTeardownBlock { [ weak viewModel] in
@@ -192,7 +167,7 @@ extension ViewModelTypeTest {
         let data2: AnimeData = .init(malID: 1, title: "title1", url: "url1", images: ["key": iamge], aired: mockAired() , rank: 0)
         
         let items: Items = .init(count: 10, total: 10, perPage: 10)
-        let page: Pagination = .init(lastVisiblePage: 1, hasNextPage: false, currentPage: 1, items: items)
+        let page: Pagination = .init(lastVisiblePage: 1, hasNextPage: true, currentPage: 1, items: items)
         let mockResponse: AnimeTopResponse = .init(data: [data1, data2], pagination: page)
         
         return mockResponse
@@ -205,7 +180,7 @@ extension ViewModelTypeTest {
         let data2: MangaData = .init(malID: 1, title: "title1", url: "url1", images: ["key": iamge], published: .init(from: .now, to:.now) , rank: 0)
         
         let items: Items = .init(count: 10, total: 10, perPage: 10)
-        let page: Pagination = .init(lastVisiblePage: 1, hasNextPage: false, currentPage: 1, items: items)
+        let page: Pagination = .init(lastVisiblePage: 1, hasNextPage: true, currentPage: 1, items: items)
         let mockResponse: MangaTopResponse = .init(data: [data1, data2], pagination: page)
         
         return mockResponse

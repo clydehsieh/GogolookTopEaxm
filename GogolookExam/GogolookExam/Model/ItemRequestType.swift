@@ -8,6 +8,7 @@
 import UIKit
 
 protocol ItemRequestType {
+    var listType: ItemListType { get }
     var type: String? { get }
     var filter: String? { get }
     var page: Int { get }

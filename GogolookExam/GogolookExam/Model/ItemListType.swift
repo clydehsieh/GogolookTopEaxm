@@ -14,6 +14,8 @@ enum ItemListType: CaseIterable {
 }
 
 extension ItemListType {
+    static let defaultType = ItemListType.anime
+    
     var segmentFirst: Bool {
         self == .anime
     }
@@ -23,6 +25,10 @@ extension ItemListType {
     }
     
     var enableSeletOptionSegmentView: Bool {
+        self != .favorite
+    }
+    
+    var isPageable: Bool {
         self != .favorite
     }
 }

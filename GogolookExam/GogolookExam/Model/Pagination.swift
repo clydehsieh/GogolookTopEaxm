@@ -19,6 +19,11 @@ struct Pagination: Codable {
     }
 }
 
+extension Pagination {
+    static var defaultConfig: Pagination = .init(lastVisiblePage: 1, hasNextPage: true, currentPage: 0, items: .init(count: 0, total: 0, perPage: 0))
+}
+
+
 // MARK: - Items
 struct Items: Codable {
     let count, total, perPage: Int

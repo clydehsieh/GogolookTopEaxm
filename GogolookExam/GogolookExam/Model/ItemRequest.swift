@@ -8,6 +8,7 @@
 import UIKit
 
 struct ItemRequest: ItemRequestType {
+    var listType: ItemListType
     var type: String?
     var filter: String?
     var page: Int
@@ -15,6 +16,9 @@ struct ItemRequest: ItemRequestType {
 
 extension ItemRequest {
     static var defaultConfig: ItemRequest {
-        ItemRequest(type: nil, filter: nil, page: 0)
+        ItemRequest(listType: .defaultType,
+                    type: nil,
+                    filter: nil,
+                    page: 0)
     }
 }

@@ -71,9 +71,17 @@ class OptionSegmentView: UIView {
         viewHierarchyNotReady = false
     }
     
-    func setup(typeTitle: String, filterTitle: String) {
+    func setup(typeTitle: String) {
         typeButton.setTitle(" ▾ Type: \(typeTitle)", for: .normal)
+    }
+    
+    func setup(filterTitle: String) {
         filterButton.setTitle(" ▾ Filter : \(filterTitle)", for: .normal)
+    }
+    
+    func resetTitle() {
+        setup(filterTitle: "")
+        setup(typeTitle: "")
     }
 }
 

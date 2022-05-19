@@ -9,28 +9,28 @@ import UIKit
 import Combine
 
 final class ViewModel: ViewModelType {
-    //MARK: DI
-    let itemCacheService: FavoriteItemCacheServiceType
-    let networkManager: NetworkManager
-    
-    //
-    var loadingState: CurrentValueSubject<LoadingState, Never> = .init(.idle)
+    // state
+    var requestCache: ItemRequest = .defaultConfig
+    var isLoading: CurrentValueSubject<Bool, Never> = .init(false)
     
     // output
     private var itemListSubject: CurrentValueSubject<[ItemTableViewCellConfigurable], Never> = .init([])
     var updateItemListSubject: CurrentValueSubject<[ItemTableViewCellConfigurable], Never> = .init([])
-    var updatePagnationSubject: CurrentValueSubject<Pagination?, Never> = .init(nil)
     
     // input
-    var currentListType: CurrentValueSubject<ItemListType, Never> = .init(.anime)
-    var currentParamType: CurrentValueSubject<String?, Never> = .init(nil)
-    var currentParamFilter: CurrentValueSubject<String?, Never> = .init(nil)
-    var currentPage: CurrentValueSubject<Int, Never> = .init(0)
+    var changeListTypeEvent: PassthroughSubject<ItemListType, Never> = .init()
+    var changeParamTypeEvent: PassthroughSubject<String?, Never> = .init()
+    var changeParamFilterEvent: PassthroughSubject<String?, Never> = .init()
+    var requestNextPageEvent: PassthroughSubject<Void, Never> = .init()
+    
+    //MARK: DI
+    let itemCacheService: FavoriteItemCacheServiceType
+    let networkManager: NetworkManager
     
     //MARK:
     var subscriptions: Set<AnyCancellable> = .init()
-    var hasNexPage: Bool = false
-    
+    var changePageEvent: PassthroughSubject<Int, Never> = .init()
+    var pagination: Pagination? = .defaultConfig
     
     init(networkManager: NetworkManager, itemCacheService: FavoriteItemCacheServiceType) {
         self.networkManager = networkManager
@@ -40,86 +40,84 @@ final class ViewModel: ViewModelType {
     }
     
     private func setupBinding() {
-        currentListType
-            .dropFirst()
+        changeListTypeEvent
             .removeDuplicates()
-            .sink { [weak self] type in
-                debugPrint("listType to \(type), reset param type & filter to nil, page to 1")
-                self?.loadingState.send(.loadNewListType)
-                self?.currentParamType.send(nil)
-                self?.currentParamFilter.send(nil)
-                self?.currentPage.send(1)
+            .sink { [weak self] listType in
+                debugPrint("listType to \(listType), reset param type & filter to nil, page to 1")
+                self?.request(for: .init(listType: listType, type: nil, filter: nil, page: 1))
+            }
+            .store(in: &subscriptions)
+        
+        changeParamTypeEvent
+            .removeDuplicates()
+            .sink { [weak self] newType in
+                guard let self = self else { return }
+                debugPrint("param type did change to \(newType ?? "nil")")
                 
-                self?.request()
+                self.request(for: .init(listType: self.requestCache.listType,
+                                        type: newType,
+                                        filter: self.requestCache.filter,
+                                        page: 1))
             }
             .store(in: &subscriptions)
         
-        currentParamType
-            .dropFirst()
+        changeParamFilterEvent
             .removeDuplicates()
-            .sink { [weak self] type in
-                guard let self = self, self.loadingState.value == .idle else { return }
-                debugPrint("param type did change to \(type ?? "nil")")
-                self.loadingState.send(.loadNewListType)
-                self.currentPage.send(1)
-                self.request()
+            .sink { [weak self] newFilter in
+                guard let self = self else { return }
+                debugPrint("param filter did change to \(newFilter ?? "nil")")
+                self.request(for: .init(listType: self.requestCache.listType,
+                                        type: self.requestCache.type,
+                                        filter: newFilter,
+                                        page: 1))
             }
             .store(in: &subscriptions)
         
-        currentParamFilter
-            .dropFirst()
+        changePageEvent
             .removeDuplicates()
-            .sink { [weak self] filter in
-                guard let self = self, self.loadingState.value == .idle else { return }
-                debugPrint("param filter did change to \(filter ?? "nil")")
-                self.loadingState.send(.loadNewParamFilter)
-                self.currentPage.send(1)
-                self.request()
-            }
-            .store(in: &subscriptions)
-        
-        currentPage
-            .dropFirst()
-            .removeDuplicates()
-            .sink { [weak self] page in
-                guard let self = self, self.loadingState.value == .idle else { return }
-                debugPrint("param page did change to \(page)")
-                self.loadingState.send(.loadNewPage)
-                self.request()
-            }
-            .store(in: &subscriptions)
-        
-        updatePagnationSubject
-            .sink { [weak self] pagination in
-                if let page = pagination {
-                    self?.hasNexPage = page.hasNextPage
-                } else {
-                    self?.hasNexPage = false
-                }
+            .sink { [weak self] newPage in
+                guard let self = self else { return }
+                debugPrint("param page did change to \(newPage)")
+                self.request(for: .init(listType: self.requestCache.listType,
+                                        type: self.requestCache.type,
+                                        filter: self.requestCache.filter,
+                                        page: newPage))
             }
             .store(in: &subscriptions)
         
         itemListSubject
             .sink { [weak self] items in
                 guard let self = self else { return }
-                if self.loadingState.value != .loadNewPage {
+                if self.requestCache.page == 1 {
                     self.updateItemListSubject.send(items)
                 } else {
                     self.updateItemListSubject.value.append(contentsOf: items)
                 }
-                self.loadingState.send(.idle)
+                self.isLoading.send(false)
+            }
+            .store(in: &subscriptions)
+        
+        requestNextPageEvent
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                guard self.pagination?.hasNextPage ?? false else { return }
+                guard self.requestCache.listType.isPageable else { return }
+                guard !self.isLoading.value else { return }
+                let nextPage = max(1, (self.requestCache.page + 1))
+                self.changePageEvent.send(nextPage)
             }
             .store(in: &subscriptions)
     }
 }
 
 extension ViewModel {
-    func request() {
-        let param: ItemRequest = .init(type: currentParamType.value,
-                                       filter: currentParamFilter.value,
-                                       page: currentPage.value)
+    func request(for param: ItemRequest) {
+        guard !isLoading.value else { return }
+        isLoading.send(true
+        )
+        self.requestCache = param
         
-        switch currentListType.value {
+        switch param.listType {
         case .anime:
             requestAnime(with: param)
         case .manga:
@@ -139,7 +137,7 @@ extension ViewModel {
                 }
             }, receiveValue: { [weak self] response in
                 self?.itemListSubject.send(response.data)
-                self?.updatePagnationSubject.send(response.pagination)
+                self?.pagination = response.pagination
             })
             .store(in: &subscriptions)
     }
@@ -154,7 +152,7 @@ extension ViewModel {
                 }
             }, receiveValue: { [weak self] response in
                 self?.itemListSubject.send(response.data)
-                self?.updatePagnationSubject.send(response.pagination)
+                self?.pagination = response.pagination
             })
             .store(in: &subscriptions)
     }
@@ -163,10 +161,10 @@ extension ViewModel {
         do {
             let entities = try itemCacheService.fetchItems()
             let items = entities
-                    .map({FavoriteItem.init(itemEntity: $0)})
-                    .sorted(by: { ($0.rank ?? 0) < ($1.rank ?? 0) })
+                .map({FavoriteItem.init(itemEntity: $0)})
+                .sorted(by: { ($0.rank ?? 0) < ($1.rank ?? 0) })
             itemListSubject.send(items)
-            updatePagnationSubject.send(nil)
+            pagination = nil
         } catch let error {
             debugPrint("e \(error)")
         }

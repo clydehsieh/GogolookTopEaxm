@@ -25,6 +25,9 @@ class ItemListViewController: UIViewController {
         } typeFilterHandler: { [weak self] in
             self?.didTapFilter()
         }
+        
+        v.setup(filterTitle: "")
+        v.setup(typeTitle: "")
         return v
     }()
     
@@ -68,7 +71,7 @@ class ItemListViewController: UIViewController {
         setupBinding()
         
         
-        vm.currentPage.send(1)
+        vm.requestNextPageEvent.send(())
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -128,10 +131,10 @@ extension ItemListViewController {
             .store(in: &subscriptions)
         
         
-        vm.loadingState
+        vm.isLoading
             .receive(on: DispatchQueue.main)
-            .sink { state in
-                if state != .idle {
+            .sink { isLoading in
+                if isLoading {
                     HUD.show(.progress)
                 } else {
                     HUD.hide()
@@ -139,30 +142,40 @@ extension ItemListViewController {
             }
             .store(in: &self.subscriptions)
         
-        vm.currentListType
+        vm.changeListTypeEvent
             .removeDuplicates()
-            .sink { [weak self] type in
+            .sink { [weak self] listType in
                 self?.cleanOptionsSelectViewHolder()
-                self?.optionSegmentView.isUserInteractionEnabled = type.enableSeletOptionSegmentView
+                self?.optionSegmentView.isUserInteractionEnabled = listType.enableSeletOptionSegmentView
             }
             .store(in: &subscriptions)
         
-        vm.currentParamType.combineLatest(vm.currentParamFilter)
-            .sink { [weak self] (type, filter) in
-                self?.optionSegmentView.setup(typeTitle: type ?? "", filterTitle: filter ?? "")
+        vm.changeParamTypeEvent
+            .removeDuplicates()
+            .sink { [weak self] newType in
+                self?.optionSegmentView.setup(typeTitle: newType ?? "")
             }
             .store(in: &subscriptions)
+        
+        vm.changeParamFilterEvent
+            .removeDuplicates()
+            .sink { [weak self] newFilter in
+                self?.optionSegmentView.setup(filterTitle: newFilter ?? "")
+            }
+            .store(in: &subscriptions)
+        
     }
 }
 
 //MARK: - data mutating
 extension ItemListViewController {
     func changeListType(newType: ItemListType) {
-        vm.currentListType.send(newType)
+        vm.changeListTypeEvent.send(newType)
+        optionSegmentView.resetTitle()
     }
     
     func deleteDatasourceIfNeed(at row: Int) {
-        guard vm.currentListType.value.deleteDataWhenUnfavorite else {
+        guard vm.requestCache.listType.deleteDataWhenUnfavorite else {
             return
         }
         
@@ -182,15 +195,15 @@ extension ItemListViewController {
     }
     
     func didTapFilter() {
-        showOptionList(titles: vm.currentListType.value.optionFilters, completion: { [weak self] indexPath, newFilter in
-            self?.vm.currentParamFilter.send(newFilter)
+        showOptionList(titles: vm.requestCache.listType.optionFilters, completion: { [weak self] indexPath, newFilter in
+            self?.vm.changeParamFilterEvent.send(newFilter)
             self?.cleanOptionsSelectViewHolder()
         })
     }
     
     func didTapType() {
-        showOptionList(titles: vm.currentListType.value.optionTypes, completion: { [weak self] indexPath, newType in
-            self?.vm.currentParamType.send(newType)
+        showOptionList(titles: vm.requestCache.listType.optionTypes, completion: { [weak self] indexPath, newType in
+            self?.vm.changeParamTypeEvent.send(newType)
             self?.cleanOptionsSelectViewHolder()
         })
     }
@@ -235,12 +248,7 @@ extension ItemListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard indexPath.row > ( datasource.count - 5) else { return }
-        guard vm.loadingState.value == .idle else { return }
-        guard vm.currentListType.value != .favorite else { return }
-        guard vm.hasNexPage else { return }
-        
-        let page = vm.currentPage.value + 1
-        vm.currentPage.send(page)
+        vm.requestNextPageEvent.send(())
     }
 }
 
