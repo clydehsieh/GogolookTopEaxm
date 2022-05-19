@@ -48,6 +48,7 @@
 		EC78D89F283225C60014A54A /* ItemListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D89E283225C60014A54A /* ItemListType.swift */; };
 		EC78D8A4283230EB0014A54A /* OptionsSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A3283230EB0014A54A /* OptionsSelectTableViewCell.swift */; };
 		EC78D8A628323BDD0014A54A /* ItemRequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC78D8A528323BDD0014A54A /* ItemRequestState.swift */; };
+		EC94388828362E6D000378C1 /* ItemRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC94388728362E6D000378C1 /* ItemRequestTest.swift */; };
 		ECAC43E628333C6E00137EEA /* MangaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC43E528333C6E00137EEA /* MangaData.swift */; };
 		ECAC43E828333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC43E728333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift */; };
 		ECD6296728339BC0008684D7 /* FavoriteModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ECD6296528339BC0008684D7 /* FavoriteModel.xcdatamodeld */; };
@@ -130,6 +131,7 @@
 		EC78D89E283225C60014A54A /* ItemListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListType.swift; sourceTree = "<group>"; };
 		EC78D8A3283230EB0014A54A /* OptionsSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsSelectTableViewCell.swift; sourceTree = "<group>"; };
 		EC78D8A528323BDD0014A54A /* ItemRequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequestState.swift; sourceTree = "<group>"; };
+		EC94388728362E6D000378C1 /* ItemRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequestTest.swift; sourceTree = "<group>"; };
 		ECAC43E528333C6E00137EEA /* MangaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaData.swift; sourceTree = "<group>"; };
 		ECAC43E728333D1F00137EEA /* MangaData+ItemTableViewCellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MangaData+ItemTableViewCellConfigurable.swift"; sourceTree = "<group>"; };
 		ECD6296628339BC0008684D7 /* FavoriteModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteModel.xcdatamodel; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		EC6C2F402830BAFB0002E51D /* GogolookExamTests */ = {
 			isa = PBXGroup;
 			children = (
+				EC94388728362E6D000378C1 /* ItemRequestTest.swift */,
 				EC3F70752834F8F40013E326 /* ViewModelTypeTest.swift */,
 				EC6C2F412830BAFB0002E51D /* GogolookExamTests.swift */,
 			);
@@ -697,6 +700,7 @@
 			files = (
 				EC3F70762834F8F40013E326 /* ViewModelTypeTest.swift in Sources */,
 				EC6C2F422830BAFB0002E51D /* GogolookExamTests.swift in Sources */,
+				EC94388828362E6D000378C1 /* ItemRequestTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
